@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur du Système Solaire</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@<0.172.0>/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<0.172.0>/examples/jsm/"
+          }
+        }
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <h1>Simulateur du Système Solaire</h1>
+    <button id="accelerate-btn">Accélérer le Temps</button>
+    <button id="decelerate-btn">Ralentir le Temps</button>
+    <button id="stop-btn">Arrêter le Temps</button>
+    <button id="view-syst-btn">Système</button>
+    <button id="view-sun-btn">Soleil</button>
+    <button id="view-mercury-btn">Mercure</button>
+    <button id="view-venus-btn">Vénus</button>
+    <button id="view-earth-btn">la Terre</button>
+    <button id="view-mars-btn">Mars</button>
+    <button id="view-jupiter-btn">Jupiter</button>
+    <button id="view-saturn-btn">Saturne</button>
+    <button id="view-uranus-btn">Uranus</button>
+    <button id="view-neptune-btn">Neptune</button>
+    <canvas id="solarCanvas"></canvas>
+</body>
+</html>
