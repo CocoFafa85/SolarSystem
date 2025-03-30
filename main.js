@@ -1,5 +1,139 @@
-import { planets } from './planets.js';
-import { loadTexture } from './functions.js';
+// Données des planètes : nom, taille, distance du soleil, vitesse orbitale, texture
+export const planets = [
+  { name: "Mercure", size: 0.38, speed: 0.02, texture: "textures/mercury.jpg", camDistanceButton: -1.52,
+    orbitColor: "#ffffff", aphelie: 5514.66, periphelie: 3637.33, obliquity : 0.03 },
+
+  { name: "Vénus", size: 0.95, speed: 0.015, texture: "textures/venus.jpg", camDistanceButton: -3.80,
+    orbitColor: "#ffffff", aphelie: 8544.68, periphelie: 8429.58, obliquity : 177.36 },
+
+  { name: "Terre", size: 1, speed: 0.01, texture: "textures/earth.jpg", camDistanceButton: -4, 
+    orbitColor: "#503bf4",  aphelie: 11929.38, periphelie: 11537.26, obliquity : 23.44 },
+
+  { name: "Mars", size: 0.53, speed: 0.008, texture: "textures/mars.jpg", camDistanceButton: -2.12,
+    orbitColor: "#ffffff", aphelie: 19547.96, periphelie: 16208.42, obliquity : 25.19 },
+
+  { name: "Jupiter", size: 11, speed: 0.004, texture: "textures/jupiter.jpg", camDistanceButton: -44,
+    orbitColor: "#ffffff", aphelie: 64000.62, periphelie: 58092.89, obliquity : 3.12},
+
+  { name: "Saturne", size: 9.5, speed: 0.003, texture: "textures/saturn.jpg", camDistanceButton: -38,
+    orbitColor: "#ffffff", aphelie: 117949.97, periphelie: 105869.84, obliquity : 26.73 },
+
+  { name: "Uranus", size: 4, speed: 0.002, texture: "textures/uranus.jpg", camDistanceButton: -16,
+    orbitColor: "#ffffff", aphelie: 235793.00, periphelie: 214512.26, obliquity : 97.8 },
+
+  { name: "Neptune", size: 3.88, speed: 0.001, texture: "textures/neptune.jpg", camDistanceButton: -15.52,
+    orbitColor: "#ffffff", aphelie: 355848.43, periphelie: 349789.34, obliquity : 29.58 },
+
+  { name: "Sun", size: 110, speed: 0.045, texture: "textures/sun.jpg", camDistanceButton: 440,
+    aphelie: 0, periphelie: 0, obliquity : 0 },
+
+];
+console.log("planets.js chargé");
+
+// Fonction pour charger une texture à partir d'un chemin donné (grâce à THREE)
+export function loadTexture(path) {
+  const loader = new THREE.TextureLoader();
+  return loader.load(path);
+  
+}
+
+const sunVideo = document.createElement("video");
+sunVideo.src = "textures/sun_pattern.mp4"; // Remplace par un fichier vidéo valide
+sunVideo.loop = true;
+sunVideo.muted = true;
+sunVideo.playbackRate = 0.5; // Ralentit la vidéo pour une meilleure continuité
+sunVideo.play();
+
+const sunTexture = new THREE.VideoTexture(sunVideo);
+sunTexture.minFilter = THREE.LinearFilter;
+sunTexture.magFilter = THREE.LinearFilter;
+sunTexture.format = THREE.RGBFormat;
+console.log("functions.js chargé");
+
+
+
+
+
+
+
+const eruptionParticles = new THREE.Group();
+const particleTexture = new THREE.TextureLoader().load("textures/lava_frame.jpg");
+
+function createCurvedPlasmaJet() {
+  const numParticles = 500;
+  const baseAngle = Math.random() * Math.PI * 2;
+  const baseDistance = Math.random() * 5 + 75;
+  const heightVariation = Math.random() * 15 + 20;
+  const points = [];
+
+  // Générer une vraie courbure
+  for (let i = 0; i < 6; i++) {
+    points.push(new THREE.Vector3(
+      Math.cos(baseAngle + (Math.random() - 0.5) * 0.2) * (baseDistance + i * 5),
+      i * heightVariation + (Math.random() - 0.5) * 5, // Ajout d'une légère variation
+      Math.sin(baseAngle + (Math.random() - 0.5) * 0.2) * (baseDistance + i * 5)
+    ));
+  }
+
+  const curve = new THREE.CatmullRomCurve3(points, false);
+  const jet = new THREE.Group();
+
+  for (let i = 0; i < numParticles; i++) {
+    const particleMaterial = new THREE.SpriteMaterial({
+      map: particleTexture,
+      transparent: true,
+      opacity: 0,  // Démarrage invisible
+      blending: THREE.AdditiveBlending
+    });
+
+    const particle = new THREE.Sprite(particleMaterial);
+    particle.scale.set(3, 3, 3);
+
+    const t = i / numParticles;
+    const positionOnCurve = curve.getPoint(t);
+    particle.position.copy(positionOnCurve);
+
+    jet.add(particle);
+
+    // Apparition progressive des particules
+    new TWEEN.Tween(particle.material)
+      .to({ opacity: Math.random() * 0.8 + 0.2 }, 1000)
+      .delay(i * 5)
+      .start();
+
+    // Animation de montée
+    new TWEEN.Tween(particle.position)
+      .to(curve.getPoint(Math.min(t + 0.4, 1)), 3000)
+      .easing(TWEEN.Easing.Quadratic.Out)
+      .start();
+
+    // Disparition progressive
+    new TWEEN.Tween(particle.material)
+      .to({ opacity: 0 }, 3500)
+      .delay(2000)
+      .onComplete(() => jet.remove(particle))
+      .start();
+  }
+
+  
+
+  eruptionParticles.add(jet);
+  setTimeout(() => eruptionParticles.remove(jet), 4000);
+}
+
+
+
+
+function eruptCurvedJetsRandomly() {
+  createCurvedPlasmaJet();
+  setTimeout(eruptCurvedJetsRandomly, Math.random() * 3000 + 1000);
+}
+
+
+eruptCurvedJetsRandomly();
+
+
+
 
 
 const scene = new THREE.Scene(); 
@@ -7,17 +141,6 @@ const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer(); // Permet un rendu 3D dans un naviguateur
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-
-let isZooming = false;
-window.addEventListener("wheel", (event) => {
-  if (event.deltaY !== 0) { //Détecte si la molette est utilisée 
-    isZooming = true; //Désactive temporairement le déplacement du fond 
-  } else {
-    isZooming = false;
-  }
-});
-
-
 
 // Lumière solaire (pour planets)
 const light = new THREE.PointLight(0xffffff, 0.3, 10000000);
@@ -53,66 +176,199 @@ scene.add(light4S);
 scene.add(light5S);
 scene.add(light6S);
 
-const spaceTexture = new THREE.TextureLoader().load("textures/stars_milkyway.jpg");
-// const spaceTexture = new THREE.TextureLoader().load("textures/stars.jpg");
+
+
+
+function addSunGlow(sunMesh, camera) {
+  const glowTexture = new THREE.TextureLoader().load('textures/sun_glow.png');
+  const glowMaterial = new THREE.SpriteMaterial({ 
+      map: glowTexture, 
+      transparent: true,  //S'assure de prendre que l'image
+      opacity: 0.6 //Opacité de l'image
+  });
+
+  const glow = new THREE.Sprite(glowMaterial); //Création du sprite
+  glow.position.set(sunMesh.position.x +20, sunMesh.position.y - 50, sunMesh.position.z );
+  sunMesh.add(glow);
+
+  function updateGlowSize() {
+      const distance = camera.position.distanceTo(sunMesh.position); //clacule la distance avec la caméra
+      const scaleFactor = 100 + Math.sqrt(distance) * 100; // Ajustement en fonction de la distance
+      glow.scale.set(scaleFactor, scaleFactor, 1); //Applqiue à l'echelle
+  }
+
+  function animateGlow() {
+      requestAnimationFrame(animateGlow); //Boucle d'animation qui s'exécute en continu
+      updateGlowSize(); //Met à jour la taille du glow à chaque image
+  }
+  animateGlow();
+}
+
+const sunMesh = new THREE.Mesh( //Ajout d'une entité Soleil afin de lui greffer le rayon
+);
+scene.add(sunMesh);
+addSunGlow(sunMesh, camera);
+
+
+
+
+
+
+
+
+
+// const spaceTexture = new THREE.TextureLoader().load("textures/stars_milkyway.jpg");
+const spaceTexture = new THREE.TextureLoader().load("textures/stars.jpg");
 spaceTexture.wrapS = THREE.RepeatWrapping; //Active un mode répétitif de texture 
 spaceTexture.wrapT = THREE.RepeatWrapping;
 scene.background = spaceTexture;
 
+
 // Ajout des planètes
 const planetTable = [];
 planets.forEach((planet) => {
-  const geometry = new THREE.SphereGeometry(planet.size, 128, 128);
-  const material = new THREE.MeshStandardMaterial({ map: loadTexture(planet.texture) });
-  const mesh = new THREE.Mesh(geometry, material);
-  mesh.rotation.z = THREE.MathUtils.degToRad(planet.obliquity || 0); //degToRad permet deconvertir l'angle ° en radian. Utilisé par Three. Donc c'est : planet.obliquity * (Math.PI / 180)
-  mesh.name = planet.name;
-
-  // Placement initial au périhélie (point le plus proche du Soleil)
-  const semiMajorAxis = (planet.aphelie + planet.periphelie) / 2;
-  const semiMinorAxis = Math.sqrt(planet.aphelie * planet.periphelie);
-  const focalDistance = semiMajorAxis - planet.periphelie;
-
-  mesh.position.x = Math.cos(0) * semiMajorAxis - focalDistance;
-  mesh.position.z = Math.sin(0) * semiMinorAxis;
-  mesh.position.y = 0; 
-  console.log(`✅ Position initiale ${planet.name} → X: ${mesh.position.x}, Z: ${mesh.position.z}`);
-
-  //Ajout anneaux de Saturne
-  if (planet.name === "Saturne") {
-    const ringGeometry = new THREE.RingGeometry(17.1, 23.75, 64);
-    const ringTexture = loadTexture("textures/saturn_ring.jpg");
-    const ringMaterial = new THREE.MeshStandardMaterial({
-      map: ringTexture,
-      side: THREE.DoubleSide, //Permet d'afficher la texture des deux côtés du ring (évite que l’anneau soit invisible sous certains angles)
-      transparent: true,
-      alphaTest: 0.5,
-    });
-  
-    const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
-  
-    // Appliquer l'inclinaison des anneaux selon l'obliquité de Saturne
-    ringMesh.position.set(0, 0, 0); // Il reste centré sur Saturne
-    ringMesh.rotation.x = Math.PI / 2; // Math.PI / 2 (90°) aligne les anneaux avec le plan orbital. Cela fonctionne car Three.js place par défaut les anneaux dans le plan X-Y, donc une rotation de 90° autour de X les oriente dans le plan X-Z (transversal)
+    const geometry = new THREE.SphereGeometry(planet.size, 128, 128);
+    const texture = loadTexture(planet.texture);
     
-    // Attacher l’anneau à Saturne
-    ringMesh.position.copy(mesh.position);
-    mesh.add(ringMesh);
-  }
-  
+    if (!texture) console.warn(`⚠️ Aucune texture trouvée pour ${planet.name}`);
+    
+    const material = new THREE.MeshStandardMaterial({ map: texture || null });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.rotation.z = THREE.MathUtils.degToRad(planet.obliquity || 0);
+    mesh.name = planet.name;
 
-  scene.add(mesh);
+    // Placement initial au périhélie (point le plus proche du Soleil)
+    const semiMajorAxis = (planet.aphelie + planet.periphelie) / 2;
+    const semiMinorAxis = Math.sqrt(planet.aphelie * planet.periphelie);
+    const focalDistance = semiMajorAxis - planet.periphelie;
 
-  planetTable.push({
-    mesh,
-    speed: planet.speed,
-    angle: 0, // Commencer l'orbite au point initial
-    camDistanceButton: planet.camDistanceButton,
-    semiMajorAxis, 
-    semiMinorAxis,
-    focalDistance
-  });
+    mesh.position.x = Math.cos(0) * semiMajorAxis - focalDistance;
+    mesh.position.z = Math.sin(0) * semiMinorAxis;
+    mesh.position.y = 0;
+
+    console.log(`✅ Position initiale ${planet.name} → X: ${mesh.position.x}, Z: ${mesh.position.z}`);
+
+    // Ajout des anneaux de Saturne
+    if (planet.name === "Saturne") {
+        const ringGeometry = new THREE.RingGeometry(17.1, 23.75, 64);
+        const ringTexture = loadTexture("textures/saturn_ring.jpg");
+        const ringMaterial = new THREE.MeshStandardMaterial({
+            map: ringTexture,
+            side: THREE.DoubleSide,
+            transparent: true,
+            alphaTest: 0.5
+        });
+
+        const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
+        ringMesh.position.set(0, 0, 0); // Il reste centré sur Saturne
+        ringMesh.rotation.x = Math.PI / 2; 
+        mesh.add(ringMesh);
+    }
+
+    // 🏷️ **Ajout d’une étiquette 3D (sprite)**
+    const labelCanvas = document.createElement('canvas');
+    const context = labelCanvas.getContext('2d');
+    labelCanvas.width = 256;
+    labelCanvas.height = 128;
+
+    context.font = 'Bold 48px Arial';
+    context.fillStyle = '#fff';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(planet.name, 128, 64);
+
+    const labelTexture = new THREE.CanvasTexture(labelCanvas);
+    const labelMaterial = new THREE.SpriteMaterial({ map: labelTexture,depthWrite: false });
+    const label = new THREE.Sprite(labelMaterial);
+
+    label.scale.set(planet.size * 20, planet.size * 10, 1); // Taille adaptable
+    label.position.set(0, planet.size * 2.5, 0); // Position juste au-dessus de la planète
+
+    mesh.add(label); // 🔥 Attache l’étiquette à la planète
+
+    scene.add(mesh);
+
+    planetTable.push({
+        mesh,
+        speed: planet.speed,
+        angle: 0,
+        camDistanceButton: planet.camDistanceButton,
+        semiMajorAxis, 
+        semiMinorAxis,
+        focalDistance,
+        label
+    });
 });
+
+
+function updateLabels() {
+  planetTable.forEach(planet => {
+    const distance = camera.position.distanceTo(planet.mesh.position);
+    const scaleFactor = distance * 0.15; // Ajuste dynamiquement la taille
+
+    planet.label.scale.set(scaleFactor, scaleFactor / 2, 1);
+
+    // Masquer le label du Soleil
+    if (planet.mesh.name.toLowerCase() === 'sun') {
+      planet.label.visible = false;
+    } else {
+      planet.label.visible = camera.position.y > 2000 || camera.position.y < -2000; // Afficher seulement si caméra y > 2000
+
+      const name = planet.mesh.name.toLowerCase();
+      let labelText;
+
+      // Définir le texte initial des étiquettes
+      switch (name) {
+        case 'mercure':
+          labelText = 'Mercure';
+          break;
+        case 'vénus':
+          labelText = 'Vénus';
+          break;
+        case 'terre':
+          labelText = 'Terre';
+          break;
+        case 'mars':
+          labelText = 'Mars';
+          break;
+        default:
+          labelText = planet.mesh.name;
+      }
+
+      // Changer le texte si la caméra est au-dessus de 45000
+      if (camera.position.y > 45000) {
+        switch (name) {
+          case 'mercure':
+            labelText = 'Me';
+            break;
+          case 'vénus':
+            labelText = 'Vé';
+            break;
+          case 'terre':
+            labelText = 'Te';
+            break;
+          case 'mars':
+            labelText = 'Ma';
+            break;
+        }
+      }
+
+      // Mettre à jour le texte du label
+      const context = planet.label.material.map.image.getContext('2d');
+      context.clearRect(0, 0, 256, 128); // Efface le canvas
+      context.font = 'Bold 48px Arial';
+      context.fillStyle = '#fff';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText(labelText, 128, 64);
+
+      // Mettre à jour la texture du label
+      planet.label.material.map.needsUpdate = true;
+    }
+  });
+}
+
+
 
 
 
@@ -147,6 +403,9 @@ document.getElementById('stop-btn').addEventListener('click', () => {
 
 
 
+
+
+
 document.getElementById('view-syst-btn').addEventListener('click', () => focusOnView('syst'));
 document.getElementById('view-sun-btn').addEventListener('click', () => focusOnPlanet('Sun'));
 document.getElementById('view-mercury-btn').addEventListener('click', () => focusOnPlanet('Mercure'));
@@ -158,32 +417,21 @@ document.getElementById('view-saturn-btn').addEventListener('click', () => focus
 document.getElementById('view-uranus-btn').addEventListener('click', () => focusOnPlanet('Uranus'));
 document.getElementById('view-neptune-btn').addEventListener('click', () => focusOnPlanet('Neptune'));
 
-let focusedPlanet = null;
 
-function focusOnPlanet(planetName) {
-  const planet = planetTable.find(p => p.mesh.name === planetName);
-
-  if (planet) {
-    focusedPlanet = planet;
-
-    // Ajuster la caméra autour de la planète
-    const distance = planet.camDistanceButton;
-    camera.position.set(
-      planet.mesh.position.x + distance,
-      planet.mesh.position.y + distance,
-      planet.mesh.position.z + distance
-    );
-
-    // Mise à jour de l'axe de rotation autour de la planète
-    controls.target.copy(planet.mesh.position);
-    controls.enableRotate = true; 
-    controls.update();
-  }
+function closeAllWindows() {
+  document.querySelectorAll('.info-window').forEach(window => {
+      if (window) {
+          window.style.display = 'none';
+      }
+  });
 }
 
 
 function focusOnView() {
   focusedPlanet = null;
+  closeAllWindows(); // Ferme les autres fenêtres
+
+
   camera.position.y = 200000;
   controls.target.set(0, 0, 0);
   controls.update();
@@ -197,54 +445,93 @@ function focusOnView() {
 }
 
 
-//Animation
+let focusedPlanet = null;
+let isFollowingPlanet = false;
+let cameraOffset = new THREE.Vector3(); // Offset fixe pour éviter l’éloignement
+
+
+function focusOnPlanet(planetName) {
+  const planet = scene.getObjectByName(planetName);
+    if (planet) {
+      focusedPlanet = planetTable.find(p => p.mesh.name === planetName);
+      isFollowingPlanet = true; 
+
+      if (focusedPlanet) {
+        // Fixe l'offset initial basé sur la distance requise
+        cameraOffset.set(focusedPlanet.camDistanceButton, -focusedPlanet.camDistanceButton * 0.2, focusedPlanet.camDistanceButton);
+      }
+      
+      closeAllWindows(); // Ferme les autres fenêtres
+
+      let infoWindow = document.getElementById(planet.name + '-info');
+
+      if (!infoWindow) {
+        // Créer la fenêtre si elle n'existe pas encore
+        infoWindow = document.createElement('div');
+        infoWindow.id = planet.name + '-info';
+        infoWindow.className = 'info-window';
+        infoWindow.style.position = 'absolute';
+        infoWindow.style.top = '50%';
+        infoWindow.style.marginLeft = '60%';
+        infoWindow.style.width = '20em';
+        infoWindow.style.height = '50%';
+        infoWindow.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+        infoWindow.style.color = 'white';
+        infoWindow.style.border = '1px solid white';
+        infoWindow.style.borderRadius = '10px';
+        infoWindow.style.display = 'none';
+        document.body.appendChild(infoWindow);
+      }
+
+      if (infoWindow.style.display === 'block') {
+          infoWindow.style.display = 'none';
+      } else {
+          infoWindow.innerHTML = `<h3>${planet.name}</h3><p>Quelques données...</p>`;
+          infoWindow.style.display = 'block';
+      }
+    }
+}
+
+
+
 function animate() {
-if (!isPaused) {
-  planetTable.forEach((planet) => {
-    planet.angle += planet.speed * timeSpeed * 0.01;
+  TWEEN.update();
+  requestAnimationFrame(animate);
 
-    planet.mesh.position.x = Math.cos(planet.angle) * planet.semiMajorAxis - planet.focalDistance;
-    planet.mesh.position.z = Math.sin(planet.angle) * planet.semiMinorAxis;
+  if (!isPaused) {
+    planetTable.forEach((planet) => {
+      planet.angle += planet.speed * timeSpeed * 0.01;
+      planet.mesh.position.x = Math.cos(planet.angle) * planet.semiMajorAxis - planet.focalDistance;
+      planet.mesh.position.z = Math.sin(planet.angle) * planet.semiMinorAxis;
+      planet.mesh.rotation.y += planet.speed * timeSpeed * 0.05;
 
-    planet.mesh.rotation.y += planet.speed * timeSpeed * 0.05;
+      if (planet.name === "Saturne" && planet.mesh.children.length > 0) {
+        planet.mesh.children[0].position.copy(planet.mesh.position);
+      }
+    });
+  }
 
-    if (planet.name === "Saturne" && planet.mesh.children.length > 0) {
-      planet.mesh.children[0].position.copy(planet.mesh.position);
-    }
+  if (focusedPlanet && isFollowingPlanet) {
+    // Nouvelle position de la caméra en gardant l’offset constant
+    const desiredPosition = focusedPlanet.mesh.position.clone().add(cameraOffset);
 
-    if (focusedPlanet && focusedPlanet.mesh.name === "Saturne") {
-      focusedPlanet.mesh.children.forEach(child => {
-        child.position.set(0, 0, 0); // L'anneau reste toujours centré sur Saturne
-      });
-    }
-    
-  });
-}
+    camera.position.copy(desiredPosition); // 🔥 Déplacement immédiat (plus fluide)
+    camera.lookAt(focusedPlanet.mesh.position); // 🔥 Garde la planète en centre de vue
+    controls.target.copy(focusedPlanet.mesh.position);
+  }
 
-if (!isZooming) {
-  // Déplacement du fond uniquement en fonction des mouvements latéraux (X et Y), pas du zoom (Z)
-  scene.background.offset.x = (camera.position.x * 0.0001) % 1;
-  scene.background.offset.y = (camera.position.y * 0.0001) % 1;
-}
+  
+  // Appliquer la texture animée au Soleil
+  const sun = planetTable.find(p => p.mesh.name === "Sun");
+  if (sun) {
+    sun.mesh.material.map = sunTexture;
+    sun.mesh.material.needsUpdate = true;
+    sun.mesh.add(eruptionParticles);
+  }
 
+  updateLabels(); //Affichege des étiquettes et scaling
 
-if (focusedPlanet) {
-  const distance = focusedPlanet.camDistanceButton;
-  camera.position.set(
-    focusedPlanet.mesh.position.x + distance,
-    focusedPlanet.mesh.position.y + distance,
-    focusedPlanet.mesh.position.z + distance
-  );
-  controls.target.set(
-    focusedPlanet.mesh.position.x,
-    focusedPlanet.mesh.position.y,
-    focusedPlanet.mesh.position.z
-  );
-  controls.update();
-}
-
-requestAnimationFrame(animate);
-renderer.render(scene, camera);
+  renderer.render(scene, camera);
 }
   
 
@@ -264,15 +551,26 @@ planets.forEach((planet) => {
     0, 2 * Math.PI, false, 0
   );
 
-  const points = curve.getPoints(1000);
+  const points = curve.getPoints(10000);
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
-  const material = new THREE.LineBasicMaterial({ color: planet.orbitColor || "#ffffff"});
+  const material = new THREE.LineBasicMaterial({ color: planet.orbitColor});
   const ellipse = new THREE.Line(geometry, material);
 
   ellipse.rotation.x = Math.PI / 2; // Placer l’orbite dans le plan X-Z
   scene.add(ellipse);
 });
 
+
+let orbitVisible = true;
+function toggleOrbits() {
+  orbitVisible = !orbitVisible;
+  scene.children.forEach(obj => {
+    if (obj instanceof THREE.Line) {
+      obj.visible = orbitVisible;
+    }
+  });
+}
+document.getElementById('toggle-orbits-btn').addEventListener('click', toggleOrbits);
 
 
 function setupCameraControls() {
@@ -287,7 +585,6 @@ function setupCameraControls() {
 }
 
 setupCameraControls();
-
 animate();
 
 

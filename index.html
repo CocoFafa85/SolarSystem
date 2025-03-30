@@ -12,13 +12,15 @@
             "three/addons/": "https://cdn.jsdelivr.net/npm/three@<0.172.0>/examples/jsm/"
           }
         }
-      </script>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
     <script type="module" src="main.js"></script>
 </head>
 <body>
     <h1>Simulateur du Système Solaire</h1>
+    <button id="toggle-orbits-btn">Afficher orbites</button>
     <button id="accelerate-btn">Accélérer le Temps</button>
     <button id="decelerate-btn">Ralentir le Temps</button>
     <button id="stop-btn">Arrêter le Temps</button>
@@ -33,5 +35,6 @@
     <button id="view-uranus-btn">Uranus</button>
     <button id="view-neptune-btn">Neptune</button>
     <canvas id="solarCanvas"></canvas>
+
 </body>
 </html>

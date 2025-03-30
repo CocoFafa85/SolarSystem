@@ -1,0 +1,25 @@
+- Afficher le timeSpeed actuel.
+- Afficher le temps écouler depuis le lancement de animate(), l'afficher en heure, en jour terrestre (24 heures), en année terrestre (8760 heures)
+- Bouton pour afficher la liste des évènements astronomiques et leur nombre de répétition faite depuis le lancement dee animate() : 
+	-eclipse solaire
+	-eclipse lunaire
+	-
+	-super lune
+- Afficher sur l'orbite les équinoxes et solstices de la Terre
+- Eruption solaire massive (tous les 11ans)
+- Inclure l'écliptique des orbites*
+- Inclure Lune
+- Inclure anneaux des gazeuses (si pertinents/possibles)
+- Remplir les infos des planètes
+- Bouton qui ouvre un menu des boutons comparatifs : (bouton pour ajouter/retirer le soleil)
+	-masse
+	-taille
+	-température la + haute / la + basse
+	-vitesse orbitale
+	-vitesse rotative
+- Inclure comètes et astéroïdes principaux
+- Désign
+
+58 000 000
+   696 342
+ 1 392 684
