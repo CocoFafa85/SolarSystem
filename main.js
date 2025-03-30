@@ -38,10 +38,9 @@ export function loadTexture(path) {
 }
 
 const sunVideo = document.createElement("video");
-sunVideo.src = "textures/sun_pattern.mp4"; // Remplace par un fichier vidéo valide
+sunVideo.src = "textures/sun.mp4"; // Remplace par un fichier vidéo valide
 sunVideo.loop = true;
 sunVideo.muted = true;
-sunVideo.playbackRate = 0.5; // Ralentit la vidéo pour une meilleure continuité
 sunVideo.play();
 
 const sunTexture = new THREE.VideoTexture(sunVideo);
@@ -53,36 +52,107 @@ console.log("functions.js chargé");
 
 
 
-
-
-
+// Groupe contenant tous les jets actifs
 const eruptionParticles = new THREE.Group();
+
+// Chargement de la texture des particules
 const particleTexture = new THREE.TextureLoader().load("textures/lava_frame.jpg");
 
+// Paramètres du Soleil et des jets
+const SUN_RADIUS = 100; // Rayon du Soleil
+const START_HEIGHT = SUN_RADIUS; // Les jets commencent à la surface
+const JET_HEIGHT = 20; // Hauteur totale atteinte par le jet
+const CURVE_INTENSITY = 50; // Force de la courbure
+
+/**
+ * Génère un point aléatoire sur la surface du Soleil (rayon fixe)
+ */
+function getRandomSurfacePoint() {
+  const theta = Math.random() * Math.PI * 2; // Angle horizontal (0 à 360°)
+  const phi = Math.acos(2 * Math.random() - 1); // Angle vertical (-90° à +90°)
+
+  return new THREE.Vector3(
+    SUN_RADIUS * Math.sin(phi) * Math.cos(theta),
+    SUN_RADIUS * Math.sin(phi) * Math.sin(theta),
+    SUN_RADIUS * Math.cos(phi)
+  );
+}
+
+/**
+ * Crée un jet courbé qui commence à 110 et atteint 150 avant de disparaître
+ */
 function createCurvedPlasmaJet() {
-  const numParticles = 500;
-  const baseAngle = Math.random() * Math.PI * 2;
-  const baseDistance = Math.random() * 5 + 75;
-  const heightVariation = Math.random() * 15 + 20;
-  const points = [];
+  const numParticles = 200;
+  const cloudDensity = 300;
+  const dispersion = 25;
 
-  // Générer une vraie courbure
-  for (let i = 0; i < 6; i++) {
-    points.push(new THREE.Vector3(
-      Math.cos(baseAngle + (Math.random() - 0.5) * 0.2) * (baseDistance + i * 5),
-      i * heightVariation + (Math.random() - 0.5) * 5, // Ajout d'une légère variation
-      Math.sin(baseAngle + (Math.random() - 0.5) * 0.2) * (baseDistance + i * 5)
-    ));
-  }
+  // Point de départ du jet sur la surface du Soleil
+  const startPos = getRandomSurfacePoint();
 
+  // Direction initiale perpendiculaire à la surface
+  const direction = startPos.clone().normalize();
+
+  // Déterminer un axe perpendiculaire pour la courbure
+  const perpendicularAxis = new THREE.Vector3().crossVectors(direction, new THREE.Vector3(0, 1, 0)).normalize();
+
+  // Points définissant la courbure du jet (200°)
+  const points = [
+    startPos.clone(),
+    startPos.clone().add(direction.clone().multiplyScalar(JET_HEIGHT * 0.25)), // Début du jet droit
+    startPos.clone().add(direction.clone().multiplyScalar(JET_HEIGHT * 0.5)), // Montée progressive
+    startPos.clone().add(direction.clone().multiplyScalar(JET_HEIGHT * 0.6))
+      .add(perpendicularAxis.clone().multiplyScalar(CURVE_INTENSITY * 0.5)), // Début courbure
+    startPos.clone().add(direction.clone().multiplyScalar(JET_HEIGHT * 0.8))
+      .add(perpendicularAxis.clone().multiplyScalar(CURVE_INTENSITY)), // Milieu courbure
+    startPos.clone().add(direction.clone().multiplyScalar(JET_HEIGHT))
+      .add(perpendicularAxis.clone().multiplyScalar(CURVE_INTENSITY * 1.5)) // Fin courbure
+  ];
+
+  // Création de la courbe
   const curve = new THREE.CatmullRomCurve3(points, false);
+
+  // Groupe contenant le jet et le nuage
   const jet = new THREE.Group();
 
+  // Création du nuage de particules au niveau de la base du jet
+  for (let i = 0; i < cloudDensity; i++) {
+    const particleMaterial = new THREE.SpriteMaterial({
+      map: particleTexture,
+      transparent: true,
+      opacity: Math.random() * 0.6 + 0.2,
+      blending: THREE.AdditiveBlending
+    });
+
+    const cloudParticle = new THREE.Sprite(particleMaterial);
+    cloudParticle.scale.set(3, 3, 3);
+
+    // Position initiale autour de la base du jet avec une dispersion légère
+    cloudParticle.position.copy(startPos).add(new THREE.Vector3(
+      (Math.random() - 0.5) * dispersion,
+      (Math.random() - 0.5) * dispersion,
+      (Math.random() - 0.5) * dispersion
+    ));
+
+    jet.add(cloudParticle);
+
+    // Animation du nuage
+    new TWEEN.Tween(cloudParticle.position)
+      .to({
+        x: cloudParticle.position.x + (Math.random() - 0.5) * 5,
+        y: cloudParticle.position.y + Math.random() * 5,
+        z: cloudParticle.position.z + (Math.random() - 0.5) * 5
+      }, 3000)
+      .repeat(Infinity)
+      .yoyo(true)
+      .start();
+  }
+
+  // Création du jet de plasma
   for (let i = 0; i < numParticles; i++) {
     const particleMaterial = new THREE.SpriteMaterial({
       map: particleTexture,
       transparent: true,
-      opacity: 0,  // Démarrage invisible
+      opacity: 0,
       blending: THREE.AdditiveBlending
     });
 
@@ -91,11 +161,17 @@ function createCurvedPlasmaJet() {
 
     const t = i / numParticles;
     const positionOnCurve = curve.getPoint(t);
-    particle.position.copy(positionOnCurve);
+
+    // Légère dispersion pour un effet naturel
+    particle.position.set(
+      positionOnCurve.x + (Math.random() - 0.5) * 3,
+      positionOnCurve.y + (Math.random() - 0.5) * 3,
+      positionOnCurve.z + (Math.random() - 0.5) * 3
+    );
 
     jet.add(particle);
 
-    // Apparition progressive des particules
+    // Apparition progressive
     new TWEEN.Tween(particle.material)
       .to({ opacity: Math.random() * 0.8 + 0.2 }, 1000)
       .delay(i * 5)
@@ -107,7 +183,7 @@ function createCurvedPlasmaJet() {
       .easing(TWEEN.Easing.Quadratic.Out)
       .start();
 
-    // Disparition progressive
+    // Disparition
     new TWEEN.Tween(particle.material)
       .to({ opacity: 0 }, 3500)
       .delay(2000)
@@ -115,22 +191,29 @@ function createCurvedPlasmaJet() {
       .start();
   }
 
-  
-
+  // Ajout du jet à la scène
   eruptionParticles.add(jet);
-  setTimeout(() => eruptionParticles.remove(jet), 4000);
+
+  // Suppression après 5 secondes
+  setTimeout(() => eruptionParticles.remove(jet), 5000);
 }
 
-
-
-
+/**
+ * Fonction qui déclenche plusieurs jets simultanément à des endroits aléatoires sur la sphère
+ */
 function eruptCurvedJetsRandomly() {
-  createCurvedPlasmaJet();
-  setTimeout(eruptCurvedJetsRandomly, Math.random() * 3000 + 1000);
+  const jetsCount = Math.floor(Math.random() * 3) + 2; // Entre 2 et 4 jets en même temps
+
+  for (let i = 0; i < jetsCount; i++) {
+    createCurvedPlasmaJet();
+  }
+
+  setTimeout(eruptCurvedJetsRandomly, Math.random() * 2000 + 1000); // Relance avec un intervalle aléatoire
 }
 
-
+// Démarrage du processus
 eruptCurvedJetsRandomly();
+
 
 
 
