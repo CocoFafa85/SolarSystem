@@ -17,23 +17,99 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
     <script type="module" src="main.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden; /* Empêche le scroll */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Force le corps à faire la hauteur de l'écran */
+        width: 100vw;  /* Idem pour la largeur */
+      }
+
+      canvas {
+        position: fixed; /* Fixe le canvas en arrière-plan */
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      h1 {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        color: white;
+        text-align: center;
+        z-index: 10;
+      }
+
+      .button-container {
+        position: absolute;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Espacement entre les boutons */
+        z-index: 10;
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 14px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      #info-panel {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        color: white;
+        padding: 10px 15px;
+        font-size: 14px;
+        z-index: 10;
+      }
+
+    </style>
 </head>
 <body>
-    <h1>Simulateur du Système Solaire</h1>
-    <button id="toggle-orbits-btn">Afficher orbites</button>
-    <button id="accelerate-btn">Accélérer le Temps</button>
-    <button id="decelerate-btn">Ralentir le Temps</button>
-    <button id="stop-btn">Arrêter le Temps</button>
-    <button id="view-syst-btn">Système</button>
-    <button id="view-sun-btn">Soleil</button>
-    <button id="view-mercury-btn">Mercure</button>
-    <button id="view-venus-btn">Vénus</button>
-    <button id="view-earth-btn">la Terre</button>
-    <button id="view-mars-btn">Mars</button>
-    <button id="view-jupiter-btn">Jupiter</button>
-    <button id="view-saturn-btn">Saturne</button>
-    <button id="view-uranus-btn">Uranus</button>
-    <button id="view-neptune-btn">Neptune</button>
+    <h1>Système Solaire</h1>
+    <div class="button-container">
+      <button id="toggle-orbits-btn">Afficher orbites</button>
+      <button id="accelerate-btn">Accélérer le Temps</button>
+      <button id="decelerate-btn">Ralentir le Temps</button>
+      <button id="stop-btn">Arrêter le Temps</button>
+      <button id="view-syst-btn">Système</button>
+      <button id="view-sun-btn">Soleil</button>
+      <button id="view-mercury-btn">Mercure</button>
+      <button id="view-venus-btn">Vénus</button>
+      <button id="view-earth-btn">la Terre</button>
+      <button id="view-mars-btn">Mars</button>
+      <button id="view-jupiter-btn">Jupiter</button>
+      <button id="view-saturn-btn">Saturne</button>
+      <button id="view-uranus-btn">Uranus</button>
+      <button id="view-neptune-btn">Neptune</button>
+    </div>
+    <div id="info-panel">
+      <p><strong>Vitesse du Temps :</strong> <span id="time-speed">1x</span></p>
+      <p><span id="time-status">Lecture</span></p>
+      <ul>
+          <li><strong>Heures :</strong> <span id="elapsed-hours">0</span> h</li>
+          <li><strong>Jours :</strong> <span id="elapsed-days">0</span> j</li>
+          <li><strong>Années :</strong> <span id="elapsed-years">0</span> a</li>
+      </ul>
+    </div>
+  
     <canvas id="solarCanvas"></canvas>
 
 </body>

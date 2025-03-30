@@ -42,6 +42,7 @@ sunVideo.src = "textures/sun.mp4"; // Remplace par un fichier vidéo valide
 sunVideo.loop = true;
 sunVideo.muted = true;
 sunVideo.play();
+sunVideo.playbackRate = 0.5; // Ralentit la vidéo (1 = normal, <1 = plus lent)
 
 const sunTexture = new THREE.VideoTexture(sunVideo);
 sunTexture.minFilter = THREE.LinearFilter;
@@ -212,18 +213,35 @@ function eruptCurvedJetsRandomly() {
 }
 
 // Démarrage du processus
-eruptCurvedJetsRandomly();
-
 
 
 
 
 
 const scene = new THREE.Scene(); 
-const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1000000); //champ de vision de en degrés/ un rapport d'aspect basé sur la taille de la fenêtre/ et des plans de coupe proche et lointain
-const renderer = new THREE.WebGLRenderer(); // Permet un rendu 3D dans un naviguateur
+const camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 1, 1000000); //champ de vision de en degrés/ un rapport d'aspect basé sur la taille de la fenêtre/ et des plans de coupe proche et lointain
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
+
+// Adapter la scène à la taille de l'écran
+function resizeScene() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+}
+
+// Écoute l'événement de redimensionnement
+window.addEventListener("resize", resizeScene);
+
+
+
+
+
 
 // Lumière solaire (pour planets)
 const light = new THREE.PointLight(0xffffff, 0.3, 10000000);
@@ -480,7 +498,15 @@ document.getElementById('decelerate-btn').addEventListener('click', () => {
 document.getElementById('stop-btn').addEventListener('click', () => {
   isPaused = !isPaused;
   console.log("Pause: ", isPaused);
+
+  if (isPaused) {
+    sunVideo.pause();
+  } else {
+    sunVideo.play();
+  }
+  updateTimeDisplay(); // Mettre à jour l'affichage
 });
+
 
 
 
@@ -499,6 +525,45 @@ document.getElementById('view-jupiter-btn').addEventListener('click', () => focu
 document.getElementById('view-saturn-btn').addEventListener('click', () => focusOnPlanet('Saturne'));
 document.getElementById('view-uranus-btn').addEventListener('click', () => focusOnPlanet('Uranus'));
 document.getElementById('view-neptune-btn').addEventListener('click', () => focusOnPlanet('Neptune'));
+
+
+let elapsedTime = 0; // Temps écoulé en heures
+let lastUpdateTime = performance.now();
+
+function updateTimeDisplay() {
+    document.getElementById('time-speed').textContent = timeSpeed + 'x';
+    document.getElementById('time-status').textContent = isPaused ? 'Pause' : ' ';
+
+    let elapsedDays = elapsedTime / 24;
+    let elapsedYears = elapsedTime / 8760;
+
+    document.getElementById('elapsed-hours').textContent = Math.floor(elapsedTime);
+    document.getElementById('elapsed-days').textContent = Math.floor(elapsedDays);
+    document.getElementById('elapsed-years').textContent = elapsedYears.toFixed(1);
+}
+
+// Fonction pour mettre à jour le temps écoulé
+function updateElapsedTime() {
+    let now = performance.now();
+    if (!isPaused) {
+        let deltaTime = (now - lastUpdateTime) / 1000; // Convertir en secondes
+        elapsedTime += deltaTime * timeSpeed; // Ajout avec la vitesse du temps
+    }
+    lastUpdateTime = now;
+    updateTimeDisplay();
+}
+
+// Modifier la vitesse du temps
+function changeTimeSpeed(factor) {
+    timeSpeed *= factor;
+    updateTimeDisplay();
+}
+
+
+// Écouteurs pour les boutons de contrôle
+document.getElementById('accelerate-btn').addEventListener('click', () => changeTimeSpeed(2));
+document.getElementById('decelerate-btn').addEventListener('click', () => changeTimeSpeed(0.5));
+
 
 
 function closeAllWindows() {
@@ -554,8 +619,8 @@ function focusOnPlanet(planetName) {
         infoWindow.id = planet.name + '-info';
         infoWindow.className = 'info-window';
         infoWindow.style.position = 'absolute';
-        infoWindow.style.top = '50%';
-        infoWindow.style.marginLeft = '60%';
+        infoWindow.style.top = '25%';
+        infoWindow.style.marginLeft = '55%';
         infoWindow.style.width = '20em';
         infoWindow.style.height = '50%';
         infoWindow.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
@@ -569,7 +634,7 @@ function focusOnPlanet(planetName) {
       if (infoWindow.style.display === 'block') {
           infoWindow.style.display = 'none';
       } else {
-          infoWindow.innerHTML = `<h3>${planet.name}</h3><p>Quelques données...</p>`;
+          infoWindow.innerHTML = `<h3>${planet.name}</h3><p>Ici bientôt des données fiables :)</p>`;
           infoWindow.style.display = 'block';
       }
     }
@@ -612,6 +677,8 @@ function animate() {
     sun.mesh.add(eruptionParticles);
   }
 
+
+  updateElapsedTime();
   updateLabels(); //Affichege des étiquettes et scaling
 
   renderer.render(scene, camera);
@@ -640,11 +707,12 @@ planets.forEach((planet) => {
   const ellipse = new THREE.Line(geometry, material);
 
   ellipse.rotation.x = Math.PI / 2; // Placer l’orbite dans le plan X-Z
+  ellipse.visible = false; // ❌ Cacher l’orbite par défaut
   scene.add(ellipse);
 });
 
 
-let orbitVisible = true;
+let orbitVisible = false;
 function toggleOrbits() {
   orbitVisible = !orbitVisible;
   scene.children.forEach(obj => {
@@ -668,8 +736,13 @@ function setupCameraControls() {
 }
 
 setupCameraControls();
+resizeScene();
 animate();
 
+// Style CSS pour s'assurer que le canvas prend toute la place
+
+document.body.style.alignItems = "center";
+document.body.style.justifyContent = "center";
 
 console.log("main.js chargé");
 planets.forEach((planet) => {

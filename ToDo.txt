@@ -1,4 +1,5 @@
 - Afficher le timeSpeed actuel.
+- Afficher 'Pause' si le temps est en pause
 - Afficher le temps écouler depuis le lancement de animate(), l'afficher en heure, en jour terrestre (24 heures), en année terrestre (8760 heures)
 - Bouton pour afficher la liste des évènements astronomiques et leur nombre de répétition faite depuis le lancement dee animate() : 
 	-eclipse solaire
