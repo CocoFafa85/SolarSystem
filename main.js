@@ -213,6 +213,7 @@ function eruptCurvedJetsRandomly() {
 }
 
 // Démarrage du processus
+eruptCurvedJetsRandomly();
 
 
 
@@ -625,6 +626,7 @@ function focusOnPlanet(planetName) {
         infoWindow.style.height = '50%';
         infoWindow.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
         infoWindow.style.color = 'white';
+        infoWindow.style.fontSize = '16px';
         infoWindow.style.border = '1px solid white';
         infoWindow.style.borderRadius = '10px';
         infoWindow.style.display = 'none';
@@ -637,6 +639,8 @@ function focusOnPlanet(planetName) {
           infoWindow.innerHTML = `<h3>${planet.name}</h3><p>Ici bientôt des données fiables :)</p>`;
           infoWindow.style.display = 'block';
       }
+      adjustForMobile();
+
     }
 }
 
@@ -734,6 +738,40 @@ function setupCameraControls() {
   controls.minDistance = 1; // Permet un zoom rapproché
   controls.maxDistance = 1000000; // Empêche d’aller trop loin
 }
+
+
+
+function adjustForMobile() {
+  if (window.innerWidth <= 768) { // 📱 Si écran ≤ 768px (tablette/téléphone)
+    document.querySelectorAll("button").forEach(button => {
+      button.style.fontSize = "11px";
+      button.style.padding = "5px 10px";
+    });
+
+     const infoPanel = document.getElementById("info-panel");
+     if (infoPanel) {
+       infoPanel.style.fontSize = "10px";
+       infoPanel.style.padding = "7px";
+     }
+
+    document.querySelectorAll(".info-window").forEach(infoWindow => {
+      infoWindow.style.width = "25%";
+      infoWindow.style.height = "40%";
+      infoWindow.style.top = "35%";
+      infoWindow.style.marginLeft = "70%";
+      infoWindow.style.fontSize = "11px";
+    });
+  }
+}
+
+// ✅ Exécuter au chargement + sur redimensionnement
+adjustForMobile();
+window.addEventListener("resize", adjustForMobile);
+
+
+
+
+
 
 setupCameraControls();
 resizeScene();
