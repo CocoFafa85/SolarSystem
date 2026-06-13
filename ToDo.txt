@@ -1,0 +1,3 @@
+#PLAN
+Active PROFILE E 
+Le projet est terminé et déployé. J'ai ouvert une branche afin de faire un gros travaille de frontend. Utilise les styles et animations dans C:\Users\cocof\.claude\reference qui correspondent à ma signature d'application et intègre les au projet.

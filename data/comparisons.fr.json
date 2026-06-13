@@ -1,0 +1,38 @@
+{
+  "_comment": "Comparaisons humoristiques par métrique. Affichées sous le classement CompareOverlay. Aucune scène 3D : HTML/SVG/CSS uniquement.",
+  "mass": {
+    "facts": [
+      "1 Jupiter ≈ 318 Terres empilées.",
+      "Le Soleil contient 99,86 % de la masse totale du système solaire.",
+      "Pluton est ~6 fois moins massif que la Lune."
+    ]
+  },
+  "size": {
+    "facts": [
+      "Mercure tient ~3 fois dans la Lune (par volume).",
+      "Jupiter pourrait engloutir 1 321 Terres.",
+      "Le Soleil a un diamètre 109 fois supérieur à celui de la Terre."
+    ]
+  },
+  "temp": {
+    "facts": [
+      "Vénus est plus chaude que Mercure malgré sa distance — effet de serre.",
+      "Sur Mercure, l'écart jour/nuit dépasse 600 °C.",
+      "Au cœur du Soleil, la température atteint ≈ 15,7 millions K."
+    ]
+  },
+  "orbitalSpeed": {
+    "facts": [
+      "Mercure file à ~170 000 km/h autour du Soleil.",
+      "Le temsp de lire cette phrase vous avez parcouru 150 km au sein du système solaire.",
+      "Les missiles militaires les plus rapides vont plus vite que Neptune sur son orbite."
+    ]
+  },
+  "rotationSpeed": {
+    "facts": [
+      "Une journée sur Vénus dure plus longtemps qu'une année vénusienne.",
+      "Une journée sur Jupiter équivaut à 10 heures terrestres.",
+      "À l'équateur, la Terre file à plus de 1 600 km/h sous nos pieds."
+    ]
+  }
+}

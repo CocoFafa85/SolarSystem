@@ -1,0 +1,33 @@
+{
+  "_comment": "Enrichissements d'affichage UI uniquement. Vitesses converties, accents, températures, classification UI (planet/dwarfPlanet/satellite/star/comet/asteroid). La physique reste dans bodies.json.",
+  "groups": {
+    "planets":  ["mercury", "venus", "earth", "moon", "mars", "jupiter", "saturn", "uranus", "neptune"],
+    "dwarfs":   ["ceres", "pluto", "haumea", "makemake", "eris"],
+    "minor":    ["halley", "encke", "neowise", "vesta", "pallas"]
+  },
+  "order": ["sun", "mercury", "venus", "earth", "moon", "mars", "jupiter", "saturn", "uranus", "neptune", "ceres", "pluto", "haumea", "makemake", "eris"],
+  "bodies": {
+    "sun":     { "accent": "#ffb86b", "category": "star",         "orbitalSpeedKmS": 0,     "tempMinK": 5772,  "tempMaxK": 15700000, "descKey": "bodies.sun.desc" },
+    "mercury": { "accent": "#9a8b7a", "category": "planet",       "orbitalSpeedKmS": 47.36, "tempMinK": 100,   "tempMaxK": 700,      "descKey": "bodies.mercury.desc" },
+    "venus":   { "accent": "#e6c98a", "category": "planet",       "orbitalSpeedKmS": 35.02, "tempMinK": 737,   "tempMaxK": 737,      "descKey": "bodies.venus.desc" },
+    "earth":   { "accent": "#6aa8ff", "category": "planet",       "orbitalSpeedKmS": 29.78, "tempMinK": 184,   "tempMaxK": 330,      "descKey": "bodies.earth.desc" },
+    "moon":    { "accent": "#cfd2d8", "category": "satellite",    "orbitalSpeedKmS": 1.022, "tempMinK": 100,   "tempMaxK": 390,      "descKey": "bodies.moon.desc" },
+    "mars":    { "accent": "#d97f5b", "category": "planet",       "orbitalSpeedKmS": 24.07, "tempMinK": 130,   "tempMaxK": 308,      "descKey": "bodies.mars.desc" },
+    "jupiter": { "accent": "#d6a36a", "category": "planet",       "orbitalSpeedKmS": 13.07, "tempMinK": 110,   "tempMaxK": 165,      "descKey": "bodies.jupiter.desc" },
+    "saturn":  { "accent": "#e8d39a", "category": "planet",       "orbitalSpeedKmS": 9.69,  "tempMinK": 84,    "tempMaxK": 134,      "descKey": "bodies.saturn.desc" },
+    "uranus":  { "accent": "#8fd6d2", "category": "planet",       "orbitalSpeedKmS": 6.81,  "tempMinK": 49,    "tempMaxK": 76,       "descKey": "bodies.uranus.desc" },
+    "neptune": { "accent": "#5b78d9", "category": "planet",       "orbitalSpeedKmS": 5.43,  "tempMinK": 55,    "tempMaxK": 72,       "descKey": "bodies.neptune.desc" },
+
+    "ceres":   { "accent": "#b0a48f", "category": "dwarfPlanet",  "orbitalSpeedKmS": 17.91, "tempMinK": 168,   "tempMaxK": 235,      "descKey": "bodies.ceres.desc" },
+    "pluto":   { "accent": "#b7a392", "category": "dwarfPlanet",  "orbitalSpeedKmS": 4.74,  "tempMinK": 33,    "tempMaxK": 55,       "descKey": "bodies.pluto.desc" },
+    "haumea":  { "accent": "#c8c0b8", "category": "dwarfPlanet",  "orbitalSpeedKmS": 4.48,  "tempMinK": 32,    "tempMaxK": 50,       "descKey": "bodies.haumea.desc" },
+    "makemake":{ "accent": "#c19b86", "category": "dwarfPlanet",  "orbitalSpeedKmS": 4.41,  "tempMinK": 30,    "tempMaxK": 40,       "descKey": "bodies.makemake.desc" },
+    "eris":    { "accent": "#d6d4cf", "category": "dwarfPlanet",  "orbitalSpeedKmS": 3.43,  "tempMinK": 30,    "tempMaxK": 56,       "descKey": "bodies.eris.desc" },
+
+    "halley":  { "accent": "#a3d6ff", "category": "comet",        "orbitalSpeedKmS": 0.91,  "tempMinK": 0,     "tempMaxK": 0,        "descKey": "bodies.halley.desc" },
+    "encke":   { "accent": "#9fc8e0", "category": "comet",        "orbitalSpeedKmS": 0,     "tempMinK": 0,     "tempMaxK": 0,        "descKey": "bodies.encke.desc" },
+    "neowise": { "accent": "#7fb8ff", "category": "comet",        "orbitalSpeedKmS": 0,     "tempMinK": 0,     "tempMaxK": 0,        "descKey": "bodies.neowise.desc" },
+    "vesta":   { "accent": "#ada18a", "category": "asteroid",     "orbitalSpeedKmS": 19.34, "tempMinK": 85,    "tempMaxK": 270,      "descKey": "bodies.vesta.desc" },
+    "pallas":  { "accent": "#a8a18d", "category": "asteroid",     "orbitalSpeedKmS": 17.65, "tempMinK": 164,   "tempMaxK": 265,      "descKey": "bodies.pallas.desc" }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --test tests/*.test.js)",
+      "Bash(python -m http.server 5173)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"main.js HTTP %{http_code}\\\\n\" http://localhost:5173/src/main.js)",
+      "Bash(curl -s -o /dev/null -w \"index.html %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"main.js %{http_code}\\\\n\" http://localhost:5173/src/main.js)",
+      "Bash(curl -s -o /dev/null -w \"Renderer.js %{http_code}\\\\n\" http://localhost:5173/src/core/Renderer.js)",
+      "Bash(curl -s -o /dev/null -w \"ui/index.js %{http_code}\\\\n\" http://localhost:5173/src/ui/index.js)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" --max-time 3 http://localhost:5173/)",
+      "Bash(node -e ' *)",
+      "Bash(grep -n \"Bouton \\\\\"Ouvrir les statistiques\\\\|font-size\\\\` globale\" \"PLAN.md\")",
+      "Bash(grep -nA2 '\"pluto\"\\\\|\"ceres\"' \"bodies.json\")",
+      "Bash(grep -nA4 \"showAt\\\\\\(x\" \"src/ui/components/Tooltip.js\")",
+      "Bash(grep -nC1 \"markers\" \"locales/fr.json\")",
+      "Bash(sed -n '485,520p' \"src/main.js\")",
+      "Bash(sed -n '60,80p' \"src/scene/StarBackground.js\")",
+      "Bash(sed -n '60,80p' \"src/config/render.config.js\")",
+      "Bash(grep -nC1 \"glossary-overlay\\\\|glossary__\\\\|glossary-modal\" \"src/ui/styles/components.css\")",
+      "Bash(grep -nA3 \"LOT 8\" \"PLAN.md\")",
+      "Bash(grep -nC2 \"ev\\\\.target !== canvas|onPointerDown\" \"src/scene/sceneClickRouter.js\")"
+    ]
+  }
+}

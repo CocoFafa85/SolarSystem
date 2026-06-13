@@ -1,0 +1,168 @@
+{
+  "app": {
+    "title": "Système Solaire",
+    "skipToHud": "Aller aux contrôles"
+  },
+  "common": {
+    "close": "Fermer"
+  },
+  "hud": {
+    "topLabel": "Statut",
+    "bottomLabel": "Contrôles temporels",
+    "leftLabel": "Sélection des corps",
+    "rightLabel": "Informations",
+    "toggleLabel": "Masquer l'interface"
+  },
+  "loading": {
+    "title": "Chargement de la scène…",
+    "subtitle": "Initialisation à l'échelle astronomique"
+  },
+  "time": {
+    "play": "Lecture",
+    "pause": "Pause",
+    "toggle": "Lecture / Pause",
+    "slower": "Ralentir",
+    "faster": "Accélérer",
+    "reset": "Vitesse normale",
+    "resetToZero": "Réinitialiser le chronomètre",
+    "focusSun": "Caméra sur Soleil",
+    "focusSunTitle": "Soleil",
+    "speedLabel": "Vitesse",
+    "stateLabel": "État",
+    "dateLabel": "Date simulée",
+    "civilDate": "année simulée",
+    "statePlaying": "En cours",
+    "statePaused": "En pause",
+    "elapsed": "Temps écoulé",
+    "elapsedHours": "Heures écoulées",
+    "elapsedDays": "Jours écoulés",
+    "elapsedYears": "Années écoulées",
+    "unitHour": "h",
+    "unitDay": "j",
+    "unitYear": "a",
+    "tooltip": {
+      "state": "État : lecture / pause",
+      "speed": "Vitesse de simulation"
+    }
+  },
+  "glossary": {
+    "openLabel": "Ouvrir le glossaire",
+    "openShort": "Glossaire",
+    "title": "Glossaire pédagogique",
+    "loadError": "Impossible de charger le glossaire."
+  },
+  "markers": {
+    "vernalEquinox":   "Équinoxe de printemps",
+    "summerSolstice":  "Solstice d'été",
+    "autumnalEquinox": "Équinoxe d'automne",
+    "winterSolstice":  "Solstice d'hiver"
+  },
+  "menu": {
+    "planets": "Planètes",
+    "dwarfPlanets": "Planètes naines",
+    "minorBodies": "Comètes / Astéroïdes",
+    "orbitsShort": "Orbites",
+    "openLabel": "Ouvrir le menu des astres",
+    "openShort": "Astres",
+    "toggleOrbitsPlanets": "Orbites des planètes",
+    "toggleOrbitsDwarfs":  "Orbites des planètes naines",
+    "toggleOrbitsMinor":   "Orbites des comètes & astéroïdes"
+  },
+  "pov": {
+    "label": "Point de vue",
+    "preset": {
+      "system": "Système complet",
+      "inner":  "Planètes intérieures",
+      "outer":  "Planètes extérieures"
+    }
+  },
+  "bodyType": {
+    "star": "Étoile",
+    "planet": "Planète",
+    "dwarfPlanet": "planète naine",
+    "satellite": "Satellite naturel",
+    "comet": "Comète",
+    "asteroid": "Astéroïde"
+  },
+  "bodyCard": {
+    "type": "Type",
+    "mass": "Masse",
+    "radius": "Rayon",
+    "rotation": "Rotation",
+    "obliquity": "Obliquité",
+    "orbitalPeriod": "Période orbitale",
+    "orbitalSpeed": "Vitesse orbitale",
+    "temperature": "Température"
+  },
+  "compare": {
+    "menuLabel": "Boutons de tri",
+    "openLabel": "Ouvrir le comparateur",
+    "openShort": "Comparer",
+    "bodyA": "Corps A",
+    "bodyB": "Corps B",
+    "metric": {
+      "mass":          "Comparer les masses",
+      "size":          "Comparer les tailles",
+      "temp":          "Comparer les températures extrêmes",
+      "orbitalSpeed":  "Comparer les vitesses orbitales",
+      "rotationSpeed": "Comparer les vitesses de rotation"
+    },
+    "metricShort": {
+      "mass":          "Masse",
+      "size":          "Taille",
+      "temp":          "T°",
+      "orbitalSpeed":  "V. orb.",
+      "rotationSpeed": "V. rot."
+    }
+  },
+  "bodies": {
+    "sun":     { "desc": "L'étoile centrale du système, fusion de l'hydrogène en hélium." },
+    "mercury": { "desc": "Plus petite planète, ni atmosphère, ni saisons. Écarts thermiques extrêmes." },
+    "venus":   { "desc": "Atmosphère de CO₂ très dense, effet de serre runaway. Rotation rétrograde." },
+    "earth":   { "desc": "Seule planète connue abritant la vie. Eau liquide en surface, atmosphère oxygénée." },
+    "moon":    { "desc": "Satellite naturel de la Terre, en rotation synchrone." },
+    "mars":    { "desc": "Planète tellurique sèche, traces d'eau passée, calotte de CO₂/H₂O." },
+    "jupiter": { "desc": "Géante gazeuse la plus massive, Grande Tache Rouge, 95 lunes connues." },
+    "saturn":  { "desc": "Anneaux brillants composés de glace et de poussière. Moins dense que l'eau." },
+    "uranus":  { "desc": "Géante de glaces, axe basculé à 97°, rotation rétrograde apparente." },
+    "neptune": { "desc": "Vents les plus violents du système (≈ 2 100 km/h). Bleu par méthane atmosphérique." },
+    "pluto":   { "desc": "Planète naine de la ceinture de Kuiper, en résonance 2:3 avec Neptune." },
+    "haumea":  { "desc": "Planète naine ellipsoïdale en rotation très rapide (~4 h), entourée d'un anneau." },
+    "makemake":{ "desc": "Planète naine de la ceinture de Kuiper, surface couverte de méthane gelé." },
+    "eris":    { "desc": "Planète naine la plus massive connue, périhélie ~38 UA, aphélie ~97 UA." },
+    "halley":  { "desc": "Comète périodique célèbre, retour tous les ~76 ans, prochaine apparition vers 2061." },
+    "encke":   { "desc": "Comète à très courte période (~3.3 ans), source de l'essaim météorique des Taurides." },
+    "neowise": { "desc": "C/2020 F3 (Neowise) — comète non périodique brillante observée à l'œil nu en été 2020. Période ~6 800 ans, double queue (poussière + ion bleu)." },
+    "tempelTuttle": { "desc": "Comète parente de l'essaim météorique des Léonides, période ~33 ans." },
+    "borrelly":     { "desc": "Comète à période courte (~6.8 ans), survolée par la sonde Deep Space 1 en 2001." },
+    "haleBopp":     { "desc": "Comète non périodique exceptionnellement brillante observée en 1996-1997." },
+    "ceres":   { "desc": "Plus gros corps de la ceinture principale, classé comme planète naine." },
+    "vesta":   { "desc": "Deuxième plus massif de la ceinture, surface basaltique étudiée par Dawn." },
+    "pallas":  { "desc": "Troisième plus massif de la ceinture, orbite très inclinée (~34°)." }
+  },
+  "events": {
+    "openLabel":  "Statistiques des événements",
+    "openShort":  "Évén.",
+    "triggerLabel": "Ouvrir les statistiques d'événements",
+    "triggerShort": "Événements",
+    "panelLabel": "Statistiques des événements astronomiques",
+    "panelTitle": "Événements observés",
+    "reset":      "Réinitialiser",
+    "total":      "Total depuis le lancement",
+    "types": {
+      "solarEclipse": "Éclipse solaire",
+      "lunarEclipse": "Éclipse lunaire",
+      "superMoon":    "Super Lune",
+      "solarFlare":   "Éruption solaire massive"
+    },
+    "tooltips": {
+      "solarEclipse": "La Lune masque le Soleil vu de la Terre.",
+      "lunarEclipse": "La Terre projette son ombre sur la Lune.",
+      "superMoon":    "Pleine Lune au périgée — diamètre apparent maximal.",
+      "solarFlare":   "Éjection massive de plasma à la surface solaire (cycle de 11 ans)."
+    },
+    "flare": {
+      "alert": "Éruption solaire massive détectée"
+    }
+  }
+}

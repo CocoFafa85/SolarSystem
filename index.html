@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#05060a" />
+  <title data-i18n="app.title">Simulateur du Système Solaire</title>
+
+  <!-- Couche UI (Profile D) — totalement découplée du moteur 3D -->
+  <link rel="stylesheet" href="src/ui/styles/index.css" />
+
+  <!-- <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+      }
+    }
+  </script> -->
+
+  <!-- Point d'entrée unique : `src/main.js` orchestre bootUI() puis le moteur 3D.
+       Ne PAS recharger `src/ui/index.js` ici — il serait évalué une seconde fois,
+       avec un second bootUI() qui dupliquerait tous les composants HUD. -->
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <div class="app">
+    <a href="#hud-bottom" class="visually-hidden" data-i18n="app.skipToHud">Aller aux contrôles</a>
+
+    <canvas id="solarCanvas" aria-label="Scène 3D du système solaire" role="img"></canvas>
+
+    <header
+      id="hud-top"
+      class="hud hud--top"
+      role="region"
+      data-i18n-attr="aria-label:hud.topLabel"
+    ></header>
+
+    <aside
+      id="hud-left"
+      class="hud hud--left"
+      role="region"
+      data-i18n-attr="aria-label:hud.leftLabel"
+    ></aside>
+
+    <aside
+      id="hud-right"
+      class="hud hud--right"
+      role="region"
+      data-i18n-attr="aria-label:hud.rightLabel"
+    ></aside>
+
+    <footer
+      id="hud-bottom"
+      class="hud hud--bottom"
+      role="region"
+      data-i18n-attr="aria-label:hud.bottomLabel"
+    ></footer>
+  </div>
+</body>
+</html>

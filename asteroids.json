@@ -1,0 +1,3584 @@
+{
+  "pallas": {
+    "name": "Pallas",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 4.21e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.77437357,
+      "eccentricity": 0.22970137,
+      "inclination_degrees": 34.874936,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "juno": {
+    "name": "Juno",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 5.2600000000000004e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.66802168,
+      "eccentricity": 0.25698983,
+      "inclination_degrees": 12.991511,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "vesta": {
+    "name": "Vesta",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 3.2900000000000004e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.36184748,
+      "eccentricity": 0.0883938,
+      "inclination_degrees": 7.141572,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "astraea": {
+    "name": "Astraea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.990000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.57364585,
+      "eccentricity": 0.19072397,
+      "inclination_degrees": 5.367545,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hebe": {
+    "name": "Hebe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 5.650000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.42488928,
+      "eccentricity": 0.20326145,
+      "inclination_degrees": 14.739808,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "iris": {
+    "name": "Iris",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 5.58e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.38651935,
+      "eccentricity": 0.22948512,
+      "inclination_degrees": 5.517973,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "flora": {
+    "name": "Flora",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.51e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.20157507,
+      "eccentricity": 0.15591716,
+      "inclination_degrees": 5.889101,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "metis": {
+    "name": "Metis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.33e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.38585504,
+      "eccentricity": 0.12338598,
+      "inclination_degrees": 5.576403,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hygiea": {
+    "name": "Hygiea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 5.5300000000000005e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.14257314,
+      "eccentricity": 0.11188066,
+      "inclination_degrees": 3.831297,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "parthenope": {
+    "name": "Parthenope",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.56e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.45260387,
+      "eccentricity": 0.09971849,
+      "inclination_degrees": 4.631848,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "victoria": {
+    "name": "Victoria",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.3e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.33357924,
+      "eccentricity": 0.22057696,
+      "inclination_degrees": 8.373127,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "egeria": {
+    "name": "Egeria",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.830000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.57675711,
+      "eccentricity": 0.08540559,
+      "inclination_degrees": 16.533282,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "irene": {
+    "name": "Irene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.4900000000000005e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.58666735,
+      "eccentricity": 0.1661107,
+      "inclination_degrees": 9.120512,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eunomia": {
+    "name": "Eunomia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 5.2e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.644317,
+      "eccentricity": 0.18640259,
+      "inclination_degrees": 11.75311,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "psyche": {
+    "name": "Psyche",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.05e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.92386173,
+      "eccentricity": 0.13379496,
+      "inclination_degrees": 3.096597,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "thetis": {
+    "name": "Thetis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.780000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.47003705,
+      "eccentricity": 0.13314961,
+      "inclination_degrees": 5.592914,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "melpomene": {
+    "name": "Melpomene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.5e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.29612961,
+      "eccentricity": 0.21767881,
+      "inclination_degrees": 10.132165,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "fortuna": {
+    "name": "Fortuna",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.3800000000000006e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.4422048,
+      "eccentricity": 0.15685573,
+      "inclination_degrees": 1.572826,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "massalia": {
+    "name": "Massalia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.55e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.40817066,
+      "eccentricity": 0.14282423,
+      "inclination_degrees": 0.708856,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lutetia": {
+    "name": "Lutetia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.51e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.43558132,
+      "eccentricity": 0.16344345,
+      "inclination_degrees": 3.063656,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "kalliope": {
+    "name": "Kalliope",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.51e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.9092809,
+      "eccentricity": 0.09810502,
+      "inclination_degrees": 13.702094,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "thalia": {
+    "name": "Thalia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.160000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.62652053,
+      "eccentricity": 0.23426868,
+      "inclination_degrees": 10.10955,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "themis": {
+    "name": "Themis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.26e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.13704154,
+      "eccentricity": 0.12402676,
+      "inclination_degrees": 0.751554,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "phocaea": {
+    "name": "Phocaea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.85e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.40008967,
+      "eccentricity": 0.25510604,
+      "inclination_degrees": 21.60566,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "proserpina": {
+    "name": "Proserpina",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.490000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.65556156,
+      "eccentricity": 0.08958955,
+      "inclination_degrees": 3.562359,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "euterpe": {
+    "name": "Euterpe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.08e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.34635808,
+      "eccentricity": 0.17292677,
+      "inclination_degrees": 1.583669,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "bellona": {
+    "name": "Bellona",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.240000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.77538053,
+      "eccentricity": 0.15162659,
+      "inclination_degrees": 9.430581,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "amphitrite": {
+    "name": "Amphitrite",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.0100000000000005e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.55488918,
+      "eccentricity": 0.07313339,
+      "inclination_degrees": 6.082353,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "urania": {
+    "name": "Urania",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.56e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.36480176,
+      "eccentricity": 0.1278702,
+      "inclination_degrees": 2.096015,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "euphrosyne": {
+    "name": "Euphrosyne",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.860000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.1607417,
+      "eccentricity": 0.21895001,
+      "inclination_degrees": 26.26295,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "pomona": {
+    "name": "Pomona",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.66e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.58663317,
+      "eccentricity": 0.08178766,
+      "inclination_degrees": 5.522136,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "polyhymnia": {
+    "name": "Polyhymnia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.52e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.87460239,
+      "eccentricity": 0.33159792,
+      "inclination_degrees": 1.852807,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "circe": {
+    "name": "Circe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.630000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.68663279,
+      "eccentricity": 0.10645178,
+      "inclination_degrees": 5.496824,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "leukothea": {
+    "name": "Leukothea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.650000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.99340949,
+      "eccentricity": 0.22506436,
+      "inclination_degrees": 7.933365,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "atalante": {
+    "name": "Atalante",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.660000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.74729512,
+      "eccentricity": 0.30526547,
+      "inclination_degrees": 18.371247,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "fides": {
+    "name": "Fides",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.400000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.64129281,
+      "eccentricity": 0.17576058,
+      "inclination_degrees": 3.071307,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "leda": {
+    "name": "Leda",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.55e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.73934864,
+      "eccentricity": 0.15434352,
+      "inclination_degrees": 6.970948,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "laetitia": {
+    "name": "Laetitia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.070000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76979037,
+      "eccentricity": 0.11165231,
+      "inclination_degrees": 10.370249,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "harmonia": {
+    "name": "Harmonia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.160000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.26800904,
+      "eccentricity": 0.04704034,
+      "inclination_degrees": 4.256547,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "daphne": {
+    "name": "Daphne",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.440000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76173729,
+      "eccentricity": 0.27477682,
+      "inclination_degrees": 15.788217,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "isis": {
+    "name": "Isis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.58e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.44198971,
+      "eccentricity": 0.22292002,
+      "inclination_degrees": 8.51263,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ariadne": {
+    "name": "Ariadne",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.01e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.20306502,
+      "eccentricity": 0.16854017,
+      "inclination_degrees": 3.471287,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "nysa": {
+    "name": "Nysa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.92e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.42269977,
+      "eccentricity": 0.14867036,
+      "inclination_degrees": 3.7117,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eugenia": {
+    "name": "Eugenia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.630000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.71993276,
+      "eccentricity": 0.08387158,
+      "inclination_degrees": 6.605433,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hestia": {
+    "name": "Hestia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.539999999999999e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.52457998,
+      "eccentricity": 0.17259744,
+      "inclination_degrees": 2.350483,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "aglaja": {
+    "name": "Aglaja",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.19e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.88229055,
+      "eccentricity": 0.13001132,
+      "inclination_degrees": 4.975111,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "doris": {
+    "name": "Doris",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.1800000000000004e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.11079947,
+      "eccentricity": 0.07178238,
+      "inclination_degrees": 6.547325,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "pales": {
+    "name": "Pales",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.86e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.09681092,
+      "eccentricity": 0.22128766,
+      "inclination_degrees": 3.201755,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "virginia": {
+    "name": "Virginia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.32e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.65124488,
+      "eccentricity": 0.28565262,
+      "inclination_degrees": 2.838244,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "nemausa": {
+    "name": "Nemausa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.58e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.36557709,
+      "eccentricity": 0.0676511,
+      "inclination_degrees": 9.978344,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "europa": {
+    "name": "Europa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.4900000000000005e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.09524852,
+      "eccentricity": 0.1106435,
+      "inclination_degrees": 7.47863,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "kalypso": {
+    "name": "Kalypso",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.92e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.62193865,
+      "eccentricity": 0.203161,
+      "inclination_degrees": 5.178525,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "alexandra": {
+    "name": "Alexandra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.830000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.71171876,
+      "eccentricity": 0.197158,
+      "inclination_degrees": 11.79848,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "pandora": {
+    "name": "Pandora",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.86e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76005422,
+      "eccentricity": 0.14349741,
+      "inclination_degrees": 7.180523,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "melete": {
+    "name": "Melete",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.51e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.59578811,
+      "eccentricity": 0.23817992,
+      "inclination_degrees": 8.081993,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "mnemosyne": {
+    "name": "Mnemosyne",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.000000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.15861972,
+      "eccentricity": 0.11119617,
+      "inclination_degrees": 15.2005,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "concordia": {
+    "name": "Concordia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.04e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.70138603,
+      "eccentricity": 0.04280694,
+      "inclination_degrees": 5.066582,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "elpis": {
+    "name": "Elpis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.02e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.71483574,
+      "eccentricity": 0.11802667,
+      "inclination_degrees": 8.645907,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "echo": {
+    "name": "Echo",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.5e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.39253107,
+      "eccentricity": 0.18497472,
+      "inclination_degrees": 3.60047,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "danae": {
+    "name": "Danae",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.67e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.98331047,
+      "eccentricity": 0.16477552,
+      "inclination_degrees": 18.211291,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "erato": {
+    "name": "Erato",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.81e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.12819202,
+      "eccentricity": 0.16767175,
+      "inclination_degrees": 2.236638,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ausonia": {
+    "name": "Ausonia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.4500000000000005e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.3946575,
+      "eccentricity": 0.12695458,
+      "inclination_degrees": 5.77681,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "angelina": {
+    "name": "Angelina",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.690000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.68511871,
+      "eccentricity": 0.12488212,
+      "inclination_degrees": 1.308504,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "cybele": {
+    "name": "Cybele",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.88e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.42623157,
+      "eccentricity": 0.11245585,
+      "inclination_degrees": 3.564108,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "maja": {
+    "name": "Maja",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.54e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.64474142,
+      "eccentricity": 0.17320118,
+      "inclination_degrees": 3.04634,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "asia": {
+    "name": "Asia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.380000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.42150454,
+      "eccentricity": 0.18501351,
+      "inclination_degrees": 6.028588,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "leto": {
+    "name": "Leto",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.990000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.78199568,
+      "eccentricity": 0.18500443,
+      "inclination_degrees": 7.96153,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hesperia": {
+    "name": "Hesperia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.200000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.9758509,
+      "eccentricity": 0.17014352,
+      "inclination_degrees": 8.592401,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "panopaea": {
+    "name": "Panopaea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.16e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.616113,
+      "eccentricity": 0.1805679,
+      "inclination_degrees": 11.592722,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "niobe": {
+    "name": "Niobe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.14e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.75742479,
+      "eccentricity": 0.17363963,
+      "inclination_degrees": 23.266135,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "feronia": {
+    "name": "Feronia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.1e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.26655625,
+      "eccentricity": 0.12049659,
+      "inclination_degrees": 5.41546,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "klytia": {
+    "name": "Klytia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.02e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.6639455,
+      "eccentricity": 0.04164169,
+      "inclination_degrees": 2.370123,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "galatea": {
+    "name": "Galatea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.77e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.78114229,
+      "eccentricity": 0.23603337,
+      "inclination_degrees": 4.070327,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eurydike": {
+    "name": "Eurydike",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.060000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.67472682,
+      "eccentricity": 0.30359963,
+      "inclination_degrees": 4.991641,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "freia": {
+    "name": "Freia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.04e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.41480098,
+      "eccentricity": 0.16617484,
+      "inclination_degrees": 2.121294,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "frigga": {
+    "name": "Frigga",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.660000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.66900778,
+      "eccentricity": 0.13273215,
+      "inclination_degrees": 2.422832,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "diana": {
+    "name": "Diana",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.390000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.61905402,
+      "eccentricity": 0.20689213,
+      "inclination_degrees": 8.701995,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eurynome": {
+    "name": "Eurynome",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.99e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.44524195,
+      "eccentricity": 0.1901658,
+      "inclination_degrees": 4.612135,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "sappho": {
+    "name": "Sappho",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.06e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.29565968,
+      "eccentricity": 0.20042246,
+      "inclination_degrees": 8.675544,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "terpsichore": {
+    "name": "Terpsichore",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.68e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.85291119,
+      "eccentricity": 0.21105637,
+      "inclination_degrees": 7.804573,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "alkmene": {
+    "name": "Alkmene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.28e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76371367,
+      "eccentricity": 0.22037247,
+      "inclination_degrees": 2.826179,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "beatrix": {
+    "name": "Beatrix",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.77e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.43171872,
+      "eccentricity": 0.08115599,
+      "inclination_degrees": 4.963975,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "klio": {
+    "name": "Klio",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.380000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.36178121,
+      "eccentricity": 0.2363739,
+      "inclination_degrees": 9.317597,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "io": {
+    "name": "Io",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.75e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.65255337,
+      "eccentricity": 0.19444271,
+      "inclination_degrees": 11.960718,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "semele": {
+    "name": "Semele",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.76e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.10693893,
+      "eccentricity": 0.21537797,
+      "inclination_degrees": 4.820264,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "sylvia": {
+    "name": "Sylvia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.9000000000000006e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.48112893,
+      "eccentricity": 0.0937132,
+      "inclination_degrees": 10.875587,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "thisbe": {
+    "name": "Thisbe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.27e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.77005263,
+      "eccentricity": 0.16179126,
+      "inclination_degrees": 5.213286,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "julia": {
+    "name": "Julia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.75e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.55068543,
+      "eccentricity": 0.1850821,
+      "inclination_degrees": 16.130925,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "antiope": {
+    "name": "Antiope",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.199999999999999e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.14754651,
+      "eccentricity": 0.16672563,
+      "inclination_degrees": 2.206865,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "aegina": {
+    "name": "Aegina",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.89e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.58922105,
+      "eccentricity": 0.10655948,
+      "inclination_degrees": 2.103389,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "undina": {
+    "name": "Undina",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.790000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.18663568,
+      "eccentricity": 0.10511748,
+      "inclination_degrees": 9.931202,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "minerva": {
+    "name": "Minerva",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.95e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.75589421,
+      "eccentricity": 0.13904737,
+      "inclination_degrees": 8.557759,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "aurora": {
+    "name": "Aurora",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.65e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.15813855,
+      "eccentricity": 0.0944908,
+      "inclination_degrees": 7.969965,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "arethusa": {
+    "name": "Arethusa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.050000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.06333419,
+      "eccentricity": 0.15304677,
+      "inclination_degrees": 12.997202,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "aegle": {
+    "name": "Aegle",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.76e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.04828572,
+      "eccentricity": 0.14131199,
+      "inclination_degrees": 15.982583,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "klotho": {
+    "name": "Klotho",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.830000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.66838023,
+      "eccentricity": 0.25740386,
+      "inclination_degrees": 11.779056,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ianthe": {
+    "name": "Ianthe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.9e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.68691276,
+      "eccentricity": 0.1873061,
+      "inclination_degrees": 15.576348,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "dike": {
+    "name": "Dike",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.560000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.66609946,
+      "eccentricity": 0.19532424,
+      "inclination_degrees": 13.845235,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hekate": {
+    "name": "Hekate",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.65e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.09055748,
+      "eccentricity": 0.16967946,
+      "inclination_degrees": 6.433517,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "helena": {
+    "name": "Helena",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.230000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.58254082,
+      "eccentricity": 0.14080888,
+      "inclination_degrees": 10.197638,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "miriam": {
+    "name": "Miriam",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.390000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.66219304,
+      "eccentricity": 0.25102344,
+      "inclination_degrees": 5.172826,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hera": {
+    "name": "Hera",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.630000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.70285239,
+      "eccentricity": 0.07922466,
+      "inclination_degrees": 5.418601,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "klymene": {
+    "name": "Klymene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.41e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.14707763,
+      "eccentricity": 0.16112768,
+      "inclination_degrees": 2.789445,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "artemis": {
+    "name": "Artemis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.77e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.37332554,
+      "eccentricity": 0.17720276,
+      "inclination_degrees": 21.441938,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "dione": {
+    "name": "Dione",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.620000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.17919482,
+      "eccentricity": 0.15922924,
+      "inclination_degrees": 4.576279,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "camilla": {
+    "name": "Camilla",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.14e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.4891877,
+      "eccentricity": 0.06494861,
+      "inclination_degrees": 10.003445,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hecuba": {
+    "name": "Hecuba",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.06e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.24262326,
+      "eccentricity": 0.05621497,
+      "inclination_degrees": 4.221259,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "felicitas": {
+    "name": "Felicitas",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.050000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.69520225,
+      "eccentricity": 0.29935157,
+      "inclination_degrees": 7.844829,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lydia": {
+    "name": "Lydia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.85e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.73322073,
+      "eccentricity": 0.08078482,
+      "inclination_degrees": 5.959164,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ate": {
+    "name": "Ate",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.199999999999999e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.59491581,
+      "eccentricity": 0.10223736,
+      "inclination_degrees": 4.933125,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "iphigenia": {
+    "name": "Iphigenia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.79e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.43309123,
+      "eccentricity": 0.12822856,
+      "inclination_degrees": 2.599604,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "amalthea": {
+    "name": "Amalthea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.51e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.37634652,
+      "eccentricity": 0.08643807,
+      "inclination_degrees": 5.043076,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "kassandra": {
+    "name": "Kassandra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.310000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.67576791,
+      "eccentricity": 0.13773127,
+      "inclination_degrees": 4.944471,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "thyra": {
+    "name": "Thyra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.66e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.37877946,
+      "eccentricity": 0.19330988,
+      "inclination_degrees": 11.594238,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "sirona": {
+    "name": "Sirona",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.86e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76685955,
+      "eccentricity": 0.14169683,
+      "inclination_degrees": 3.563729,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lomia": {
+    "name": "Lomia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.08e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.99530246,
+      "eccentricity": 0.02551385,
+      "inclination_degrees": 14.915724,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "peitho": {
+    "name": "Peitho",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.92e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.4362911,
+      "eccentricity": 0.16466526,
+      "inclination_degrees": 7.746093,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "althaea": {
+    "name": "Althaea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.35e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.58159608,
+      "eccentricity": 0.08096812,
+      "inclination_degrees": 5.786075,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lachesis": {
+    "name": "Lachesis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.780000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.11744368,
+      "eccentricity": 0.05170017,
+      "inclination_degrees": 6.963808,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hermione": {
+    "name": "Hermione",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.370000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.46022061,
+      "eccentricity": 0.12788458,
+      "inclination_degrees": 7.565646,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "gerda": {
+    "name": "Gerda",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.710000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.22234213,
+      "eccentricity": 0.03103331,
+      "inclination_degrees": 1.640793,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "brunhild": {
+    "name": "Brunhild",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.93e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.69451382,
+      "eccentricity": 0.12071934,
+      "inclination_degrees": 6.414391,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "alkeste": {
+    "name": "Alkeste",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.13e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.63020987,
+      "eccentricity": 0.07567167,
+      "inclination_degrees": 2.957461,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "liberatrix": {
+    "name": "Liberatrix",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.84e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.74287521,
+      "eccentricity": 0.07795851,
+      "inclination_degrees": 4.664777,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "velleda": {
+    "name": "Velleda",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.19e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.43866504,
+      "eccentricity": 0.1055221,
+      "inclination_degrees": 2.923721,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "johanna": {
+    "name": "Johanna",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.61e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.75469693,
+      "eccentricity": 0.06661933,
+      "inclination_degrees": 8.244965,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "nemesis": {
+    "name": "Nemesis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.72e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.74834091,
+      "eccentricity": 0.12794797,
+      "inclination_degrees": 6.245665,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "antigone": {
+    "name": "Antigone",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.070000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.86852519,
+      "eccentricity": 0.21282966,
+      "inclination_degrees": 12.271544,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "elektra": {
+    "name": "Elektra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.2100000000000005e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.12642975,
+      "eccentricity": 0.20917205,
+      "inclination_degrees": 22.781531,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "vala": {
+    "name": "Vala",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.99e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.43138364,
+      "eccentricity": 0.06721884,
+      "inclination_degrees": 4.961054,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "aethra": {
+    "name": "Aethra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.000000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.60844619,
+      "eccentricity": 0.38943235,
+      "inclination_degrees": 24.990179,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "cyrene": {
+    "name": "Cyrene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.88e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.06465331,
+      "eccentricity": 0.13502603,
+      "inclination_degrees": 7.214008,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "sophrosyne": {
+    "name": "Sophrosyne",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.82e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.56453832,
+      "eccentricity": 0.11481346,
+      "inclination_degrees": 11.610832,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hertha": {
+    "name": "Hertha",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.199999999999999e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.42881222,
+      "eccentricity": 0.20691564,
+      "inclination_degrees": 2.30397,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "austria": {
+    "name": "Austria",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.760000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.28636772,
+      "eccentricity": 0.08488681,
+      "inclination_degrees": 9.580458,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "meliboea": {
+    "name": "Meliboea",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.18e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.12534637,
+      "eccentricity": 0.21182044,
+      "inclination_degrees": 13.427175,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "tolosa": {
+    "name": "Tolosa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.81e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.44843384,
+      "eccentricity": 0.1624813,
+      "inclination_degrees": 3.202535,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "juewa": {
+    "name": "Juewa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.050000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.78112331,
+      "eccentricity": 0.17433591,
+      "inclination_degrees": 10.910016,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "siwa": {
+    "name": "Siwa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.460000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.73471218,
+      "eccentricity": 0.21414421,
+      "inclination_degrees": 3.185452,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lumen": {
+    "name": "Lumen",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.460000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.66705472,
+      "eccentricity": 0.21417314,
+      "inclination_degrees": 11.899778,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "polana": {
+    "name": "Polana",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 1.0300000000000001e-08,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.41855159,
+      "eccentricity": 0.13479057,
+      "inclination_degrees": 2.239453,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "adria": {
+    "name": "Adria",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.02e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76141736,
+      "eccentricity": 0.07380601,
+      "inclination_degrees": 11.444315,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "vibilia": {
+    "name": "Vibilia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.13e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.65489795,
+      "eccentricity": 0.23503247,
+      "inclination_degrees": 4.813971,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "adeona": {
+    "name": "Adeona",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.220000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.67161683,
+      "eccentricity": 0.14615184,
+      "inclination_degrees": 12.62027,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lucina": {
+    "name": "Lucina",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.37e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.71816478,
+      "eccentricity": 0.06671075,
+      "inclination_degrees": 13.099967,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "protogeneia": {
+    "name": "Protogeneia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.800000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.13435272,
+      "eccentricity": 0.02319685,
+      "inclination_degrees": 1.933346,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "gallia": {
+    "name": "Gallia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.640000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.77078105,
+      "eccentricity": 0.18750009,
+      "inclination_degrees": 25.294068,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "medusa": {
+    "name": "Medusa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 1.0500000000000001e-08,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.17488353,
+      "eccentricity": 0.06513109,
+      "inclination_degrees": 0.939559,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "nuwa": {
+    "name": "Nuwa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.49e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.98478824,
+      "eccentricity": 0.12353226,
+      "inclination_degrees": 2.200778,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "abundantia": {
+    "name": "Abundantia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.210000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.5917841,
+      "eccentricity": 0.03486099,
+      "inclination_degrees": 6.4308,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "atala": {
+    "name": "Atala",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.33e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.13897007,
+      "eccentricity": 0.08125776,
+      "inclination_degrees": 12.121925,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "hilda": {
+    "name": "Hilda",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.630000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.97814618,
+      "eccentricity": 0.14018196,
+      "inclination_degrees": 7.824691,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "bertha": {
+    "name": "Bertha",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.710000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.19535032,
+      "eccentricity": 0.07665636,
+      "inclination_degrees": 20.972681,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "scylla": {
+    "name": "Scylla",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 1.122e-08,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76328507,
+      "eccentricity": 0.27381868,
+      "inclination_degrees": 11.350635,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "xanthippe": {
+    "name": "Xanthippe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.710000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.72861939,
+      "eccentricity": 0.22652676,
+      "inclination_degrees": 9.778316,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "dejanira": {
+    "name": "Dejanira",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 1.1270000000000001e-08,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.58047831,
+      "eccentricity": 0.19748463,
+      "inclination_degrees": 12.160714,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "koronis": {
+    "name": "Koronis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.220000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.86822006,
+      "eccentricity": 0.05230148,
+      "inclination_degrees": 1.005632,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "aemilia": {
+    "name": "Aemilia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.36e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.10363438,
+      "eccentricity": 0.10612926,
+      "inclination_degrees": 6.13137,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "una": {
+    "name": "Una",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.140000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.72645143,
+      "eccentricity": 0.06721704,
+      "inclination_degrees": 3.824666,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "athor": {
+    "name": "Athor",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.140000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.37914203,
+      "eccentricity": 0.13730665,
+      "inclination_degrees": 9.057697,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "laurentia": {
+    "name": "Laurentia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.94e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.01453205,
+      "eccentricity": 0.18171589,
+      "inclination_degrees": 6.092026,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "erigone": {
+    "name": "Erigone",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.740000000000002e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.36681014,
+      "eccentricity": 0.19212362,
+      "inclination_degrees": 4.815924,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eva": {
+    "name": "Eva",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.85e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.63091464,
+      "eccentricity": 0.34708775,
+      "inclination_degrees": 24.475818,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "loreley": {
+    "name": "Loreley",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.88e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.12371735,
+      "eccentricity": 0.08471209,
+      "inclination_degrees": 11.238532,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "rhodope": {
+    "name": "Rhodope",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.91e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.685031,
+      "eccentricity": 0.21175957,
+      "inclination_degrees": 12.030003,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "urda": {
+    "name": "Urda",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.220000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.85565556,
+      "eccentricity": 0.03822622,
+      "inclination_degrees": 2.215296,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "sibylla": {
+    "name": "Sibylla",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.09e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.3750963,
+      "eccentricity": 0.07436762,
+      "inclination_degrees": 4.668639,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "zelia": {
+    "name": "Zelia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.52e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.35872855,
+      "eccentricity": 0.13127088,
+      "inclination_degrees": 5.500647,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "maria": {
+    "name": "Maria",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.350000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.55283974,
+      "eccentricity": 0.06342013,
+      "inclination_degrees": 14.378813,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ophelia": {
+    "name": "Ophelia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.61e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.13126868,
+      "eccentricity": 0.13201408,
+      "inclination_degrees": 2.546656,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "baucis": {
+    "name": "Baucis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.76e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.37916521,
+      "eccentricity": 0.11454348,
+      "inclination_degrees": 10.020897,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ino": {
+    "name": "Ino",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.97e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.7421348,
+      "eccentricity": 0.20926662,
+      "inclination_degrees": 14.199603,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "phaedra": {
+    "name": "Phaedra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.34e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.86099298,
+      "eccentricity": 0.14104548,
+      "inclination_degrees": 12.124225,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "andromache": {
+    "name": "Andromache",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.48e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.18676813,
+      "eccentricity": 0.23355437,
+      "inclination_degrees": 3.217779,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "iduna": {
+    "name": "Iduna",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.29e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.18251554,
+      "eccentricity": 0.17112921,
+      "inclination_degrees": 22.670882,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "irma": {
+    "name": "Irma",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.68e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.77149957,
+      "eccentricity": 0.23380433,
+      "inclination_degrees": 1.382261,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "belisana": {
+    "name": "Belisana",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.400000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.46063027,
+      "eccentricity": 0.04261737,
+      "inclination_degrees": 1.893483,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "klytaemnestra": {
+    "name": "Klytaemnestra",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.15e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.97202024,
+      "eccentricity": 0.11009213,
+      "inclination_degrees": 7.81817,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "garumna": {
+    "name": "Garumna",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 1.02e-08,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.72148386,
+      "eccentricity": 0.16752818,
+      "inclination_degrees": 0.867797,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eucharis": {
+    "name": "Eucharis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.92e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.12531458,
+      "eccentricity": 0.20702405,
+      "inclination_degrees": 18.893357,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "elsa": {
+    "name": "Elsa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.16e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.41589085,
+      "eccentricity": 0.1866231,
+      "inclination_degrees": 2.005423,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "istria": {
+    "name": "Istria",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.57e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.79532747,
+      "eccentricity": 0.34898844,
+      "inclination_degrees": 26.39809,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "dejopeja": {
+    "name": "Dejopeja",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.460000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.18580881,
+      "eccentricity": 0.06564882,
+      "inclination_degrees": 1.143337,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eunike": {
+    "name": "Eunike",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.68e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.73862393,
+      "eccentricity": 0.12767889,
+      "inclination_degrees": 23.25472,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "celuta": {
+    "name": "Celuta",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.060000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.36179786,
+      "eccentricity": 0.15014038,
+      "inclination_degrees": 13.185969,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "lamberta": {
+    "name": "Lamberta",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.27e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.72793504,
+      "eccentricity": 0.24095167,
+      "inclination_degrees": 10.58244,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "menippe": {
+    "name": "Menippe",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.350000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.76226435,
+      "eccentricity": 0.17979491,
+      "inclination_degrees": 11.701193,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "phthia": {
+    "name": "Phthia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.340000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.45025965,
+      "eccentricity": 0.03570329,
+      "inclination_degrees": 5.174803,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ismene": {
+    "name": "Ismene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.690000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.98890931,
+      "eccentricity": 0.16709097,
+      "inclination_degrees": 6.17597,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "kolga": {
+    "name": "Kolga",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.010000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.89794233,
+      "eccentricity": 0.08892312,
+      "inclination_degrees": 11.51951,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "nausikaa": {
+    "name": "Nausikaa",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.340000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.40282199,
+      "eccentricity": 0.24554082,
+      "inclination_degrees": 6.799371,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ambrosia": {
+    "name": "Ambrosia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.820000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.59990351,
+      "eccentricity": 0.29728841,
+      "inclination_degrees": 11.993971,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "prokne": {
+    "name": "Prokne",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 7.830000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.61556294,
+      "eccentricity": 0.23791199,
+      "inclination_degrees": 18.511366,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "eurykleia": {
+    "name": "Eurykleia",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.18e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.87621457,
+      "eccentricity": 0.04319673,
+      "inclination_degrees": 6.971464,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "philomela": {
+    "name": "Philomela",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 6.570000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.11520831,
+      "eccentricity": 0.0155109,
+      "inclination_degrees": 7.261209,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "arete": {
+    "name": "Arete",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 9.470000000000001e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.73831728,
+      "eccentricity": 0.16381571,
+      "inclination_degrees": 8.791107,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "ampella": {
+    "name": "Ampella",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.52e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.45869795,
+      "eccentricity": 0.22743397,
+      "inclination_degrees": 9.320762,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "byblis": {
+    "name": "Byblis",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.55e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 3.16864361,
+      "eccentricity": 0.18141246,
+      "inclination_degrees": 15.474184,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  },
+  "dynamene": {
+    "name": "Dynamene",
+    "type": "asteroid",
+    "physical": {
+      "mass": null,
+      "radius_au": 8.42e-09,
+      "rotation_period_hours": null,
+      "obliquity_degrees": 0
+    },
+    "orbital": {
+      "semi_major_axis_au": 2.73751253,
+      "eccentricity": 0.13224019,
+      "inclination_degrees": 6.899769,
+      "longitude_ascending_node_degrees": 0.0,
+      "argument_perihelion_degrees": 0.0,
+      "mean_anomaly_epoch_degrees": 0.0
+    }
+  }
+}

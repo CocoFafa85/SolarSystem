@@ -1,0 +1,826 @@
+/* Composants HUD — uniquement des tokens. Mobile-first STRICT (base 375px). */
+
+/* ============ TimeControls ============ */
+.time-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+}
+
+.tc__btn {
+  min-width: var(--tap-target-min);
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    background var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard),
+    transform var(--motion-fast) var(--easing-standard);
+}
+.tc__btn:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--color-border-strong); }
+.tc__btn:active { transform: scale(0.96); }
+.tc__btn--primary { background: var(--color-accent); color: var(--color-bg-void); border-color: transparent; }
+.tc__btn--primary:hover { background: #8bbcff; }
+.tc__btn--primary.is-paused { background: var(--color-accent-hot); }
+
+/* PoV dropdown */
+.pov { position: relative; }
+.pov__menu {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 200px;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+}
+.pov__menu[hidden] { display: none; }
+.pov__item {
+  width: 100%;
+  min-height: var(--tap-target-min);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-primary);
+  text-align: left;
+  font-size: var(--font-size-sm);
+}
+.pov__item:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--color-border-subtle); }
+
+/* ============ TimeStatus (LOT 6 — padding réel sur le panel) ============ */
+.time-status {
+  position: relative;
+  min-width: 0;
+  max-width: min(92vw, 320px);
+  cursor: help;
+  padding: var(--space-2) var(--space-3); /* LOT 6 — vrai padding panel */
+}
+.time-status__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.time-status__year {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-lg);  /* LOT 5D — réduit de xl à lg */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.time-status__year.is-paused { color: var(--color-accent-hot); }
+.time-status__subtitle {
+  font-size: var(--font-size-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+}
+
+.time-status__details {
+  /* LOT 5B — tooltip ancré à gauche pour rester dans la fenêtre */
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: auto;
+  transform: none;
+  min-width: 260px;
+  max-width: calc(100vw - var(--space-4));
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+  margin: 0;
+  padding: var(--space-3);
+  background: var(--color-bg-panel-solid);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+  z-index: var(--z-panel);
+}
+.time-status:hover .time-status__details,
+.time-status:focus .time-status__details,
+.time-status:focus-within .time-status__details { opacity: 1; pointer-events: auto; }
+
+.time-status__details dt {
+  color: var(--color-text-dim);
+  font-size: var(--font-size-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.time-status__value {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  /* LOT 6 — emphase sur la valeur (auparavant xs) */
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.time-status__value.is-paused { color: var(--color-accent-hot); }
+
+/* ============ Tooltip partagé (LOT 6) ============ */
+.tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-toast);
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-bg-panel-solid);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xs);
+  white-space: nowrap;
+  pointer-events: none;
+  will-change: transform;
+}
+.tooltip[hidden] { display: none; }
+
+/* ============ EventsPanel — wrapper bouton + panneau (LOT 6) ============ */
+.events-panel {
+  position: absolute;
+  left: 15%;
+  top: max(var(--space-2), env(safe-area-inset-top));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  z-index: var(--z-panel);
+}
+.events-panel .events-button { position: static; left: auto; top: auto; }
+/* LOT 6B — léger décalage à gauche pour aligner le panneau sous le bouton,
+   sans dépasser l'alignement à 15 % imposé par le wrapper. */
+.events-panel .event-stats--compact { position: static; width: auto; min-width: 260px; transform: translateX(-12px); }
+
+/* ============ EventsButton (LOT 5D) ============ */
+.events-button {
+  position: absolute;
+  left: 15%;
+  top: max(var(--space-2), env(safe-area-inset-top));
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+.events-button:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--color-border-strong); }
+.events-button[aria-pressed="true"] { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ============ BodyMenu (LOT 5B/C — sections row + delegation) ============ */
+.body-menu {
+  /* LOT 7B/C — sans scroll, compact, mais assez large pour accueillir la
+     Lune en état `.is-earth-active`/`.is-locked-earth` sans déborder. */
+  min-width: 320px;
+  max-width: none;
+  height: auto;
+  align-items: flex-start;
+  padding: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.85rem;
+}
+/* LOT 7C — sur viewport large, on revient à la taille de police standard
+   (l'espace est suffisant, plus besoin de compacter). */
+@media (min-width: 1280px) {
+  .body-menu      { font-size: var(--font-size-sm); min-width: 400px; }
+  .body-menu__item, .body-menu__summary { min-height: var(--tap-target-min); }
+}
+/* L'attribut [hidden] natif doit l'emporter sur `display: flex`. */
+.body-menu[hidden] { display: none; }
+.body-menu .body-menu__item { padding: 4px var(--space-2); min-height: 32px; }
+.body-menu .body-menu__summary { min-height: 32px; padding: 2px var(--space-2); }
+.body-menu .body-menu__item--orbits-toggle { padding: 4px var(--space-2); }
+
+/* LOT 7 — Lune cachée par défaut, révélée quand Terre active (hover ou lock) */
+.body-menu__item--moon { display: none; }
+.body-menu.is-earth-active .body-menu__item--moon,
+.body-menu.is-locked-earth .body-menu__item--moon { display: flex; }
+@media (min-width: 768px) {
+  .body-menu { flex-direction: row; align-items: flex-start; gap: var(--space-4); }
+}
+
+.body-menu__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Plus de section-head séparé — le summary est seul, le toggle vit dans la liste. */
+
+.body-menu__summary {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-align: left;
+}
+.body-menu__summary:hover { background: rgba(255, 255, 255, 0.04); }
+.bm__chevron {
+  display: inline-block;
+  transition: transform var(--motion-fast) var(--easing-standard);
+}
+.body-menu__summary[aria-expanded="false"] .bm__chevron { transform: rotate(-90deg); }
+
+.bm__orbit-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-2xs);
+}
+.bm__orbit-toggle[aria-checked="true"] {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.bm__orbit-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+.bm__orbit-text { display: none; }
+@media (min-width: 768px) { .bm__orbit-text { display: inline; } }
+
+.body-menu__list[hidden] { display: none; }
+.body-menu__list { display: flex; flex-direction: column; gap: var(--space-1); list-style: none; padding-left: 0; margin: 0; }
+
+/* Premier item : toggle des orbites — clic SUR la ligne entière */
+.body-menu__item--orbits-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--color-border-subtle);
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--easing-standard),
+              border-color var(--motion-fast) var(--easing-standard);
+}
+.body-menu__item--orbits-toggle:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--color-border-strong);
+}
+.body-menu__item--orbits-toggle .orbit-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+/* Switch sans pastille — état visuel via aria-checked. */
+.bm__orbit-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 22px;
+  padding: 0 var(--space-2);
+  border-radius: 999px;
+  border: 1px solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
+}
+.bm__orbit-toggle::after { content: "Off"; }
+.bm__orbit-toggle[aria-checked="true"] {
+  background: var(--color-accent);
+  color: var(--color-bg-void);
+  border-color: transparent;
+}
+.bm__orbit-toggle[aria-checked="true"]::after { content: "On"; }
+
+/* Pluton — variante "planète naine" : indicateur compact "i" en haut-gauche.
+   Plus de badge superposé (cf. BodyMenu.makeItem skip badge si dwarf). */
+.body-menu__item--dwarf { position: relative; }
+.body-menu__item--dwarf::before {
+  content: "i";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-accent-hot);
+  color: var(--color-bg-void);
+  font-family: var(--font-family-mono);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+.body-menu__item--dwarf .body-menu__label { color: var(--color-text-muted); font-style: italic; }
+
+.body-menu__item {
+  --accent: #fff;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--tap-target-min);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+.body-menu__item:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--color-border-subtle); }
+.body-menu__item[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.body-menu__dot   { flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.body-menu__label { flex: 1 1 auto; min-width: 0; }
+.body-menu__badge {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ============ BodyInfoCard (LOT 7 — centré verticalement) ============ */
+.body-card {
+  --accent: var(--color-accent);
+  max-width: min(92vw, 320px);
+  max-height: 70dvh;
+  overflow-y: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/* LOT 7B — Glossaire et Comparer restent collés en haut malgré
+   `justify-content: center` du .hud--right (qui ne sert qu'à BodyInfoCard). */
+.hud--right .comparator-btn,
+.hud--right .glossary-btn { align-self: flex-end; }
+.hud--right .comparator-btn { margin-top: 0; }
+.hud--right .glossary-btn   { margin-top: 0; }
+/* Premier élément de hud-right colle en haut, le reste se distribue. */
+.hud--right > .comparator-btn:first-child,
+.hud--right > .glossary-btn:first-child { margin-bottom: 0; }
+.body-card__header { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+.body-card__accent { width: 10px; height: 24px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.body-card__title { flex: 1 1 auto; font-size: var(--font-size-lg); font-weight: 700; }
+.body-card__close { width: var(--tap-target-min); height: var(--tap-target-min); border-radius: var(--radius-sm); color: var(--color-text-muted); font-size: var(--font-size-xl); }
+.body-card__close:hover { background: rgba(255, 255, 255, 0.06); color: var(--color-text-primary); }
+/* LOT 6 — emphase sur la description (lisibilité du panneau d'info). */
+.body-card__desc { color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: var(--line-height-base); margin-bottom: var(--space-3); }
+.body-card__grid { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-3); row-gap: var(--space-2); margin: 0; }
+.body-card__grid dt { color: var(--color-text-dim); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: 0.06em; }
+.body-card__grid dd { margin: 0; font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+
+/* ============ ComparatorPanel + CompareMenu (LOT 8D — bouton statique) ============ */
+.comparator-wrapper {
+  /* LOT 8D — largeur intrinsèque = bouton seul. Le menu en position: absolute
+     SORT du flux et n'élargit donc PAS le wrapper. Le bouton reste pixel-perfect
+     identique à toutes les ouvertures/fermetures. */
+  position: relative;
+  display: block;
+  width: fit-content;
+  align-self: flex-end;
+}
+.compare-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-2);
+  z-index: var(--z-panel);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  max-width: 92vw;
+  white-space: nowrap;          /* boutons de tri restent en ligne */
+}
+.compare-menu[hidden] { display: none; }
+.cm__btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: var(--tap-target-min); min-height: var(--tap-target-min); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--color-border-subtle); background: transparent; color: var(--color-text-primary); }
+.cm__btn:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--color-border-strong); }
+.cm__icon  { font-size: var(--font-size-md); line-height: 1; }
+.cm__label { font-size: var(--font-size-2xs); color: var(--color-text-muted); }
+
+/* ============ BodyMenuToggle (LOT 7 — bouton "Astres") ============ */
+.body-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.body-menu-toggle__btn {
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+.body-menu-toggle__btn:hover { border-color: var(--color-border-strong); background: rgba(255, 255, 255, 0.06); }
+.body-menu-toggle__btn[aria-expanded="true"] { border-color: var(--color-accent); color: var(--color-accent); }
+.body-menu-toggle .body-menu { margin-top: var(--space-1); }
+
+/* ============ GlossaryButton (LOT 7) ============ */
+.glossary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+.glossary-btn:hover { border-color: var(--color-border-strong); background: rgba(255, 255, 255, 0.06); }
+.glossary-btn__label { display: none; }
+@media (min-width: 768px) { .glossary-btn__label { display: inline; } }
+
+/* ============ GlossaryModal (LOT 10B — panneau non bloquant) ============ */
+/* LOT 10B.2 — le wrapper laisse passer les clics vers le canvas ;
+   seul `.glossary-overlay__modal` capture les pointer events. */
+.glossary-overlay {
+  position: fixed; inset: 0;
+  z-index: var(--z-modal);
+  background: transparent;          /* plus de voile : la scène reste lisible */
+  pointer-events: none;             /* clics traversent vers le canvas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+.glossary-overlay[hidden] { display: none; }
+.glossary-overlay__modal {
+  pointer-events: auto;             /* seul le panneau capte */
+  width: min(1100px, 95vw);
+  height: 90vh;
+  max-height: 90vh;
+  display: flex; flex-direction: column;
+  padding: var(--space-4);
+  font-size: var(--font-size-lg);
+  background: rgba(12, 14, 22, 0.92);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+}
+@media (max-width: 768px) {
+  .glossary-overlay__modal { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
+}
+.glossary-overlay__header { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); }
+.glossary-overlay__title  { flex: 1 1 auto; font-size: var(--font-size-lg); font-weight: 700; }
+.glossary-overlay__close  { width: var(--tap-target-min); height: var(--tap-target-min); border-radius: var(--radius-sm); font-size: var(--font-size-xl); color: var(--color-text-muted); }
+.glossary-overlay__close:hover { background: rgba(255, 255, 255, 0.06); color: var(--color-text-primary); }
+.glossary__list  { overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+
+/* LOT 10B.4 — bordure et fond appliqués UNIQUEMENT au hover/focus. */
+.glossary__item {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: default;
+  display: flex; align-items: center; gap: var(--space-3);
+  transition: background 150ms var(--easing-standard), border-color 150ms var(--easing-standard);
+}
+.glossary__item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border-subtle);
+  outline: none;
+}
+.glossary__text  { flex: 1 1 auto; min-width: 0; }
+.glossary__term  { font-size: var(--font-size-xl); font-weight: 700; color: var(--color-text-primary); margin-bottom: var(--space-1); }
+.glossary__def   { font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: var(--line-height-base); }
+
+/* LOT 10B.3 — illustration SVG agrandie, toujours visible (animation permanente). */
+.glossary__svg-wrap {
+  flex: 0 0 auto;
+  min-width: 220px;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.glossary-svg {
+  width: 100%;
+  height: auto;
+  min-height: 140px;
+  color: var(--color-text-muted);
+}
+
+/* LOT 10 — micro-animations namespacées `.glossary-svg .anim-*`. */
+@keyframes glossarySpin      { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes glossaryPulse     { 0%,100% { transform: scale(1);    opacity: 1;   }
+                               50%    { transform: scale(1.05); opacity: 0.9; } }
+@keyframes glossaryOrbit     { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes glossaryDrift     { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes glossaryFlicker   { 0%,100% { opacity: 1; }
+                               20%    { opacity: 0.6; }
+                               40%    { opacity: 0.95; }
+                               60%    { opacity: 0.65; }
+                               80%    { opacity: 1; } }
+@keyframes glossaryLibration { 0%,100% { transform: rotate(-6deg); }
+                               50%    { transform: rotate( 6deg); } }
+@keyframes glossaryFloat     { 0%,100% { transform: translateY(0); }
+                               50%    { transform: translateY(-3px); } }
+
+.glossary-svg .anim-spin      { animation: glossarySpin      8s linear infinite; transform-box: fill-box; }
+.glossary-svg .anim-pulse     { animation: glossaryPulse     2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.glossary-svg .anim-orbit     { animation: glossaryOrbit     4s linear infinite; transform-box: fill-box; }
+.glossary-svg .anim-drift     { animation: glossaryDrift    24s linear infinite; transform-box: fill-box; transform-origin: 60px 40px; }
+.glossary-svg .anim-flicker   { animation: glossaryFlicker   1.6s steps(8, end) infinite; }
+.glossary-svg .anim-libration { animation: glossaryLibration 3s ease-in-out infinite alternate; transform-box: fill-box; }
+.glossary-svg .anim-float     { animation: glossaryFloat     3s ease-in-out infinite; transform-box: fill-box; }
+
+/* LOT 10C.1 — animations CSS dormantes par défaut, ne jouent qu'au survol
+   ou focus du `.glossary__item` parent. SMIL piloté en JS via beginElement. */
+.glossary-svg [class^="anim-"],
+.glossary-svg [class*=" anim-"] { animation-play-state: paused; }
+.glossary__item:hover .glossary-svg [class^="anim-"],
+.glossary__item:hover .glossary-svg [class*=" anim-"] { animation-play-state: running; }
+
+/* LOT 10B — désactive aussi les animations SMIL <animateTransform>/<animate>
+   sous reduced-motion (JS-driven dans GlossaryModal — voir `begin=indefinite`). */
+
+@media (prefers-reduced-motion: reduce) {
+  .glossary-svg [class^="anim-"],
+  .glossary-svg [class*=" anim-"] { animation: none !important; }
+}
+
+/* ============ CompareOverlay extensions (LOT 7) ============ */
+.compare-ratio {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto 1fr;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+}
+.compare-ratio__label { color: var(--color-text-dim); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: 0.06em; }
+.compare-ratio__sep   { color: var(--color-text-muted); text-align: center; }
+.compare-ratio__select {
+  background: var(--color-bg-panel-solid);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  min-height: var(--tap-target-min);
+}
+.compare-ratio__out {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+.compare-facts {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  list-style: none; margin: 0 0 var(--space-3) 0; padding: 0;
+}
+.compare-facts__item {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  padding: var(--space-1) var(--space-2);
+  border-left: 2px solid var(--color-accent-hot);
+}
+
+/* ============ ComparatorButton (top-right) ============ */
+.comparator-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+.comparator-btn:hover { border-color: var(--color-border-strong); background: rgba(255, 255, 255, 0.06); }
+.comparator-btn__label { display: none; }
+@media (min-width: 768px) { .comparator-btn__label { display: inline; } }
+
+/* ============ CompareOverlay ============ */
+.compare-overlay { position: fixed; inset: 0; z-index: var(--z-modal); display: flex; align-items: center; justify-content: center; padding: var(--space-4); }
+.compare-overlay[hidden] { display: none; }
+.compare-overlay__modal { width: 100%; max-width: 560px; max-height: 80dvh; display: flex; flex-direction: column; padding: var(--space-4); }
+.compare-overlay__header { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); }
+.compare-overlay__title { flex: 1 1 auto; font-size: var(--font-size-lg); font-weight: 700; }
+.compare-overlay__close { width: var(--tap-target-min); height: var(--tap-target-min); border-radius: var(--radius-sm); font-size: var(--font-size-xl); color: var(--color-text-muted); }
+.compare-overlay__close:hover { background: rgba(255, 255, 255, 0.06); color: var(--color-text-primary); }
+.compare-overlay__list { overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-1); }
+.compare-row { --accent: #fff; display: grid; grid-template-columns: 28px 14px 1fr auto; align-items: center; gap: var(--space-2); min-height: var(--tap-target-min); padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid transparent; background: transparent; color: var(--color-text-primary); text-align: left; }
+.compare-row:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--color-border-subtle); }
+.compare-row__rank  { color: var(--color-text-dim); font-family: var(--font-family-mono); font-variant-numeric: tabular-nums; }
+.compare-row__dot   { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.compare-row__name  { font-weight: 600; }
+.compare-row__value { font-family: var(--font-family-mono); font-variant-numeric: tabular-nums; color: var(--color-text-muted); font-size: var(--font-size-xs); }
+
+/* ============ EventStats (LOT 5B — modale détachée) ============ */
+.event-stats--modal {
+  position: fixed;
+  z-index: var(--z-modal);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 480px);
+  max-height: 80dvh;
+  padding: var(--space-4);
+  display: flex;
+}
+.event-stats--modal[hidden] { display: none; }
+.event-stats--compact .event-stats__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.event-stats--compact .event-stats__row {
+  --accent: #fff;
+  position: relative;
+  display: grid;
+  grid-template-columns: 14px 1fr auto; /* dot · name · count */
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 0;
+  outline: none;
+}
+.event-stats__dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+/* Pastille spéciale pour éclipse SOLAIRE : noir brillant bordé blanc. */
+.event-stats__row--eclipse-solar .event-stats__dot {
+  background: #000;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(255, 255, 255, 0.4);
+}
+/* Éclipse LUNAIRE : pastille orange-rouge cohérente avec EVENT_TYPES.accent */
+.event-stats__row--eclipse-lunar .event-stats__dot {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+.event-stats__name  { font-size: var(--font-size-2xs); color: var(--color-text-muted); }
+.event-stats__count { font-family: var(--font-family-mono); font-size: var(--font-size-sm); font-weight: 700; color: var(--color-text-primary); font-variant-numeric: tabular-nums; min-width: 1.8em; text-align: right; }
+/* .event-stats__last retiré au LOT 5D */
+
+.event-stats__tip {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  max-width: 280px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg-panel-solid);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xs);
+  line-height: var(--line-height-base);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+  z-index: var(--z-panel);
+  white-space: normal;
+}
+.event-stats__row:hover .event-stats__tip,
+.event-stats__row:focus .event-stats__tip { opacity: 1; }
+
+/* ============ HudToggle (LOT 5C — bottom-left + opacity fade) ============ */
+.hud-toggle {
+  position: fixed;
+  z-index: calc(var(--z-toast) + 1);
+  bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  left:   max(var(--space-4), env(safe-area-inset-left));
+  top: auto; right: auto;
+  width: var(--tap-target-min);
+  height: var(--tap-target-min);
+  border-radius: 50%;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  backdrop-filter: blur(8px);
+  transition: opacity var(--motion-base) var(--easing-standard),
+              border-color var(--motion-fast) var(--easing-standard);
+}
+.hud-toggle:hover { border-color: var(--color-border-strong); }
+/* HUD masqué : bouton presque transparent, révélé au survol/focus. */
+.app.is-hud-hidden .hud-toggle { opacity: 0.2; }
+.app.is-hud-hidden .hud-toggle:hover,
+.app.is-hud-hidden .hud-toggle:focus-visible { opacity: 1; }
+
+/* État "HUD masqué" : on cache toutes les zones HUD sauf le bouton. */
+.app.is-hud-hidden .hud,
+.app.is-hud-hidden .event-stats,
+.app.is-hud-hidden .compare-menu,
+.app.is-hud-hidden .comparator-btn,
+.app.is-hud-hidden .body-card,
+.app.is-hud-hidden .compare-overlay { display: none !important; }
+
+/* ============ EventStatsTrigger (LOT 5B) ============ */
+.evt-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.evt-trigger__count {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  min-width: 1.2em;
+  text-align: right;
+}
+
+/* ============ SolarFlareAlert ============ */
+.flare-flash { position: fixed; inset: 0; z-index: var(--z-toast); background: radial-gradient(circle at center, rgba(255, 184, 107, 0.55), rgba(255, 107, 107, 0.15) 60%, transparent 80%); opacity: 0; pointer-events: none; mix-blend-mode: screen; }
+.flare-flash.is-active { animation: flareFlash 1.6s var(--easing-standard) forwards; }
+@keyframes flareFlash { 0% { opacity: 0; } 15% { opacity: 0.9; } 100% { opacity: 0; } }
+.flare-banner { position: fixed; z-index: var(--z-toast); top: max(var(--space-4), env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); background: rgba(20, 8, 8, 0.92); border: 1px solid var(--color-danger); border-radius: var(--radius-md); box-shadow: 0 0 24px rgba(255, 107, 107, calc(0.4 * var(--flare-intensity, 1))); color: var(--color-text-primary); font-size: var(--font-size-sm); font-weight: 600; max-width: 92vw; pointer-events: none; }
+.flare-banner[hidden] { display: none; }
+.flare-banner__icon { color: var(--color-accent-hot); font-size: var(--font-size-lg); }
+@media (prefers-reduced-motion: reduce) { .flare-flash.is-active { animation: none; opacity: 0; } }
+
+/* ============ Tablette ============ */
+@media (min-width: 768px) {
+  .time-controls { gap: var(--space-3); padding: var(--space-3); }
+  .tc__btn { font-size: var(--font-size-md); padding: 0 var(--space-4); }
+  .time-status__year { font-size: 1.75rem; }
+  .body-menu { max-width: 260px; }
+  .body-card { max-width: 360px; }
+  .body-card__grid dd, .compare-row__value { font-size: var(--font-size-sm); }
+  .cm__label { font-size: var(--font-size-xs); }
+}
+
+/* ============ Desktop ============ */
+@media (min-width: 1024px) {
+  .body-menu { max-height: 80dvh; }
+  .body-card { max-width: 400px; max-height: 80dvh; }
+}

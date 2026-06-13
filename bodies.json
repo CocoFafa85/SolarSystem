@@ -1,0 +1,272 @@
+{
+  "epoch": "J2000.0",
+  "constants": {
+    "KM_PER_AU": 149597870.7
+  },
+  "bodies": {
+    "sun": {
+      "name": "Soleil",
+      "type": "star",
+      "physical": {
+        "mass": 1.9885e30,
+        "radius_au": 0.0046524,
+        "rotation_period_hours": 609.12,
+        "obliquity_degrees": 7.25
+      },
+      "orbital": null
+    },
+    "mercury": {
+      "name": "Mercure",
+      "type": "planet",
+      "physical": {
+        "mass": 3.3011e23,
+        "radius_au": 0.0000163,
+        "rotation_period_hours": 1407.6,
+        "obliquity_degrees": 0.034
+      },
+      "orbital": {
+        "semi_major_axis_au": 0.38709893,
+        "eccentricity": 0.20563069,
+        "inclination_degrees": 7.00487,
+        "longitude_ascending_node_degrees": 48.33167,
+        "argument_perihelion_degrees": 29.12478,
+        "mean_anomaly_epoch_degrees": 174.796
+      }
+    },
+    "venus": {
+      "name": "Vénus",
+      "type": "planet",
+      "physical": {
+        "mass": 4.8675e24,
+        "radius_au": 0.0000404,
+        "rotation_period_hours": -5832.6,
+        "obliquity_degrees": 177.3
+      },
+      "orbital": {
+        "semi_major_axis_au": 0.72333199,
+        "eccentricity": 0.00677323,
+        "inclination_degrees": 3.39471,
+        "longitude_ascending_node_degrees": 76.68069,
+        "argument_perihelion_degrees": 54.85229,
+        "mean_anomaly_epoch_degrees": 50.115
+      }
+    },
+    "earth": {
+      "name": "Terre",
+      "type": "planet",
+      "physical": {
+        "mass": 5.9722e24,
+        "radius_au": 0.00004263,
+        "rotation_period_hours": 23.934,
+        "obliquity_degrees": 23.44
+      },
+      "orbital": {
+        "semi_major_axis_au": 1.00000261,
+        "eccentricity": 0.01671123,
+        "inclination_degrees": -0.00001531,
+        "longitude_ascending_node_degrees": -11.26064,
+        "argument_perihelion_degrees": 102.93768,
+        "mean_anomaly_epoch_degrees": 8.78753
+      }
+    },
+    "moon": {
+      "name": "Lune",
+      "type": "satellite",
+      "parent": "earth",
+      "physical": {
+        "mass": 7.342e22,
+        "radius_au": 0.00001161,
+        "rotation_period_hours": 655.72,
+        "obliquity_degrees": 6.68
+      },
+      "orbital": {
+        "semi_major_axis_au": 0.00257,
+        "eccentricity": 0.0549,
+        "inclination_degrees": 5.145,
+        "longitude_ascending_node_degrees": 125.08,
+        "argument_perihelion_degrees": 318.15,
+        "mean_anomaly_epoch_degrees": 135.27
+      }
+    },
+    "mars": {
+      "name": "Mars",
+      "type": "planet",
+      "physical": {
+        "mass": 6.4171e23,
+        "radius_au": 0.0000227,
+        "rotation_period_hours": 24.623,
+        "obliquity_degrees": 25.19
+      },
+      "orbital": {
+        "semi_major_axis_au": 1.52371034,
+        "eccentricity": 0.0933941,
+        "inclination_degrees": 1.84969142,
+        "longitude_ascending_node_degrees": 49.55859,
+        "argument_perihelion_degrees": 286.502,
+        "mean_anomaly_epoch_degrees": 19.38640
+      }
+    },
+    "jupiter": {
+      "name": "Jupiter",
+      "type": "planet",
+      "physical": {
+        "mass": 1.8982e27,
+        "radius_au": 0.0004673,
+        "rotation_period_hours": 9.925,
+        "obliquity_degrees": 3.13
+      },
+      "orbital": {
+        "semi_major_axis_au": 5.202887,
+        "eccentricity": 0.04838624,
+        "inclination_degrees": 1.304396,
+        "longitude_ascending_node_degrees": 100.4739,
+        "argument_perihelion_degrees": -85.8023,
+        "mean_anomaly_epoch_degrees": 19.350
+      }
+    },
+    "saturn": {
+      "name": "Saturne",
+      "type": "planet",
+      "physical": {
+        "mass": 5.6834e26,
+        "radius_au": 0.0003892,
+        "rotation_period_hours": 10.656,
+        "obliquity_degrees": 26.73
+      },
+      "orbital": {
+        "semi_major_axis_au": 9.536676,
+        "eccentricity": 0.0541506,
+        "inclination_degrees": 2.485991,
+        "longitude_ascending_node_degrees": 113.715,
+        "argument_perihelion_degrees": -21.2831,
+        "mean_anomaly_epoch_degrees": 317.020
+      }
+    },
+    "uranus": {
+      "name": "Uranus",
+      "type": "planet",
+      "physical": {
+        "mass": 8.6810e25,
+        "radius_au": 0.0001693,
+        "rotation_period_hours": -17.24,
+        "obliquity_degrees": 97.77
+      },
+      "orbital": {
+        "semi_major_axis_au": 19.189165,
+        "eccentricity": 0.04725744,
+        "inclination_degrees": 0.772637,
+        "longitude_ascending_node_degrees": 74.22988,
+        "argument_perihelion_degrees": 96.73436,
+        "mean_anomaly_epoch_degrees": 142.590
+      }
+    },
+    "neptune": {
+      "name": "Neptune",
+      "type": "planet",
+      "physical": {
+        "mass": 1.0241e26,
+        "radius_au": 0.0001643,
+        "rotation_period_hours": 16.11,
+        "obliquity_degrees": 28.32
+      },
+      "orbital": {
+        "semi_major_axis_au": 30.069923,
+        "eccentricity": 0.00858587,
+        "inclination_degrees": 1.770043,
+        "longitude_ascending_node_degrees": 131.72169,
+        "argument_perihelion_degrees": -86.75034,
+        "mean_anomaly_epoch_degrees": 260.247
+      }
+    },
+    "pluto": {
+      "name": "Pluton",
+      "type": "dwarf_planet",
+      "physical": {
+        "mass": 1.303e22,
+        "radius_au": 7.943e-6,
+        "rotation_period_hours": -153.2928,
+        "obliquity_degrees": 122.53
+      },
+      "orbital": {
+        "semi_major_axis_au": 39.482117,
+        "eccentricity": 0.24880766,
+        "inclination_degrees": 17.14001,
+        "longitude_ascending_node_degrees": 110.30347,
+        "argument_perihelion_degrees": 113.76329,
+        "mean_anomaly_epoch_degrees": 14.53247
+      }
+    },
+    "ceres": {
+      "name": "Cérès",
+      "type": "dwarf_planet",
+      "physical": {
+        "mass": 9.3835e20,
+        "radius_au": 3.140e-6,
+        "rotation_period_hours": 9.07417,
+        "obliquity_degrees": 4.0
+      },
+      "orbital": {
+        "semi_major_axis_au": 2.7691,
+        "eccentricity": 0.0760,
+        "inclination_degrees": 10.594,
+        "longitude_ascending_node_degrees": 80.494,
+        "argument_perihelion_degrees": 73.124,
+        "mean_anomaly_epoch_degrees": 287.97
+      }
+    },
+    "haumea": {
+      "name": "Hauméa",
+      "type": "dwarf_planet",
+      "physical": {
+        "mass": 4.006e21,
+        "radius_au": 5.214e-6,
+        "rotation_period_hours": 3.9155,
+        "obliquity_degrees": 126.0
+      },
+      "orbital": {
+        "semi_major_axis_au": 43.218,
+        "eccentricity": 0.19642,
+        "inclination_degrees": 28.213,
+        "longitude_ascending_node_degrees": 121.79,
+        "argument_perihelion_degrees": 240.20,
+        "mean_anomaly_epoch_degrees": 205.0
+      }
+    },
+    "makemake": {
+      "name": "Makémaké",
+      "type": "dwarf_planet",
+      "physical": {
+        "mass": 3.1e21,
+        "radius_au": 4.779e-6,
+        "rotation_period_hours": 22.83,
+        "obliquity_degrees": 0.0
+      },
+      "orbital": {
+        "semi_major_axis_au": 45.430,
+        "eccentricity": 0.15586,
+        "inclination_degrees": 28.999,
+        "longitude_ascending_node_degrees": 79.382,
+        "argument_perihelion_degrees": 296.503,
+        "mean_anomaly_epoch_degrees": 85.13
+      }
+    },
+    "eris": {
+      "name": "Éris",
+      "type": "dwarf_planet",
+      "physical": {
+        "mass": 1.6466e22,
+        "radius_au": 7.774e-6,
+        "rotation_period_hours": 25.9,
+        "obliquity_degrees": 78.0
+      },
+      "orbital": {
+        "semi_major_axis_au": 67.864,
+        "eccentricity": 0.43607,
+        "inclination_degrees": 44.040,
+        "longitude_ascending_node_degrees": 35.951,
+        "argument_perihelion_degrees": 151.639,
+        "mean_anomaly_epoch_degrees": 204.16
+      }
+    }
+  }
+}

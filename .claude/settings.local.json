@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --test tests/eclipses.calibration.test.js)",
+      "Bash(node tests/_probe.mjs)",
+      "Bash(node --test tests/events.credibility.test.js tests/eclipses.calibration.test.js)",
+      "Bash(npm test *)",
+      "Bash(ls \"C:/Users/cocof/.claude/\" 2>&1)",
+      "Bash(npm list *)",
+      "Bash(npm install *)",
+      "Bash(node -e ' *)",
+      "Bash(npx playwright *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\cocof\\\\.claude\\\\reference\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -First 10)",
+      "Bash(node --test tests/ceres.identity.test.js)",
+      "Bash(node --test tests/timeSpeed.cap.test.js)"
+    ]
+  }
+}

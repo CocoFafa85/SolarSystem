@@ -1,0 +1,58 @@
+/* Layout HUD — mobile-first STRICT.
+   Base : 375px portrait. Le canvas occupe 100vh ; les zones HUD sont superposées.
+   Aucun composant n'est défini ici ; ce fichier ne pose que la grille des slots. */
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100dvh; /* dvh = tient compte des barres mobiles dynamiques */
+}
+
+#solarCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-canvas);
+}
+
+/* --- Slots HUD : conteneurs vides qui seront remplis au LOT 2+ --- */
+.hud {
+  position: fixed;
+  z-index: var(--z-hud);
+  pointer-events: none; /* le HUD laisse passer les gestes vers le canvas... */
+}
+.hud > * { pointer-events: auto; } /* ...sauf sur ses enfants concrets */
+
+.hud--top    { top: max(var(--space-2), env(safe-area-inset-top));    left: 0; right: 0; display: flex; justify-content: center; }
+.hud--bottom { bottom: max(var(--space-2), env(safe-area-inset-bottom)); left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+/* LOT 5D — ancrage à 25 vh pour aérer le haut de l'écran ; bottom: auto pour
+   que le déroulé d'accordéon pousse vers le bas sans déplacer l'ancre. */
+.hud--left   { top: 25vh; bottom: auto; left: max(var(--space-2), env(safe-area-inset-left));  display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); max-height: 70vh; }
+/* LOT 7B — boutons collés en haut, BodyCard centré entre boutons et bas
+   grâce à `margin-top: auto; margin-bottom: auto` (cf. components.css).
+   `justify-content: flex-start` indispensable pour ne pas dérouter le margin auto. */
+.hud--right  { top: max(var(--space-2), env(safe-area-inset-top)); bottom: 0; right: max(var(--space-2), env(safe-area-inset-right)); display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; gap: var(--space-2); pointer-events: none; }
+.hud--right > * { pointer-events: auto; }
+
+/* --- Conteneurs panneaux (placeholder, vide jusqu'au LOT 2) --- */
+.panel {
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(8px);
+  color: var(--color-text-primary);
+  padding: var(--space-3);
+  font-size: var(--font-size-xs);
+}
+
+/* --- Tablette --- */
+@media (min-width: 768px) {
+  .panel { padding: var(--space-4); font-size: var(--font-size-sm); }
+}
+
+/* --- Desktop --- */
+@media (min-width: 1024px) {
+  .hud--top, .hud--bottom { justify-content: flex-start; padding-inline: var(--space-6); }
+}

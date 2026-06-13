@@ -1,0 +1,97 @@
+/* Curseur custom (LOT 10 → migré DOM overlay au LOT 11).
+   - .cursor-custom est ajouté à <body> par CursorCustom.js.
+   - Le HTML reçoit la classe .has-custom-cursor qui masque le curseur natif
+     UNIQUEMENT sur les pointers fins (souris / trackpad).
+   - Mobile (pointer:coarse) : le composant ne se monte pas, curseur natif intact.
+   - prefers-reduced-motion : pas de lerp côté JS (ring colle au dot). */
+
+.has-custom-cursor,
+.has-custom-cursor * { cursor: none !important; }
+
+/* Réautoriser le curseur natif pour les champs texte (texte clignotant). */
+.has-custom-cursor input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
+.has-custom-cursor textarea {
+  cursor: text !important;
+}
+
+.cursor-custom {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999; /* au-dessus de la modale d'accueil (z-modal = 30) */
+  opacity: 0;
+  transition: opacity var(--motion-base) var(--easing-standard);
+}
+.cursor-custom.is-visible { opacity: 1; }
+
+.cursor-custom__dot,
+.cursor-custom__ring {
+  position: absolute;
+  top: 0; left: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* Dot central — ambre, ×2 du LOT 10 (était ~2.4 px de rayon). */
+.cursor-custom__dot {
+  width: 10px; height: 10px;
+  background: var(--color-accent-hot, #ffb86b);
+  box-shadow: 0 0 8px rgba(255, 184, 107, 0.55);
+}
+
+/* Ring orbital — violet (orbite), ×3 (~48 px). */
+.cursor-custom__ring {
+  width: 48px; height: 48px;
+  border: 1.5px solid #b478ff;
+  box-shadow: 0 0 12px rgba(180, 120, 255, 0.22);
+  opacity: 0.9;
+  transition: width var(--motion-fast) var(--easing-standard),
+              height var(--motion-fast) var(--easing-standard),
+              border-color var(--motion-fast) var(--easing-standard),
+              opacity var(--motion-fast) var(--easing-standard);
+}
+
+/* Wrapper qui tourne autour du centre du ring. */
+.cursor-custom__earth-orbit {
+  position: absolute;
+  inset: 0;
+  animation: cursor-earth-orbit 4s linear infinite;
+  will-change: transform;
+}
+
+/* Petite Terre — disque bleu/vert posé au sommet de l'orbite. */
+.cursor-custom__earth {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%,
+              #9ecbff 0%, #3a82e6 45%, #0e3a78 100%);
+  box-shadow: 0 0 4px rgba(106, 168, 255, 0.7);
+  transform: translateX(-50%);
+}
+
+@keyframes cursor-earth-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-custom__earth-orbit { animation: none; }
+}
+
+/* Pressing : ring rétrécit, dot s'agrandit légèrement (feedback de clic). */
+.cursor-custom.is-pressing .cursor-custom__ring {
+  width: 36px; height: 36px;
+  border-color: var(--color-accent-hot, #ffb86b);
+  opacity: 1;
+}
+.cursor-custom.is-pressing .cursor-custom__dot {
+  background: #ffffff;
+}
+
+/* Mobile : sécurité supplémentaire si le composant n'a pas pu monter. */
+@media (pointer: coarse) {
+  .cursor-custom { display: none; }
+  .has-custom-cursor, .has-custom-cursor * { cursor: auto !important; }
+}

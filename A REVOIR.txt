@@ -1,0 +1,4 @@
+diametre soleil =  1 392 680 km = 0.00928453 UA
+distance soleil-mercure = 46 000 000 km = 0.306 UA = 33 Soleils
+distance soleil-terre = 150 000 000 km = 1 UA = 107.7 Soleils
+diamètre Terre = 12 756 km = 0,00008504 UA

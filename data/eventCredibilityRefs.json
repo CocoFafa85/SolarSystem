@@ -1,0 +1,24 @@
+{
+  "$comment": "LOT 9 (révisé) — Bornes attendues sur 25 ans depuis J2000. 'real' = catalogue NASA/NOAA observable, 'model' = ce que la simulation produit après calibration. Pour les éruptions solaires, 'real' désigne les éruptions MAJEURES (CME planétaires, 1/cycle Schwabe), pas le compte continu X+M5+.",
+  "window": { "startEpoch": "J2000.0", "years": 25 },
+  "solarEclipse": {
+    "real": { "min": 55, "max": 80 },
+    "model": { "min": 55, "max": 70 },
+    "source": "NASA Eclipse Catalog 2000-2025 : ~60-75 éclipses solaires (partielle/annulaire/totale confondues)"
+  },
+  "lunarEclipse": {
+    "real": { "min": 50, "max": 100 },
+    "model": { "min": 50, "max": 75 },
+    "source": "NASA Eclipse Catalog 2000-2025 : ~60-85 éclipses lunaires (penumbrale/partielle/totale confondues). Le modèle Kepler J2000 + debounce 'none→other' compte 1 transition par lunation d'alignement nodal, cohérent avec la sémantique 1 événement = 1 ligne de catalogue."
+  },
+  "superMoon": {
+    "real": { "min": 70, "max": 130 },
+    "model": { "min": 80, "max": 120 },
+    "source": "Pleine lune dans 90% de la plus courte distance Terre-Lune : ~3-5/an, soit 75-125 sur 25 ans"
+  },
+  "solarFlare": {
+    "real": { "min": 2, "max": 6 },
+    "model": { "min": 1, "max": 8 },
+    "source": "Éruption MAJEURE event-driven (1 par cycle solaire ≈ 11 ans, soit 2-3 par fenêtre de 25 ans). Ne représente PAS le compte continu des classes X+M5+ (NOAA SWPC ≈ 120/25y) — c'est l'événement scénique de la simulation."
+  }
+}
