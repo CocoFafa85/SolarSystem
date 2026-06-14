@@ -270,26 +270,27 @@
 }
 .body-menu__slot:empty { display: none; }
 
+/* LOT 16 patch — sections toujours visibles, transition légère sans masquer. */
 .body-menu__section {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   min-width: 0;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 250ms var(--easing-standard),
-              transform 250ms var(--easing-standard);
+  opacity: 1;
+  background: rgba(10, 25, 40, 0.55);
+  border: 1px solid rgba(200, 212, 228, 0.10);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1);
 }
 .body-menu__section.is-entering {
-  opacity: 1;
-  transform: translateY(0);
+  animation: bodyMenuFadeIn 220ms var(--easing-standard);
 }
-
+@keyframes bodyMenuFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .body-menu__section,
-  .body-menu__section.is-entering,
-  .body-menu__slot { transition: none; }
-  .body-menu__section { opacity: 1; transform: none; }
+  .body-menu__section.is-entering { animation: none; }
 }
 
 /* Legacy summary conservé (unused désormais) — bloc supprimé. */
@@ -913,20 +914,19 @@
   50%      { opacity: 0.3; }
 }
 
-/* ---- D2.1 Glass panels sur toutes les modales ----------------------------
-   Spécificité ≥ 2 classes pour battre welcome.css (importé après).
-   LOT 16 #1 — Welcome + Compare passent palette HoloCard bleu marine + doré.
-   Les autres modales (event-stats, glossary, body-card) gardent la teinte sombre. */
+/* ---- D2.1 Glass panels — LOT 16 patch refonte sobre -----------------------
+   Palette restreinte : #240985 (violet), #090b85 (bleu sombre), #092685 (bleu profond), #c8d4e4 (clair).
+   Retiré : conic gradient rotatif, noise overlay, glitch — au profit d'une lisibilité maximum. */
 .welcome .welcome__card,
 .compare-overlay__modal {
   position: relative;
-  background: linear-gradient(135deg,
-    rgba(10, 25, 40, 0.92) 0%,
-    rgba(26, 58, 110, 0.85) 50%,
-    rgba(10, 25, 40, 0.92) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.20);
+  background: linear-gradient(135deg, #090b85 0%, #092685 55%, #240985 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 212, 228, 0.20);
+  border-radius: var(--radius-lg);
+  color: #c8d4e4;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 .event-stats--modal,
 .glossary-overlay__modal,
@@ -941,39 +941,11 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ---- D2.2 Conic gradient border rotatif — Welcome + Compare uniquement --- */
-.welcome .welcome__card,
-.compare-overlay__modal {
-  border-radius: var(--radius-lg);
-  overflow: visible;
-}
+/* LOT 16 patch — conic rotatif + noise SVG overlay supprimés sur welcome/compare. */
 .welcome .welcome__card::before,
-.compare-overlay__modal::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index: -1;
-  background: conic-gradient(from var(--border-angle),
-    var(--color-marine-light),
-    var(--color-gold),
-    var(--color-marine-light));
-  animation: rotateBorder 8s linear infinite;
-}
-
-/* ---- D2.3 Noise SVG overlay — Welcome + Compare uniquement -------------- */
 .welcome .welcome__card::after,
-.compare-overlay__modal::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
-  animation: noiseShift 0.5s steps(5) infinite;
-}
+.compare-overlay__modal::before,
+.compare-overlay__modal::after { content: none !important; }
 
 /* ════════════════════════════════════════════════════════════════════════════
    D3 — HUD : glass + glow + Orbitron labels + active state
@@ -1120,79 +1092,43 @@
   100% { transform: skew(0.3deg); }
 }
 
+/* LOT 16 patch — titre sobre, intégré au background, sans glitch. */
 .welcome .welcome__title {
   font-family: var(--font-orbitron);
-  font-size: 2.5rem;
-  color: var(--color-marine-light);
+  font-size: 2.2rem;
+  color: #c8d4e4;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-shadow:
-    0 0 10px rgba(74, 122, 184, 0.8),
-    2px 2px 0 rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.10em;
+  text-shadow: 0 0 12px rgba(200, 212, 228, 0.35), 0 2px 4px rgba(0, 0, 0, 0.4);
   position: relative;
-  animation: glitchSkew 3s infinite linear alternate-reverse;
+  animation: none;
 }
 .welcome .welcome__title::before,
-.welcome .welcome__title::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--color-bg-primary);
-  overflow: hidden;
-}
-.welcome .welcome__title::before {
-  left: 2px;
-  text-shadow: -1px 0 var(--color-gold-soft);
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitchAnim 5s infinite linear alternate-reverse;
-}
-.welcome .welcome__title::after {
-  left: -2px;
-  text-shadow: -1px 0 var(--color-marine-light);
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitchAnim2 5s infinite linear alternate-reverse;
-}
+.welcome .welcome__title::after { content: none !important; }
 
-/* Scanline overlay — WelcomeModal body + CompareOverlay list */
-.welcome .welcome__body,
-.compare-overlay__list { position: relative; }
+/* Scanline overlay retiré — modale sobre. */
 .welcome .welcome__body::before,
-.compare-overlay__list::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(transparent 50%, rgba(212, 175, 55, 0.05) 50%);
-  background-size: 100% 4px;
-  z-index: 1;
-}
+.compare-overlay__list::before { content: none !important; }
 
-/* Pulse text — CTAs primaires */
-@keyframes pulseText {
-  0%, 100% { opacity: 0.6; }
-  50%      { opacity: 1; }
-}
-/* LOT 16 #1 — CTAs primaires palette HoloCard : doré sur marine. */
+/* CTAs primaires — sobre, clair sur fond marine profond. */
 .welcome .welcome__cta,
 .mail-reveal .mail-reveal__copy {
   background: transparent;
-  color: var(--color-gold);
-  border: 1px solid rgba(212, 175, 55, 0.40);
-  text-shadow: 0 0 6px rgba(212, 175, 55, 0.45);
-  animation: pulseText 2s ease-in-out infinite;
+  color: #c8d4e4;
+  border: 1px solid rgba(200, 212, 228, 0.45);
+  text-shadow: none;
+  animation: none;
   transition:
     background var(--motion-fast) var(--easing-standard),
     color var(--motion-fast) var(--easing-standard),
-    box-shadow var(--motion-fast) var(--easing-standard);
+    border-color var(--motion-fast) var(--easing-standard);
 }
 .welcome .welcome__cta:hover,
 .mail-reveal .mail-reveal__copy:hover {
-  background: var(--color-gold);
-  color: var(--color-marine-deep);
-  box-shadow: 0 0 15px var(--color-gold);
+  background: #c8d4e4;
+  color: #090b85;
+  border-color: #c8d4e4;
+  box-shadow: 0 0 12px rgba(200, 212, 228, 0.4);
   text-shadow: none;
   transform: none;
 }
@@ -1206,22 +1142,26 @@
   100% { opacity: 0.8; }
 }
 
+/* LOT 16 patch — backdrop sobre, sans pulseGlow ni radial mouse-aware. */
 .welcome .welcome__backdrop {
-  background: radial-gradient(
-    circle at
-      calc(50% + (var(--mouse-x, 0) * -50px))
-      calc(50% + (var(--mouse-y, 0) * -50px)),
-    rgba(74, 122, 184, 0.22) 0%,
-    var(--color-marine-deep) 60%);
-  animation: pulseGlow 8s ease-in-out infinite alternate;
+  background: rgba(9, 11, 30, 0.72);
+  animation: none;
 }
 
-.compare-overlay__modal:hover {
-  box-shadow:
-    0 0 30px rgba(74, 122, 184, 0.30),
-    0 0 60px rgba(74, 122, 184, 0.10),
-    0 0 120px rgba(212, 175, 55, 0.05);
-}
+/* LOT 16 patch — pas d'aura colorée au hover. */
+.compare-overlay__modal:hover { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
+
+/* LOT 16 patch — body + titre + textes secondaires en clair pour contraste. */
+.welcome .welcome__body,
+.welcome .welcome__body p,
+.compare-overlay__modal,
+.compare-overlay__title,
+.compare-ratio,
+.compare-row__name,
+.compare-row__value,
+.compare-facts__item { color: #c8d4e4; }
+.welcome .welcome__body strong { color: #ffffff; }
+.compare-overlay__title { text-shadow: 0 0 10px rgba(200, 212, 228, 0.30); }
 
 /* ════════════════════════════════════════════════════════════════════════════
    LOT 16 #2 — Uniformisation HUD : time-status hover doré + Astres/Glossaire
