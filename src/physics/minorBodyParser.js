@@ -39,6 +39,7 @@ export function normalizeMinorBody(id, raw) {
     id,
     name: raw.name ?? id,
     type: raw.type ?? 'asteroid',
+    discoveredYear: raw.discoveredYear ?? null,
     physical: {
       massKg: normalizeNullable(raw.physical?.mass),
       radiusAu: normalizeNullable(raw.physical?.radius_au),

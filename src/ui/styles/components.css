@@ -413,6 +413,7 @@
 .body-card__close:hover { background: rgba(255, 255, 255, 0.06); color: var(--color-text-primary); }
 /* LOT 6 — emphase sur la description (lisibilité du panneau d'info). */
 .body-card__desc { color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: var(--line-height-base); margin-bottom: var(--space-3); }
+.body-card__discovery { display: block; font-size: 0.85em; opacity: 0.75; font-style: italic; margin-top: -0.25rem; margin-bottom: var(--space-3); color: var(--color-text-muted); }
 .body-card__grid { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-3); row-gap: var(--space-2); margin: 0; }
 .body-card__grid dt { color: var(--color-text-dim); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: 0.06em; }
 .body-card__grid dd { margin: 0; font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }

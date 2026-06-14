@@ -92,7 +92,10 @@
     "obliquity": "Obliquité",
     "orbitalPeriod": "Période orbitale",
     "orbitalSpeed": "Vitesse orbitale",
-    "temperature": "Température"
+    "temperature": "Température",
+    "discoveredIn": "Découverte en {year}",
+    "discoveredInAntiquity": "Connue depuis l'Antiquité",
+    "dwarfClassifiedIn": "Reclassée planète naine en {year}"
   },
   "compare": {
     "menuLabel": "Boutons de tri",

@@ -11,6 +11,7 @@ const RAW_COMETS = Object.freeze({
   halley: {
     name: '1P/Halley',
     type: 'comet',
+    discoveredYear: 1758,
     physical: { mass: null, radius_au: 3.7e-8, rotation_period_hours: null, obliquity_degrees: 0 },
     orbital: {
       semi_major_axis_au: 17.834,
@@ -24,6 +25,7 @@ const RAW_COMETS = Object.freeze({
   encke: {
     name: 'Encke',
     type: 'comet',
+    discoveredYear: 1786,
     physical: { mass: null, radius_au: 1.6e-8, rotation_period_hours: null, obliquity_degrees: 0 },
     orbital: {
       semi_major_axis_au: 2.2153,
@@ -37,6 +39,7 @@ const RAW_COMETS = Object.freeze({
   tempelTuttle: {
     name: 'Tempel-Tuttle',
     type: 'comet',
+    discoveredYear: 1865,
     physical: { mass: null, radius_au: 1.2e-8, rotation_period_hours: null, obliquity_degrees: 0 },
     orbital: {
       semi_major_axis_au: 10.337,
@@ -50,6 +53,7 @@ const RAW_COMETS = Object.freeze({
   borrelly: {
     name: 'Borrelly',
     type: 'comet',
+    discoveredYear: 1904,
     physical: { mass: null, radius_au: 1.7e-8, rotation_period_hours: null, obliquity_degrees: 0 },
     orbital: {
       semi_major_axis_au: 3.6094,
@@ -63,6 +67,7 @@ const RAW_COMETS = Object.freeze({
   haleBopp: {
     name: 'Hale-Bopp',
     type: 'comet',
+    discoveredYear: 1995,
     physical: { mass: null, radius_au: 2.0e-7, rotation_period_hours: null, obliquity_degrees: 0 },
     orbital: {
       semi_major_axis_au: 186.0,
@@ -78,6 +83,7 @@ const RAW_COMETS = Object.freeze({
   neowise: {
     name: 'Neowise',
     type: 'comet',
+    discoveredYear: 2020,
     physical: { mass: null, radius_au: 3.3e-8, rotation_period_hours: null, obliquity_degrees: 0 },
     orbital: {
       semi_major_axis_au: 358.0,

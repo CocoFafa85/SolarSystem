@@ -43,6 +43,8 @@ function buildVm(id, body, display) {
     accent: d.accent || '#ffffff',
     descKey: d.descKey || null,
     badgeKey: d.badgeKey || null,
+    discoveredYear: d.discoveredYear ?? body?.discoveredYear ?? null,
+    dwarfClassifiedYear: d.dwarfClassifiedYear ?? null,
     physical: {
       massKg: phys.mass,
       radiusAu: phys.radius_au,
