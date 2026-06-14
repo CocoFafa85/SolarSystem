@@ -8,6 +8,14 @@
   --color-neon-violet:  #bc13fe;
   --color-neon-green:   #39ff14;
 
+  /* --- Palette LOT 16 — HoloCard bleu marine + doré (modales) --- */
+  --color-marine-deep:  #0a1928;
+  --color-marine:       #1a3a6e;
+  --color-marine-light: #4a7ab8;
+  --color-gold:         #d4af37;
+  --color-gold-soft:    #f0d674;
+  --color-text-on-marine: #c8d4e4;
+
   --color-bg-deep:      #060610;
   --color-bg-primary:   #0a0a0f;
   --color-bg-secondary: #12121a;

@@ -853,9 +853,20 @@
 }
 
 /* ---- D2.1 Glass panels sur toutes les modales ----------------------------
-   Spécificité ≥ 2 classes pour battre welcome.css (importé après). */
+   Spécificité ≥ 2 classes pour battre welcome.css (importé après).
+   LOT 16 #1 — Welcome + Compare passent palette HoloCard bleu marine + doré.
+   Les autres modales (event-stats, glossary, body-card) gardent la teinte sombre. */
 .welcome .welcome__card,
-.compare-overlay__modal,
+.compare-overlay__modal {
+  position: relative;
+  background: linear-gradient(135deg,
+    rgba(10, 25, 40, 0.92) 0%,
+    rgba(26, 58, 110, 0.85) 50%,
+    rgba(10, 25, 40, 0.92) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.20);
+}
 .event-stats--modal,
 .glossary-overlay__modal,
 .body-card {
@@ -883,11 +894,10 @@
   border-radius: inherit;
   z-index: -1;
   background: conic-gradient(from var(--border-angle),
-    var(--color-neon-cyan),
-    var(--color-neon-violet),
-    var(--color-neon-magenta),
-    var(--color-neon-cyan));
-  animation: rotateBorder 4s linear infinite;
+    var(--color-marine-light),
+    var(--color-gold),
+    var(--color-marine-light));
+  animation: rotateBorder 8s linear infinite;
 }
 
 /* ---- D2.3 Noise SVG overlay — Welcome + Compare uniquement -------------- */
@@ -990,26 +1000,13 @@
 /* Status dot blink — préserve --accent par événement (LOT 5C). */
 .event-stats__dot { animation: statusBlink 2s ease-in-out infinite; }
 
-/* ---- ComparatorButton signature : conic border rotatif lent (6s) -------- */
+/* ---- ComparatorButton — LOT 16 #2 : conic rotatif retiré, glass + hover cyan conservés. */
 .comparator-btn { position: relative; background: var(--color-bg-secondary); overflow: visible; }
-.comparator-btn::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index: -1;
-  background: conic-gradient(from var(--border-angle),
-    var(--color-neon-cyan),
-    var(--color-neon-violet),
-    var(--color-neon-cyan));
-  animation: rotateBorder 6s linear infinite;
-}
 
 /* ---- reduced-motion : palette conservée, animations off ----------------- */
 @media (prefers-reduced-motion: reduce) {
   .welcome .welcome__card::before,
-  .compare-overlay__modal::before,
-  .comparator-btn::before { animation: none; }
+  .compare-overlay__modal::before { animation: none; }
   .welcome .welcome__card::after,
   .compare-overlay__modal::after { animation: none; }
   .event-stats__dot { animation: none; }
@@ -1065,11 +1062,11 @@
 .welcome .welcome__title {
   font-family: var(--font-orbitron);
   font-size: 2.5rem;
-  color: var(--color-neon-cyan);
+  color: var(--color-marine-light);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   text-shadow:
-    0 0 10px rgba(0, 243, 255, 0.8),
+    0 0 10px rgba(74, 122, 184, 0.8),
     2px 2px 0 rgba(0, 0, 0, 0.5);
   position: relative;
   animation: glitchSkew 3s infinite linear alternate-reverse;
@@ -1087,13 +1084,13 @@
 }
 .welcome .welcome__title::before {
   left: 2px;
-  text-shadow: -1px 0 var(--color-neon-magenta);
+  text-shadow: -1px 0 var(--color-gold-soft);
   clip: rect(44px, 450px, 56px, 0);
   animation: glitchAnim 5s infinite linear alternate-reverse;
 }
 .welcome .welcome__title::after {
   left: -2px;
-  text-shadow: -1px 0 var(--color-neon-cyan);
+  text-shadow: -1px 0 var(--color-marine-light);
   clip: rect(44px, 450px, 56px, 0);
   animation: glitchAnim2 5s infinite linear alternate-reverse;
 }
@@ -1107,19 +1104,36 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(transparent 50%, rgba(255, 0, 128, 0.06) 50%);
+  background: linear-gradient(transparent 50%, rgba(212, 175, 55, 0.05) 50%);
   background-size: 100% 4px;
   z-index: 1;
 }
 
 /* Pulse text — CTAs primaires */
 @keyframes pulseText {
-  0%, 100% { opacity: 0.7; }
+  0%, 100% { opacity: 0.6; }
   50%      { opacity: 1; }
 }
+/* LOT 16 #1 — CTAs primaires palette HoloCard : doré sur marine. */
 .welcome .welcome__cta,
-.mail-reveal__copy {
+.mail-reveal .mail-reveal__copy {
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid rgba(212, 175, 55, 0.40);
+  text-shadow: 0 0 6px rgba(212, 175, 55, 0.45);
   animation: pulseText 2s ease-in-out infinite;
+  transition:
+    background var(--motion-fast) var(--easing-standard),
+    color var(--motion-fast) var(--easing-standard),
+    box-shadow var(--motion-fast) var(--easing-standard);
+}
+.welcome .welcome__cta:hover,
+.mail-reveal .mail-reveal__copy:hover {
+  background: var(--color-gold);
+  color: var(--color-marine-deep);
+  box-shadow: 0 0 15px var(--color-gold);
+  text-shadow: none;
+  transform: none;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
@@ -1136,16 +1150,54 @@
     circle at
       calc(50% + (var(--mouse-x, 0) * -50px))
       calc(50% + (var(--mouse-y, 0) * -50px)),
-    rgba(188, 19, 254, 0.20) 0%,
-    var(--color-bg-deep) 60%);
+    rgba(74, 122, 184, 0.22) 0%,
+    var(--color-marine-deep) 60%);
   animation: pulseGlow 8s ease-in-out infinite alternate;
 }
 
 .compare-overlay__modal:hover {
   box-shadow:
-    0 0 30px rgba(0, 243, 255, 0.30),
-    0 0 60px rgba(0, 243, 255, 0.10),
-    0 0 120px rgba(188, 19, 254, 0.05);
+    0 0 30px rgba(74, 122, 184, 0.30),
+    0 0 60px rgba(74, 122, 184, 0.10),
+    0 0 120px rgba(212, 175, 55, 0.05);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LOT 16 #2 — Uniformisation HUD : time-status hover doré + Astres/Glossaire
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* (b) Hover doré sur le panneau time-status. */
+.time-status {
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition:
+    border-color 200ms var(--easing-standard),
+    box-shadow   200ms var(--easing-standard);
+}
+.time-status:hover {
+  border-color: rgba(212, 175, 55, 0.40);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.30);
+}
+
+/* (c) Uniformiser boutons « Astres » et « Glossaire » — look identique. */
+.body-menu-toggle__btn,
+.glossary-btn {
+  font-family: var(--font-orbitron);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 243, 255, 0.20);
+  background: rgba(18, 18, 26, 0.80);
+}
+.body-menu-toggle__btn:hover,
+.glossary-btn:hover {
+  border-color: rgba(212, 175, 55, 0.50);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+  text-shadow: 0 0 5px var(--color-gold-soft);
 }
 
 /* Mobile glitch — taille réduite mais effet conservé */
@@ -1165,8 +1217,8 @@
   .welcome .welcome__backdrop {
     background: radial-gradient(
       circle at 50% 50%,
-      rgba(188, 19, 254, 0.20) 0%,
-      var(--color-bg-deep) 60%);
+      rgba(74, 122, 184, 0.22) 0%,
+      var(--color-marine-deep) 60%);
     animation: none;
     opacity: 0.6;
   }
