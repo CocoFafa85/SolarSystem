@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#060610"/>
+    </radialGradient>
+    <radialGradient id="sunCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#00f3ff"/>
+      <stop offset="75%" stop-color="#bc13fe"/>
+      <stop offset="100%" stop-color="#ff0080" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sunHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.55"/>
+      <stop offset="40%" stop-color="#bc13fe" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff0080" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="planetCyan" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#7ff7ff"/>
+      <stop offset="100%" stop-color="#006b78"/>
+    </radialGradient>
+    <radialGradient id="planetMagenta" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff80c0"/>
+      <stop offset="100%" stop-color="#80003d"/>
+    </radialGradient>
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="violetGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Étoiles éparses -->
+  <g fill="#ffffff">
+    <circle cx="60" cy="80" r="1" opacity="0.7"/>
+    <circle cx="180" cy="40" r="1.2" opacity="0.5"/>
+    <circle cx="320" cy="120" r="1" opacity="0.6"/>
+    <circle cx="450" cy="60" r="1.5" opacity="0.8"/>
+    <circle cx="780" cy="100" r="1" opacity="0.5"/>
+    <circle cx="920" cy="50" r="1.2" opacity="0.7"/>
+    <circle cx="1080" cy="140" r="1" opacity="0.6"/>
+    <circle cx="120" cy="280" r="1" opacity="0.4"/>
+    <circle cx="1140" cy="320" r="1.5" opacity="0.8"/>
+    <circle cx="80" cy="500" r="1" opacity="0.5"/>
+    <circle cx="240" cy="540" r="1.2" opacity="0.7"/>
+    <circle cx="500" cy="580" r="1" opacity="0.4"/>
+    <circle cx="760" cy="560" r="1.3" opacity="0.6"/>
+    <circle cx="980" cy="510" r="1" opacity="0.5"/>
+    <circle cx="1120" cy="470" r="1.5" opacity="0.8"/>
+    <circle cx="40" cy="380" r="1" opacity="0.6"/>
+    <circle cx="370" cy="20" r="1" opacity="0.4"/>
+    <circle cx="640" cy="40" r="1.2" opacity="0.7"/>
+    <circle cx="1020" cy="240" r="1" opacity="0.5"/>
+    <circle cx="540" cy="200" r="1" opacity="0.4"/>
+    <circle cx="860" cy="420" r="1.3" opacity="0.7"/>
+    <circle cx="200" cy="450" r="1" opacity="0.5"/>
+  </g>
+
+  <!-- Orbites elliptiques -->
+  <g fill="none" stroke-width="1.5">
+    <ellipse cx="600" cy="320" rx="260" ry="90" stroke="#00f3ff" stroke-opacity="0.30"/>
+    <ellipse cx="600" cy="320" rx="430" ry="150" stroke="#bc13fe" stroke-opacity="0.30"/>
+  </g>
+
+  <!-- Soleil central + halo -->
+  <g transform="translate(600 320)">
+    <circle r="220" fill="url(#sunHalo)"/>
+    <circle r="120" fill="url(#sunCore)" filter="url(#cyanGlow)"/>
+  </g>
+
+  <!-- Planètes sur orbites -->
+  <g filter="url(#violetGlow)">
+    <circle cx="860" cy="320" r="14" fill="url(#planetCyan)"/>
+    <circle cx="170" cy="320" r="22" fill="url(#planetMagenta)"/>
+  </g>
+
+  <!-- Titre + sous-titre + URL (fonts: system fallback car crawlers ne chargent pas Google Fonts) -->
+  <g font-family="'Orbitron', 'Segoe UI', system-ui, sans-serif" text-anchor="middle">
+    <text x="600" y="125" font-size="80" font-weight="900" fill="#00f3ff" filter="url(#cyanGlow)" letter-spacing="2">SOLAR SYSTEM</text>
+    <text x="600" y="555" font-size="24" font-weight="700" fill="#bc13fe" letter-spacing="6" filter="url(#violetGlow)">SIMULATION 1:1 — COSMOS CYBERPUNK</text>
+  </g>
+  <text x="600" y="600" font-family="'Montserrat Alternates', 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="500" fill="#ffffff" fill-opacity="0.5" text-anchor="middle" letter-spacing="2">cocofafa85.github.io/SolarSystem</text>
+</svg>

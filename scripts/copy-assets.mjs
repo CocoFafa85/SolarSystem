@@ -7,6 +7,7 @@ import { cp, mkdir, copyFile, access } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
@@ -45,4 +46,16 @@ await Promise.all([
   ...DIRS.map(copyDir),
   ...FILES.map(copyOne),
 ]);
+
+// LOT 15 A — og:image : SVG source dans public/, PNG rasterisé dans dist/
+// (Facebook OG accepte plus fiablement le PNG ; Twitter accepte les deux).
+const ogSvg = join(ROOT, 'public/og-image.svg');
+if (existsSync(ogSvg)) {
+  await copyFile(ogSvg, join(DIST, 'og-image.svg'));
+  await sharp(ogSvg).png().toFile(join(DIST, 'og-image.png'));
+  console.log('[copy-assets] public/og-image.svg → dist/og-image.{svg,png}');
+} else {
+  console.warn('[copy-assets] skip og-image (public/og-image.svg introuvable)');
+}
+
 console.log('[copy-assets] terminé');
