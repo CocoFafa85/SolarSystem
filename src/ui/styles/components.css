@@ -190,9 +190,10 @@
 .events-button[aria-pressed="true"] { border-color: var(--color-accent); color: var(--color-accent); }
 
 /* ============ BodyMenu (LOT 16 #12 — 4 toggles + stack slots) ============ */
+/* LOT 16 patch — panel largeur réduite + slots horizontaux. */
 .body-menu {
   min-width: 0;
-  max-width: none;
+  max-width: 220px;
   height: auto;
   padding: var(--space-1);
   display: flex;
@@ -222,6 +223,7 @@
   gap: var(--space-2);
   flex: 0 0 auto;
 }
+/* LOT 16 patch — toggles sans bordure. */
 .body-menu__toggle {
   display: inline-flex;
   align-items: center;
@@ -230,7 +232,7 @@
   min-height: var(--tap-target-min);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-subtle);
+  border: 0;
   background: rgba(10, 25, 40, 0.45);
   color: var(--color-text-primary);
   font-family: var(--font-family-display, var(--font-family-base));
@@ -239,26 +241,25 @@
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: background var(--motion-fast) var(--easing-standard),
-              border-color var(--motion-fast) var(--easing-standard),
               color var(--motion-fast) var(--easing-standard),
               box-shadow var(--motion-fast) var(--easing-standard);
 }
 .body-menu__toggle:hover {
-  border-color: rgba(212, 175, 55, 0.50);
-  color: var(--color-gold, #d4af37);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+  color: #c8d4e4;
+  background: rgba(36, 9, 133, 0.55);
+  box-shadow: 0 0 10px rgba(200, 212, 228, 0.15);
 }
 .body-menu__toggle[aria-pressed="true"] {
-  border-color: rgba(212, 175, 55, 0.70);
-  color: var(--color-gold, #d4af37);
-  background: rgba(26, 58, 110, 0.55);
-  box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+  color: #c8d4e4;
+  background: rgba(9, 38, 133, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(200, 212, 228, 0.25);
 }
 
-/* --- Slots empilés -------------------------------------------------------- */
+/* LOT 16 patch — slots HORIZONTAUX (pas empilés vertical à droite). */
 .body-menu__slots {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
   gap: var(--space-3);
   flex: 1 1 auto;
   min-width: 0;
