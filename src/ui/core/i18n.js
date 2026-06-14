@@ -5,7 +5,9 @@ let dict = {};
 let currentLang = 'fr';
 
 export async function loadLocale(lang = 'fr', baseUrl = 'locales') {
-  const res = await fetch(`${baseUrl}/${lang}.json`, { cache: 'force-cache' });
+  // LOT 13 — `no-cache` (revalidation systématique) au lieu de `force-cache` :
+  // évite le bug récurrent "nouvelles clés invisibles tant que cache navigateur".
+  const res = await fetch(`${baseUrl}/${lang}.json`, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`i18n: locale "${lang}" introuvable`);
   dict = await res.json();
   currentLang = lang;

@@ -16,6 +16,9 @@ import { UI } from '../ui/core/channels.js';
 //   - 1 listener bus `UI.VIEW_HOVER`, retiré au destroy.
 
 const TEXTURE_SIZE = 128;
+// LOT 12 (révision) — ratios pré-LOT 12 préservés (les facteurs sont
+// relatifs à visualRadius, donc l'apparent angulaire au focus reste constant
+// quel que soit le multiplicateur d'échelle).
 const SCALE_FACTOR = 0.5;        // sprite ≈ 1.4 × visualRadius
 const POLE_OFFSET_FACTOR = 1.25; // au-dessus/dessous du mesh
 

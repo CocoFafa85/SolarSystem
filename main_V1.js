@@ -319,7 +319,7 @@ addSunGlow(sunMesh, camera);
 
 
 
-// const spaceTexture = new THREE.TextureLoader().load("textures/stars_milkyway.jpg");
+// const spaceTexture = new THREE.TextureLoader().load("textures/stars_welcome__contactyway.jpg");
 const spaceTexture = new THREE.TextureLoader().load("textures/stars.jpg");
 spaceTexture.wrapS = THREE.RepeatWrapping; //Active un mode répétitif de texture 
 spaceTexture.wrapT = THREE.RepeatWrapping;

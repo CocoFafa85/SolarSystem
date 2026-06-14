@@ -8,6 +8,9 @@ import { UI } from '../ui/core/channels.js';
 //
 // Visible uniquement sur `UI.BODY_MESH_HOVER { id: bodyId }`.
 
+// LOT 12 (révision) — facteur ×3 préservé : avec DISTANCE_MULTIPLIER=6 (focus
+// à 6×visualRadius), un axe à 3×visualRadius occupe ~0.5 hauteur de vue,
+// même apparent angulaire qu'avant le refactor 1:1.
 const AXIS_LENGTH_FACTOR = 3;
 
 /**

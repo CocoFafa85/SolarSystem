@@ -8,6 +8,7 @@ import { loadBodies } from './data/loadBodies.js';
 import { createOrbitLine } from './scene/OrbitLine.js';
 import { createEclipticReference } from './scene/EclipticReference.js';
 import { buildSystem } from './scene/SystemBuilder.js';
+import { createSunVideoTexture } from './scene/sunVideoTexture.js';
 import { createAsteroidBelt } from './scene/AsteroidBelt.js';
 import { createCometSystem } from './scene/CometSystem.js';
 import { loadAsteroids } from './data/loadAsteroids.js';
@@ -107,6 +108,7 @@ const camCtl = createCameraControls(app.camera, canvas);
 const timeService = createTimeService();
 timeService.start(0);
 let systemRoot = null;
+let sunVideo = null;       // LOT 12B — handle { texture, video, dispose } | null
 let asteroidBelt = null;
 let cometRoot = null;
 let motionUpdater = null;
@@ -135,7 +137,10 @@ try {
   // Corps célestes + anneaux + Lune (LOT 3) ---------------------------------
   // Construit AVANT les orbites pour que les orbites satellites puissent être
   // rattachées au parent (sinon la Lune dessine une orbite minuscule au Soleil).
-  const built = await buildSystem(data, textureCache);
+  // LOT 12B — tentative de chargement vidéo Soleil. Garde-fous internes
+  // (reduced-motion, slow connection, autoplay refusé) → null = fallback statique.
+  sunVideo = await createSunVideoTexture();
+  const built = await buildSystem(data, textureCache, { sunVideoTexture: sunVideo?.texture ?? null });
   systemRoot = built.root;
   app.scene.add(systemRoot);
 
@@ -537,6 +542,11 @@ const unsubReset = bus.on(ENGINE.SCENE_RESET, () => {
 
 app.start();
 
+// LOT 12 — Boot sur preset `system` : avec l'échelle 1:1 stricte, la position
+// caméra par défaut (CAMERA.initialPosition) montre une scène quasi-vide.
+// `applyPreset('system')` cadre les orbites internes au démarrage.
+presetsController?.applyPreset?.('system');
+
 // ---------------------------------------------------------------------------
 // Teardown — libère GPU + listeners + abonnements bus.
 // ---------------------------------------------------------------------------
@@ -582,6 +592,7 @@ const teardown = () => {
   disposeObject(dwarfOrbitsGroup);
   textureCache.disposeAll();
   disposeProceduralTextures();
+  sunVideo?.dispose?.();   // LOT 12B — release <video> + VideoTexture
   app.renderer.userData?.detach?.();
   app.dispose();
 };

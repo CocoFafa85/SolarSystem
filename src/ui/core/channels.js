@@ -91,4 +91,7 @@ export const EVENT_TYPES = Object.freeze({
 // Presets de caméra exposés par PoVMenu (le moteur consomme la string).
 // LOT 5B : 'ecliptic' supprimé au profit de 'outer' — vue contre-plongée
 // depuis la ceinture de Kuiper, symétrique conceptuelle de 'inner'.
+// LOT 12B — 'sun' retiré de la liste menu : la cible Soleil est atteinte
+// uniquement via le bouton ✸ dédié de TimeControls (émet directement
+// UI.VIEW_PRESET { preset:'sun' }, défini dans CameraPresets.PRESET_DEFS).
 export const VIEW_PRESETS = Object.freeze(['system', 'inner', 'outer']);

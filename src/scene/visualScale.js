@@ -38,6 +38,11 @@ export function satelliteOrbitDisplayScale(
   orbitSemiMajorAxisAu,
   marginRatio = DEFAULT_MARGIN_RATIO,
 ) {
+  // LOT 12 — refactor 1:1 stricte. À la nouvelle échelle, la Terre a un
+  // rayon visuel de 4.26e-5 UA et la Lune orbite à 2.57e-3 UA = 60 rayons
+  // terrestres → elle sort NATURELLEMENT du mesh sans exagération. Le
+  // facteur retourné est donc constant à 1.0 (échelle réelle). L'API et la
+  // signature sont préservées pour rétro-compatibilité avec BodyMotionUpdater.
   if (
     !Number.isFinite(parentVisualRadiusAu) ||
     !Number.isFinite(childVisualRadiusAu) ||
@@ -50,12 +55,7 @@ export function satelliteOrbitDisplayScale(
   if (marginRatio <= 0 || marginRatio >= 1) {
     throw new RangeError('marginRatio doit être strictement dans ]0,1[');
   }
-
-  const requiredOrbit = (parentVisualRadiusAu + childVisualRadiusAu) / marginRatio;
-  const scale = requiredOrbit / orbitSemiMajorAxisAu;
-  if (scale <= 1) return 1;
-  // Garde-fou : un facteur trop énorme révèle une mauvaise configuration upstream.
-  return Math.min(scale, MAX_REASONABLE_SCALE);
+  return 1;
 }
 
 /**

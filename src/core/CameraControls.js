@@ -19,13 +19,19 @@ const DEBUG_LOG_THROTTLE_MS = 250;
 export function createCameraControls(camera, domElement) {
   const controls = new OrbitControls(camera, domElement);
 
+  // LOT 12 — alignement strict sur `main_V1.js` ligne 482-484 / 737-739 :
+  //   dampingFactor=0.25, zoomSpeed=1, rotateSpeed=1.0 (default OrbitControls).
+  // Diagnostic comparatif : le feeling clic gauche+drag de V1 dépendait
+  // principalement de dampingFactor (0.25 vs 0.08 actuel = 3× plus d'inertie).
+  // Les bornes minDistance/maxDistance sont étendues pour l'échelle 1:1
+  // (minDistance 1e-6 UA = ras d'un astéroïde 1 km, maxDistance 200 UA).
   controls.enableDamping = true;
-  controls.dampingFactor = 0.08;
+  controls.dampingFactor = 0.25;
   controls.screenSpacePanning = true;
-  controls.minDistance = 0.0001;
-  controls.maxDistance = 100;
-  controls.zoomSpeed = 0.9;
-  controls.rotateSpeed = 0.7;
+  controls.minDistance = 1e-6;
+  controls.maxDistance = 200;
+  controls.zoomSpeed = 1.0;
+  controls.rotateSpeed = 1.0;
 
   // LOT 9 (révision) — mapping demandé par l'utilisateur :
   //   LEFT   = DOLLY   (clic gauche + drag = avance/recul caméra←target)

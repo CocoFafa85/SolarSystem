@@ -6,19 +6,17 @@ import {
   computeVisualRadius,
 } from '../src/scene/visualScale.js';
 
-test('Cas Lune réelle : Terre 0.021 + Lune 0.0058 vs orbite 0.00257 → scale > 1', () => {
-  // Arrange : valeurs réelles du LOT 4 ayant causé le bug "Lune étouffée"
-  const parentVisual = 0.021;
-  const childVisual = 0.0058;
-  const orbit = 0.00257;
-  // Act
+test('LOT 12 — échelle 1:1 stricte : satelliteOrbitDisplayScale retourne 1 constant', () => {
+  // À l'échelle 1:1 (LOT 12), la Terre fait 4.26e-5 UA et la Lune orbite à
+  // 2.57e-3 UA = 60 rayons terrestres. Elle sort NATURELLEMENT du mesh sans
+  // exagération. L'ancien contrat (scale > 1) est obsolète.
+  const parentVisual = 4.26e-5;
+  const childVisual = 1.16e-5;
+  const orbit = 2.57e-3;
   const s = satelliteOrbitDisplayScale(parentVisual, childVisual, orbit);
-  // Assert
-  assert.ok(s > 1, `scale=${s}`);
-  // Après application, l'orbite affichée doit dégager le parent.
-  const displayedOrbit = orbit * s;
-  assert.ok(displayedOrbit > parentVisual + childVisual,
-    `displayed=${displayedOrbit} parent+child=${parentVisual + childVisual}`);
+  assert.equal(s, 1);
+  // Vérifie que la Lune sort bien du mesh sans exagération.
+  assert.ok(orbit > parentVisual + childVisual);
 });
 
 test('Configuration confortable (parent petit, orbite large) → scale = 1', () => {
@@ -36,16 +34,12 @@ test('Limite marge 0.45 : à exactement la marge → scale = 1', () => {
   assert.equal(s, 1);
 });
 
-test('Le scale garantit que (parent+child) ≤ marginRatio × (orbit × scale)', () => {
-  // Arrange : config arbitraire problématique
-  const parent = 0.5;
-  const child = 0.2;
-  const orbit = 0.1;
-  const marginRatio = 0.4;
-  // Act
-  const s = satelliteOrbitDisplayScale(parent, child, orbit, marginRatio);
-  // Assert
-  assert.ok(parent + child <= marginRatio * (orbit * s) + 1e-12);
+test('LOT 12 — retour constant 1 quelle que soit la configuration', () => {
+  // Le contrat 1:1 stricte garantit que tous les corps physiques sont à leur
+  // taille réelle. Aucune exagération n'est appliquée même dans des cas
+  // dégénérés (l'utilisateur perçoit l'écart correctement).
+  const s = satelliteOrbitDisplayScale(0.5, 0.2, 0.1, 0.4);
+  assert.equal(s, 1);
 });
 
 test('Arguments invalides → erreurs', () => {

@@ -18,25 +18,34 @@ import { FOCUS } from '../config/render.config.js';
 // Deux schémas de presets :
 //   - 'computed' : `bounding` calculé depuis le groupe ; (camY, camZ) dérivés.
 //   - 'direct'   : positions caméra absolues injectées telles quelles.
+// LOT 12 — Recalibration pour l'échelle 1:1 stricte. À l'ancienne échelle
+// (×500 planètes / ×50 étoile), les presets reculaient jusqu'à 35-50 UA et
+// gardaient les astres lisibles ; à 1:1, ces mêmes distances montrent une
+// scène totalement noire. Nouveaux preset = vues recalibrées par contrat
+// pédagogique « orbites visibles, astres sub-pixel = vérité physique ».
+// LOT 12 (révision utilisateur) — coordonnées calibrées en runtime via le
+// debug log de CameraControls ('end' event throttle 250 ms). Quatre presets :
+//   'system' = Système complet, 'inner' = Planètes intérieures,
+//   'outer'  = Planètes extérieures, 'sun' = bouton ✸ (cadrage Soleil seul).
 const PRESET_DEFS = Object.freeze({
   system: Object.freeze({
-    mode: 'computed',
-    group: Object.freeze([
-      'mercury','venus','earth','mars','jupiter','saturn','uranus','neptune','pluto',
-    ]),
-    elevationRatio: 0.4,
-    backoff: 1.6,
+    mode: 'direct',
+    camX: 9.662, camY: -11.653, camZ: 94.735,
+    targetX: 0, targetY: 0, targetZ: 0,
   }),
-  // LOT 5D — calibration finale par mesure utilisateur via le debug log de
-  // CameraControls ('end' event throttle 250 ms). Conservé en const figées.
   inner: Object.freeze({
     mode: 'direct',
-    camX: 0.015, camY: -2.177, camZ: 0.640,
+    camX: 0.085, camY: -2.097, camZ: 0.850,
     targetX: 0, targetY: 0, targetZ: 0,
   }),
   outer: Object.freeze({
     mode: 'direct',
-    camX: 0.022, camY: -35.934, camZ: 4.451,
+    camX: 0.249, camY: -37.803, camZ: 4.150,
+    targetX: 0, targetY: 0, targetZ: 0,
+  }),
+  sun: Object.freeze({
+    mode: 'direct',
+    camX: 0.000, camY: -0.062, camZ: 0.011,
     targetX: 0, targetY: 0, targetZ: 0,
   }),
 });

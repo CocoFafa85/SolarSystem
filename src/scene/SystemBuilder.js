@@ -31,9 +31,12 @@ const SATELLITE_RADIUS_TO_ORBIT_RATIO = 1 / 3;
 /**
  * @param {{bodies: Record<string, object>}} data  bodies.json normalisé
  * @param {import('../assets/TextureCache.js').TextureCache} textureCache
+ * @param {{ sunVideoTexture?: import('three').Texture | null }} [opts]
+ *   LOT 12B — `opts.sunVideoTexture` (non-null) écrase `assets.map` du Soleil
+ *   par la VideoTexture animée. `null`/absent → texture statique manifestée.
  * @returns {Promise<{root: import('three').Group, bodies: Map<string, import('three').Group>}>}
  */
-export async function buildSystem(data, textureCache) {
+export async function buildSystem(data, textureCache, opts = {}) {
   const root = new Group();
   root.name = 'System';
 
@@ -77,6 +80,14 @@ export async function buildSystem(data, textureCache) {
   const results = await Promise.allSettled(loadJobs);
   for (const r of results) {
     if (r.status === 'rejected') console.warn('[SystemBuilder] texture KO:', r.reason);
+  }
+
+  // LOT 12B — override Soleil : VideoTexture animée si fournie. Toujours
+  // appliqué APRÈS les loads statiques pour gagner la course en cas de
+  // double-flux. Si null/absent : fallback gracieux sur sun.jpg déjà chargé.
+  if (opts.sunVideoTexture) {
+    const sunBundle = assetsById.get('sun');
+    if (sunBundle) sunBundle.map = opts.sunVideoTexture;
   }
 
   // Première passe : créer tous les corps SANS leur parent satellite.
