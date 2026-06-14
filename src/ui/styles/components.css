@@ -1019,3 +1019,152 @@
   .event-stats__name,
   .body-card__grid dt { font-size: 0.62rem; letter-spacing: 0.08em; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   D4 — Glitch titre WelcomeModal + scanline overlay + pulse text
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes glitchAnim {
+  0%   { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.5deg); }
+  10%  { clip: rect(12px, 9999px, 78px, 0); transform: skew(0.2deg); }
+  20%  { clip: rect(72px, 9999px, 86px, 0); transform: skew(0.8deg); }
+  30%  { clip: rect(20px, 9999px, 40px, 0); transform: skew(0.1deg); }
+  40%  { clip: rect(58px, 9999px, 92px, 0); transform: skew(0.6deg); }
+  50%  { clip: rect(8px,  9999px, 30px, 0); transform: skew(0.3deg); }
+  60%  { clip: rect(64px, 9999px, 76px, 0); transform: skew(0.4deg); }
+  70%  { clip: rect(34px, 9999px, 50px, 0); transform: skew(0.7deg); }
+  80%  { clip: rect(2px,  9999px, 14px, 0); transform: skew(0.2deg); }
+  90%  { clip: rect(46px, 9999px, 60px, 0); transform: skew(0.5deg); }
+  100% { clip: rect(80px, 9999px, 94px, 0); transform: skew(0.1deg); }
+}
+@keyframes glitchAnim2 {
+  0%   { clip: rect(65px, 9999px, 95px, 0); transform: skew(0.4deg); }
+  10%  { clip: rect(20px, 9999px, 42px, 0); transform: skew(0.7deg); }
+  20%  { clip: rect(80px, 9999px, 90px, 0); transform: skew(0.2deg); }
+  30%  { clip: rect(10px, 9999px, 30px, 0); transform: skew(0.5deg); }
+  40%  { clip: rect(50px, 9999px, 72px, 0); transform: skew(0.1deg); }
+  50%  { clip: rect(36px, 9999px, 60px, 0); transform: skew(0.8deg); }
+  60%  { clip: rect(70px, 9999px, 88px, 0); transform: skew(0.3deg); }
+  70%  { clip: rect(4px,  9999px, 20px, 0); transform: skew(0.6deg); }
+  80%  { clip: rect(54px, 9999px, 76px, 0); transform: skew(0.2deg); }
+  90%  { clip: rect(24px, 9999px, 44px, 0); transform: skew(0.4deg); }
+  100% { clip: rect(82px, 9999px, 96px, 0); transform: skew(0.5deg); }
+}
+@keyframes glitchSkew {
+  0%   { transform: skew(-0.5deg); }
+  20%  { transform: skew(0.4deg); }
+  40%  { transform: skew(-0.3deg); }
+  60%  { transform: skew(0.6deg); }
+  80%  { transform: skew(-0.2deg); }
+  100% { transform: skew(0.3deg); }
+}
+
+.welcome .welcome__title {
+  font-family: var(--font-orbitron);
+  font-size: 2.5rem;
+  color: var(--color-neon-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow:
+    0 0 10px rgba(0, 243, 255, 0.8),
+    2px 2px 0 rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: glitchSkew 3s infinite linear alternate-reverse;
+}
+.welcome .welcome__title::before,
+.welcome .welcome__title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+}
+.welcome .welcome__title::before {
+  left: 2px;
+  text-shadow: -1px 0 var(--color-neon-magenta);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitchAnim 5s infinite linear alternate-reverse;
+}
+.welcome .welcome__title::after {
+  left: -2px;
+  text-shadow: -1px 0 var(--color-neon-cyan);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitchAnim2 5s infinite linear alternate-reverse;
+}
+
+/* Scanline overlay — WelcomeModal body + CompareOverlay list */
+.welcome .welcome__body,
+.compare-overlay__list { position: relative; }
+.welcome .welcome__body::before,
+.compare-overlay__list::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(transparent 50%, rgba(255, 0, 128, 0.06) 50%);
+  background-size: 100% 4px;
+  z-index: 1;
+}
+
+/* Pulse text — CTAs primaires */
+@keyframes pulseText {
+  0%, 100% { opacity: 0.7; }
+  50%      { opacity: 1; }
+}
+.welcome .welcome__cta,
+.mail-reveal__copy {
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   D5 — Background ambient mouse-aware + hover halo comparateur
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes pulseGlow {
+  0%   { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+.welcome .welcome__backdrop {
+  background: radial-gradient(
+    circle at
+      calc(50% + (var(--mouse-x, 0) * -50px))
+      calc(50% + (var(--mouse-y, 0) * -50px)),
+    rgba(188, 19, 254, 0.20) 0%,
+    var(--color-bg-deep) 60%);
+  animation: pulseGlow 8s ease-in-out infinite alternate;
+}
+
+.compare-overlay__modal:hover {
+  box-shadow:
+    0 0 30px rgba(0, 243, 255, 0.30),
+    0 0 60px rgba(0, 243, 255, 0.10),
+    0 0 120px rgba(188, 19, 254, 0.05);
+}
+
+/* Mobile glitch — taille réduite mais effet conservé */
+@media (max-width: 480px) {
+  .welcome .welcome__title { font-size: 1.6rem; }
+}
+
+/* reduced-motion : glitch/pulse off, scanline statique (par design), backdrop figé */
+@media (prefers-reduced-motion: reduce) {
+  .welcome .welcome__title,
+  .welcome .welcome__title::before,
+  .welcome .welcome__title::after {
+    animation: none;
+  }
+  .welcome .welcome__cta,
+  .mail-reveal__copy { animation: none; opacity: 1; }
+  .welcome .welcome__backdrop {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(188, 19, 254, 0.20) 0%,
+      var(--color-bg-deep) 60%);
+    animation: none;
+    opacity: 0.6;
+  }
+}

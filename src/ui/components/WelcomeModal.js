@@ -17,7 +17,7 @@ const TXT = {
   // Markdown léger : **gras** / *italique* parsés ci-dessous.
   paragraph:
     "Bienvenue dans une simulation réaliste du système solaire !\n" + 
-    "Oui vraiment **réaliste** : les échelles de temps et de distance sont rigoureusement respectées, ce qui peut être un peu déroutant au début.\n" + 
+    "Oui vraiment **réaliste** : les échelles de distance et d'évolution du temps sont rigoureusement respectées, ce qui peut être un peu déroutant au début (le système est composé de 99,9999999999999 % de vide).\n" + 
     "L'objectif est de représenter physiquement les ordres de grandeur de l'espace et illustrer quelques concepts-clés de l'astronomie sans trop de jargon.\n" + 
     "Tu peux naviguer entre les astres, accélérer le temps (attention au tourni), comparer des données ou encore parcourir le glossaire.\n" + 
     "Si quelque chose casse ou si tu as une idée intéressante contacte moi : ",
@@ -71,6 +71,7 @@ export function mountWelcomeModal(container) {
   title.id = 'welcome-title';
   title.className = 'welcome__title';
   title.textContent = TXT.title;
+  title.dataset.text = TXT.title;
 
   const body = document.createElement('div');
   body.id = 'welcome-body';
@@ -119,17 +120,29 @@ export function mountWelcomeModal(container) {
     trap(e);
   }
 
+  // D5 — ambient mouse-aware : met à jour --mouse-x/--mouse-y sur le backdrop.
+  function onPointerMove(e) {
+    const r = backdrop.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) return;
+    const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    backdrop.style.setProperty('--mouse-x', x.toFixed(3));
+    backdrop.style.setProperty('--mouse-y', y.toFixed(3));
+  }
+
   function open() {
     if (!root.hidden) return;
     lastFocus = document.activeElement;
     root.hidden = false;
     document.addEventListener('keydown', onKey);
+    root.addEventListener('pointermove', onPointerMove, { passive: true });
     setTimeout(() => cta.focus(), 0);
   }
   function close() {
     if (root.hidden) return;
     root.hidden = true;
     document.removeEventListener('keydown', onKey);
+    root.removeEventListener('pointermove', onPointerMove);
     try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch { /* */ }
     if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
     bus.emit(UI.WELCOME_CLOSE, null);
@@ -158,6 +171,7 @@ export function mountWelcomeModal(container) {
       closeBtn.removeEventListener('click', close);
       backdrop.removeEventListener('click', close);
       document.removeEventListener('keydown', onKey);
+      root.removeEventListener('pointermove', onPointerMove);
       unsubOpen(); unsubClose();
       mailer.destroy();
       root.remove();
