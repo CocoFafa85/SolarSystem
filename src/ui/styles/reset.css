@@ -7,9 +7,9 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  background: var(--color-bg-void);
+  background: var(--color-bg-deep);
   color: var(--color-text-primary);
-  font-family: var(--font-family-ui);
+  font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
   -webkit-font-smoothing: antialiased;
@@ -21,8 +21,25 @@ html, body {
 
 body { display: block; }
 
-h1, h2, h3, h4, p, ul, ol, figure { margin: 0; padding: 0; }
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
+
+/* LOT 15 D1 — headings tech en Orbitron, sans casser les tailles existantes. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-orbitron);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* LOT 15 D1 — scrollbar violet néon globale. */
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: rgba(188, 19, 254, 0.5);
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-thumb:hover { background: rgba(188, 19, 254, 0.8); }
+* { scrollbar-width: thin; scrollbar-color: rgba(188, 19, 254, 0.5) transparent; }
 
 button {
   font: inherit;

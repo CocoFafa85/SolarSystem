@@ -824,3 +824,198 @@
   .body-menu { max-height: 80dvh; }
   .body-card { max-width: 400px; max-height: 80dvh; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LOT 15 — REFONTE COSMOS CYBERPUNK (phase 1 : D2 modales + D3 HUD)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* @property pour animer un conic-gradient avec une rotation pure GPU. */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotateBorder { to { --border-angle: 360deg; } }
+@keyframes noiseShift {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(-5px, 5px); }
+  40%      { transform: translate(5px, -5px); }
+  60%      { transform: translate(-3px, -3px); }
+  80%      { transform: translate(3px, 3px); }
+}
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ---- D2.1 Glass panels sur toutes les modales ----------------------------
+   Spécificité ≥ 2 classes pour battre welcome.css (importé après). */
+.welcome .welcome__card,
+.compare-overlay__modal,
+.event-stats--modal,
+.glossary-overlay__modal,
+.body-card {
+  position: relative;
+  background: linear-gradient(135deg,
+    rgba(10, 15, 30, 0.85) 0%,
+    rgba(20, 25, 50, 0.75) 50%,
+    rgba(10, 15, 30, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---- D2.2 Conic gradient border rotatif — Welcome + Compare uniquement --- */
+.welcome .welcome__card,
+.compare-overlay__modal {
+  border-radius: var(--radius-lg);
+  overflow: visible;
+}
+.welcome .welcome__card::before,
+.compare-overlay__modal::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  z-index: -1;
+  background: conic-gradient(from var(--border-angle),
+    var(--color-neon-cyan),
+    var(--color-neon-violet),
+    var(--color-neon-magenta),
+    var(--color-neon-cyan));
+  animation: rotateBorder 4s linear infinite;
+}
+
+/* ---- D2.3 Noise SVG overlay — Welcome + Compare uniquement -------------- */
+.welcome .welcome__card::after,
+.compare-overlay__modal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  animation: noiseShift 0.5s steps(5) infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   D3 — HUD : glass + glow + Orbitron labels + active state
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Glass HUD générique — bordure cyan tech subtile. */
+.tc__btn,
+.events-button,
+.evt-trigger,
+.body-menu-toggle__btn,
+.glossary-btn,
+.comparator-btn,
+.pov__item,
+.cm__btn,
+.hud-toggle {
+  background: rgba(18, 18, 26, 0.80);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 243, 255, 0.20);
+  transition:
+    background var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-base) var(--easing-standard),
+    box-shadow   var(--motion-base) var(--easing-standard),
+    color        var(--motion-base) var(--easing-standard);
+}
+
+/* Hover glow cyan signature. */
+.tc__btn:hover,
+.events-button:hover,
+.body-menu-toggle__btn:hover,
+.glossary-btn:hover,
+.comparator-btn:hover,
+.pov__item:hover,
+.cm__btn:hover,
+.body-menu__item:hover,
+.compare-row:hover,
+.hud-toggle:hover {
+  border-color: var(--color-neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+  text-shadow: 0 0 5px var(--color-neon-cyan);
+}
+
+/* Labels tech Orbitron. */
+.tc__btn,
+.cm__label,
+.pov__item,
+.comparator-btn__label,
+.glossary-btn__label,
+.bm__orbit-toggle,
+.event-stats__name,
+.event-stats__count,
+.compare-row__rank,
+.compare-ratio__label,
+.body-card__grid dt,
+.time-status__subtitle {
+  font-family: var(--font-orbitron);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+/* Légère réduction de taille pour rester compact avec Orbitron qui est plus large. */
+.cm__label,
+.compare-ratio__label,
+.event-stats__name,
+.body-card__grid dt,
+.time-status__subtitle { font-size: 0.7rem; font-weight: 700; }
+
+/* Toggles actifs — fond cyan plein, contraste sur bg-deep. */
+.tc__btn--primary,
+.events-button[aria-pressed="true"],
+.body-menu-toggle__btn[aria-expanded="true"],
+.body-menu__item[aria-pressed="true"],
+.bm__orbit-toggle[aria-checked="true"],
+.pov__trigger[aria-expanded="true"],
+.cm__btn.is-active,
+.cm__btn[aria-pressed="true"] {
+  background: var(--color-neon-cyan);
+  color: var(--color-bg-deep);
+  border-color: var(--color-neon-cyan);
+  box-shadow: 0 0 15px var(--color-neon-cyan);
+  text-shadow: none;
+}
+.tc__btn--primary:hover { background: var(--color-neon-cyan); filter: brightness(1.1); }
+
+/* Status dot blink — préserve --accent par événement (LOT 5C). */
+.event-stats__dot { animation: statusBlink 2s ease-in-out infinite; }
+
+/* ---- ComparatorButton signature : conic border rotatif lent (6s) -------- */
+.comparator-btn { position: relative; background: var(--color-bg-secondary); overflow: visible; }
+.comparator-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  z-index: -1;
+  background: conic-gradient(from var(--border-angle),
+    var(--color-neon-cyan),
+    var(--color-neon-violet),
+    var(--color-neon-cyan));
+  animation: rotateBorder 6s linear infinite;
+}
+
+/* ---- reduced-motion : palette conservée, animations off ----------------- */
+@media (prefers-reduced-motion: reduce) {
+  .welcome .welcome__card::before,
+  .compare-overlay__modal::before,
+  .comparator-btn::before { animation: none; }
+  .welcome .welcome__card::after,
+  .compare-overlay__modal::after { animation: none; }
+  .event-stats__dot { animation: none; }
+}
+
+/* ---- Mobile 375px : compactage Orbitron (plus large que system-ui) ------ */
+@media (max-width: 480px) {
+  .tc__btn { font-size: var(--font-size-xs); letter-spacing: 0.06em; }
+  .cm__label,
+  .event-stats__name,
+  .body-card__grid dt { font-size: 0.62rem; letter-spacing: 0.08em; }
+}
