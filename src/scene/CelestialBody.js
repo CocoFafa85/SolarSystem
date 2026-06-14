@@ -83,6 +83,13 @@ export function createCelestialBody(body, assets, opts = {}) {
 
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = `${body.id}:mesh`;
+  // LOT 16 #6 — Haumea est un ellipsoïde réel (axes a≈1161, b≈852, c≈513 km,
+  // ratio ~2.27:1.66:1, simplifié ici en 1.9:1.3:1 normalisé sur l'axe c).
+  // Le scale s'applique au mesh, donc la déformation tourne avec la rotation
+  // propre — comportement physique attendu (Haumea spinne en ~4h).
+  if (body.id === 'haumea') {
+    mesh.scale.set(1.9, 1.3, 1.0);
+  }
   axialTilt.add(mesh);
 
   let ring = null;
