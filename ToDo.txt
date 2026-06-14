@@ -1,3 +1,9 @@
-#PLAN
-Active PROFILE E 
-Le projet est terminé et déployé. J'ai ouvert une branche afin de faire un gros travaille de frontend. Utilise les styles et animations dans C:\Users\cocof\.claude\reference qui correspondent à ma signature d'application et intègre les au projet.
+-le bouton "tc__btn sun-focus__trigger" doit afficher sa "body-card panel",
+-fenetre "event-stats event-stats--compact panel" ouvert au clic à décaler légèrement sur la droite,
+-haumea doit avoir uune texture en forme d'oeuf (ellipsoïdale),
+-le glow de l'éruption solaire détéctée doit durée + longtemps,
+-réduire la queue des comètes nécessaire depuis la refonte des échelles,
+-enlever "body-card__grid" seulement pour les comètes,
+-dans chaque "body-card__desc" indiquer la date de première observation de l'astre. Pour les planètes naines concernées indiquer à quelle date elles ont été classées ainsi.
+-créer un nouveau background ?
+-refonte logique affichage te positionnement de "body-menu panel" et de ses composants : créer un nouveau "body-menu__section" appelé "Satellites" pour le moment il ne contient que Lune. Les 3 boutons "body-menu__summary" sont afficher verticalement le long du bord gauche de l'écran (sous "Astres"). Les 4 "body-menu__section" deviennent indépendants. Chaque clic sur l'un des 4 boutons ouvre/ferme son "body-menu__section" sur la droite, Leure affichage a un système de "pile" car il y a 4 emplacements de "body-menu__section" disponibles mais il faut toujours chercher à les prendre dans l'ordre croissant.

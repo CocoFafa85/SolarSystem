@@ -56,13 +56,13 @@ const terms = [
   { id: 'comet',         term: 'Comète',                def: 'Petit corps glacé qui développe une queue de poussière et de plasma près du Soleil.',
     animation: { kind: 'overlay', svg: 'comet' } },
     
-  { id: 'asteroid',      term: 'Astéroïde',             def: 'Petit corps rocheux ou métallique non actif gravitant principalement entre Mars et Jupiter.',
+  { id: 'asteroid',      term: 'Astéroïde',             def: 'Petit corps rocheux ou métallique non actif gravitant dans les ceintures d\'astéroïdes.',
     animation: { kind: 'overlay', svg: 'asteroid' } },
     
   { id: 'eclipse',       term: 'Éclipse',               def: "Alignement projetant l'ombre d'un corps sur un autre (solaire ou lunaire).",
     animation: { kind: 'overlay', svg: 'eclipse' } },
     
-  { id: 'rotation',      term: 'Rotation',              def: "Mouvement d'un corps autour de son propre axe — donne le jour.",
+  { id: 'rotation',      term: 'Rotation',              def: "Mouvement d'un corps autour de son propre axe.",
     animation: { kind: 'overlay', svg: 'rotation' } },
     
   { id: 'aphelion',      term: 'Aphélie',               def: "Point de l'orbite le plus éloigné du Soleil.",
@@ -80,7 +80,7 @@ const terms = [
   { id: 'solstice',      term: 'Solstice',              def: "Instant où l'axe terrestre est incliné au maximum vers (été) ou contre (hiver) le Soleil.",
     animation: { kind: 'overlay', svg: 'solstice' } },
     
-  { id: 'orbitalIncl',   term: 'Inclinaison orbitale',  def: "Angle entre le plan orbital d'un corps et un plan de référence (souvent l'écliptique).",
+  { id: 'orbitalIncl',   term: 'Inclinaison orbitale',  def: "Angle entre le plan orbital d'un corps et un plan de référence (l'écliptique).",
     animation: { kind: 'overlay', svg: 'inclination' } },
     
   { id: 'obliquity',     term: 'Obliquité',             def: "Inclinaison de l'axe de rotation d'un corps par rapport à la perpendiculaire de son plan orbital.",
@@ -99,7 +99,7 @@ const terms = [
   { id: 'supermoon',     term: 'Super-Lune',            def: 'Pleine Lune au périgée — diamètre apparent et luminosité maximaux.',
     animation: { kind: 'overlay', svg: 'supermoon' } },
     
-  { id: 'transit',       term: 'Transit',               def: "Passage d'un corps devant un autre vu depuis un observateur (Mercure ou Vénus devant le Soleil).",
+  { id: 'transit',       term: 'Transit',               def: "Passage d'un corps devant un autre vu depuis un observateur (Mercure et Vénus devant le Soleil).",
     animation: { kind: 'overlay', svg: 'transit' } },
     
   { id: 'conjunction',   term: 'Conjonction',           def: 'Alignement apparent de deux corps dans le ciel vus depuis la Terre.',
@@ -115,25 +115,25 @@ const terms = [
     animation: { kind: 'overlay', svg: 'tide' } },
     
 
-  { id: 'au',            term: 'Unité astronomique',    def: 'Distance moyenne Terre-Soleil : ≈ 149,6 millions de km.',
+  { id: 'au',            term: 'Unité astronomique',    def: 'Unité de distance de référence ( nommée UA) qui correspond à la distance moyenne Terre-Soleil : 149 597 870 700 m.',
     animation: { kind: 'overlay', svg: 'ruler' } },
     
-  { id: 'lightYear',     term: 'Année-lumière',         def: 'Distance parcourue par la lumière en un an : ≈ 9,46×10¹² km.',
+  { id: 'lightYear',     term: 'Année-lumière',         def: 'Unité de distance de référence (nommée al) basée sur la distance parcourue par la lumière en un an : ≈ 63241 UA.',
     animation: { kind: 'overlay', svg: 'lightYear' } },
     
-  { id: 'parsec',        term: 'Parsec',                def: "Distance ≈ 3,26 années-lumière, basée sur la parallaxe annuelle d'une seconde d'arc.",
+  { id: 'parsec',        term: 'Parallax par seconde',  def: "Unité de distance de référence (nommée parsec/pc) basée sur la parallaxe annuelle d'une seconde d'arc : ≈ 3,26 années-lumière",
     animation: { kind: 'overlay', svg: 'parsec' } },
     
-  { id: 'j2000',         term: 'J2000.0',               def: 'Époque de référence : 1ᵉʳ janvier 2000 à 12h00 TT — point zéro de cette simulation.',
+  { id: 'j2000',         term: 'J2000.0',               def: 'Époque de référence internationale définie pour les données astronomiques : 1ᵉʳ janvier 2000 à 12h00 TT.',
     animation: { kind: 'overlay', svg: 'epoch' } },
     
-  { id: 'epoch',         term: 'Époque',                def: "Instant de référence auquel sont donnés les éléments orbitaux d'un corps.",
+  { id: 'epoch',         term: 'Époque',                def: "Instant de référence se basant sur le calendrier Julien ou Besselien auquel sont donnés les éléments orbitaux d'un corps. Anciennement B1950.0, remplacé par J2000.0.",
     animation: { kind: 'overlay', svg: 'epoch' } },
     
-  { id: 'siderealYear',  term: 'Année sidérale',        def: "Durée d'une révolution complète de la Terre par rapport aux étoiles : ≈ 365,256 jours.",
+  { id: 'siderealYear',  term: 'Année sidérale',        def: "Durée d'une révolution complète d'une planète par rapport aux étoiles — 365,256 jours pour la Terre.",
     animation: { kind: 'overlay', svg: 'siderealYear' } },
     
-  { id: 'solarDay',      term: 'Jour solaire',          def: 'Durée entre deux passages successifs du Soleil au méridien : 24 h (vs 23 h 56 min sidéral).',
+  { id: 'solarDay',      term: 'Jour solaire',          def: 'Durée entre deux passages successifs du Soleil au méridien — 24 heures pour la Terre ( 23 h 56 min en jour sidéral).',
     animation: { kind: 'overlay', svg: 'day' } },
     
 
@@ -149,13 +149,13 @@ const terms = [
   { id: 'telluric',      term: 'Planète tellurique',    def: 'Planète rocheuse dense à surface solide (Mercure, Vénus, Terre, Mars).',
     animation: { kind: 'overlay', svg: 'telluric' } },
     
-  { id: 'asteroidBelt',  term: "Ceinture d'astéroïdes", def: "Région entre Mars et Jupiter peuplée d'astéroïdes (≈ 1 à 200 km).",
+  { id: 'asteroidBelt',  term: "Ceinture d'astéroïdes", def: "Région entre Mars et Jupiter peuplée d'astéroïdes à une distance de 2.2 à 3.2 UA",
     animation: { kind: 'overlay', svg: 'asteroidBelt' } },
     
-  { id: 'kuiperBelt',    term: 'Ceinture de Kuiper',    def: 'Disque de petits corps au-delà de Neptune (≈ 30-55 UA), où vit Pluton.',
+  { id: 'kuiperBelt',    term: 'Ceinture de Kuiper',    def: 'Disque de petits corps au-delà de Neptune où vit Pluton à une distance de 30 à 55 UA.',
     animation: { kind: 'overlay', svg: 'kuiperBelt' } },
     
-  { id: 'oortCloud',     term: "Nuage d'Oort",          def: 'Sphère hypothétique de comètes dormantes à ~50 000 UA, frontière du système solaire.',
+  { id: 'oortCloud',     term: "Nuage d'Oort",          def: 'Sphère hypothétique de comètes dormantes à une distance de 2000 à 150 000 UA (≈ 2 al), c\'est frontière du système solaire. ',
     animation: { kind: 'overlay', svg: 'oortCloud' } },
     
 ];

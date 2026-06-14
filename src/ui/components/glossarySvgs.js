@@ -216,26 +216,41 @@ const LIB = Object.freeze({
     ${_earth(102, 40, 6)}
     <path d="M 102 34 A 6 6 0 0 1 102 46 Z" fill="rgba(0,0,0,0.6)"/>
     <line x1="102" y1="32" x2="102" y2="48" stroke="#ffb86b" stroke-width="1"/>
+    ${_earth(18, 40, 6)}
+    <path d="M 18 34 A 6 6 0 0 0 18 46 Z" fill="rgba(0,0,0,0.6)"/>
+    <line x1="18" y1="32" x2="18" y2="48" stroke="#ffb86b" stroke-width="1"/>
   `),
 
-  // #13 solstice — LOT 10C.3 : axe incliné fixe hors clip + bande clipée
-  // bichrome qui défile (illusion du jour qui passe sous l'axe incliné).
-  solstice: () => svg(120, 80, `
-    ${_sunStatic(20, 40, 18)}
-      <circle cx="20" cy="40" r="20" fill="rgba(255,184,107,0.45)"/>
-    ${_earth(80, 40, 22)}
+// #13 solstice — LOT 10C.3 : axe incliné fixe hors clip + bande clipée
+// bichrome qui défile (illusion du jour qui passe sous l'axe incliné).
+solstice: () => svg(120, 80, `
+  ${_sunStatic(20, 40, 18)}
+  <circle cx="20" cy="40" r="20" fill="rgba(255,184,107,0.45)"/>
+  
+  <circle cx="80" cy="40" r="22" fill="#2a6fb0"/>
+  
+  <g transform="rotate(23.44 80 40)">
     ${_surfaceScroll(80, 40, 22, 6, `
-      <rect x="58" y="18" width="22" height="44" fill="rgba(0,0,0,0.55)"/>
+      <path d="M69,35.6 q6.6,-4.4 13.2,2.2 q-4.4,5.5 -11,3.3 Z" fill="#3aa66a"/>
+      <circle cx="86.6" cy="47.7" r="3.96" fill="#3aa66a"/>
+      <circle cx="67.9" cy="44.4" r="2.64" fill="#3aa66a"/>
     `, 44)}
-    <g transform="rotate(23.44 80 40)">
-      <line x1="80" y1="14" x2="80" y2="66" stroke="#ffb86b" stroke-width="1.2"/>
-      <text x="80" y="12" font-size="7" fill="#ffffff" text-anchor="middle">N</text>
-      <text x="80" y="74" font-size="7" fill="#ffffff" text-anchor="middle">S</text>
-    </g>
-    <text x="60" y="17" font-size="6" fill="currentColor" text-anchor="middle">Hiver</text>
-    <text x="60" y="65" font-size="6" fill="currentColor" text-anchor="middle">Été</text>
-  `),
+  </g>
+  
+  <path d="M 80 18 A 22 22 0 0 1 80 62 Z" fill="rgba(0,0,0,0.55)"/>
+  
+  <g transform="rotate(23.44 80 40)">
+    <line x1="58" y1="40" x2="102" y2="40" stroke="#a04646ee" stroke-width="0.8" stroke-dasharray="3 1.5"/>
+    
+    <line x1="80" y1="14" x2="80" y2="66" stroke="#ffb86b" stroke-width="1.2"/>
+    <text x="80" y="12" font-size="8" fill="#ffffff" text-anchor="middle">N</text>
+    <text x="80" y="74" font-size="8" fill="#ffffff" text-anchor="middle">S</text>
+  </g>
+  <text x="53" y="30" font-size="6" fill="#a04646ee" text-anchor="middle">Eq.</text>
+  <text x="70" y="17" font-size="7" fill="currentColor" text-anchor="middle">Hiver</text>
+  <text x="52" y="50" font-size="7" fill="currentColor" text-anchor="middle">Été</text>
 
+`),
   // #14 orbitalIncl — LOT 10C.2 : animateMotion sur path inclined ellipse.
   // Path bake : ellipse rx=50 ry=8 centrée (60,50), rotation -18° autour de (60,50).
   inclination: () => svg(120, 80, `
@@ -252,23 +267,32 @@ const LIB = Object.freeze({
     </g>
   `),
 
-  // #15 obliquity — LOT 10C.3 : axe 23,44° fixe hors clip + bande surface clipée.
-  obliquity: () => svg(120, 80, `
-    <line x1="10" y1="60" x2="110" y2="60" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
-    <line x1="60" y1="62" x2="60" y2="6" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1 2"/>
-    ${_earth(60, 40, 26)}
+// #15 obliquity — LOT 10C.3 : axe 23,44° fixe hors clip + bande surface clipée.
+obliquity: () => svg(120, 80, `
+  <line x1="10" y1="60" x2="110" y2="60" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <line x1="60" y1="62" x2="60" y2="6" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1 2"/>
+  
+  <circle cx="60" cy="40" r="26" fill="#2a6fb0"/>
+  
+  <g transform="rotate(23.44 60 40)">
     ${_surfaceScroll(60, 40, 26, 7, `
+      <path d="M47,34.8 q7.8,-5.2 15.6,2.6 q-5.2,6.5 -13,3.9 Z" fill="#3aa66a"/>
+      <circle cx="67.8" cy="49.1" r="4.68" fill="#3aa66a"/>
+      <circle cx="45.7" cy="45.2" r="3.12" fill="#3aa66a"/>
+      
       <ellipse cx="50" cy="34" rx="6" ry="3" fill="rgba(255,255,255,0.25)"/>
       <ellipse cx="70" cy="48" rx="7" ry="2.5" fill="rgba(255,255,255,0.22)"/>
       <ellipse cx="42" cy="50" rx="4" ry="2" fill="rgba(255,255,255,0.2)"/>
     `, 52)}
-    <g transform="rotate(23.44 60 40)">
-      <line x1="60" y1="8" x2="60" y2="72" stroke="#ffb86b" stroke-width="1.8"/>
-      <circle cx="60" cy="12" r="2.2" fill="#fff"/>
-      <circle cx="60" cy="68" r="2.2" fill="#fff"/>
-    </g>
-    <text x="92" y="20" font-size="8" fill="#ffb86b">23,44°</text>
-  `),
+  </g>
+
+  <g transform="rotate(23.44 60 40)">
+    <line x1="60" y1="8" x2="60" y2="72" stroke="#ffb86b" stroke-width="1.8"/>
+    <circle cx="60" cy="12" r="2.2" fill="#fff"/>
+    <circle cx="60" cy="68" r="2.2" fill="#fff"/>
+  </g>
+  <text x="92" y="20" font-size="8" fill="#ffffff">23,44°</text>
+`),
 
   // #16 perigee — LOT 10C.2 : Terre au foyer droit, satellite au point ellipse
   // LE PLUS PROCHE (sommet droit). Repère pulse, satellite immobile.
@@ -346,16 +370,17 @@ const LIB = Object.freeze({
     </g>
   `),
 
-  // #24 tide — renflements pulsants.
-  tide: () => svg(120, 80, `
-    <ellipse cx="60" cy="40" rx="28" ry="20" fill="#6aa8ff" opacity="0.45">
-      <animate attributeName="rx" values="26;32;26" dur="3s" repeatCount="indefinite"/>
-      <animate attributeName="ry" values="22;18;22" dur="3s" repeatCount="indefinite"/>
-    </ellipse>
-    ${_earth(60, 40, 20)}
-    <circle cx="105" cy="40" r="6" fill="#dcd4c4"/>
-  `),
-
+// #24 tide — renflements pulsants.
+tide: () => svg(120, 80, `
+  <ellipse cx="61" cy="40" rx="21" ry="20.5" fill="#6aa8ff" opacity="0.45">
+    <animate attributeName="cx" values="61;63;61" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="rx" values="21;24;21" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="20.5;19.5;20.5" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  ${_earth(60, 40, 20)}
+  <circle cx="105" cy="40" r="6" fill="#dcd4c4"/>
+`),
   // #25 au — LOT 10C.2 : Soleil à gauche, Terre à droite, règle + label.
   ruler: () => svg(120, 80, `
     <line x1="20" y1="40" x2="100" y2="40" stroke="currentColor" stroke-width="1.6"/>
@@ -423,17 +448,26 @@ const LIB = Object.freeze({
     </g>
   `),
 
-  // #31 solarDay — LOT 10C.3 : bande bichrome (jour/nuit) défile sous le clip.
-  day: () => svg(120, 80, `
-    <circle cx="60" cy="40" r="22" fill="#1a2740"/>
-    ${_surfaceScroll(60, 40, 22, 5, `
-      <rect x="38" y="18" width="22" height="44" fill="#a85a3a"/>
-      <circle cx="40" cy="36" r="2" fill="#7a3a22"/>
-      <circle cx="50" cy="42" r="1.6" fill="#7a3a22"/>
-      <circle cx="44" cy="46" r="1.2" fill="#7a3a22"/>
-      <rect x="60" y="18" width="22" height="44" fill="#1a2740"/>
-    `, 44)}
-  `),
+// #31 solarDay — Option B : Bandes de la taille du diamètre (44px), boucle à 88
+day: () => svg(120, 80, `
+  <circle cx="60" cy="40" r="22" fill="#1a2740"/>
+  
+  ${_surfaceScroll(60, 40, 22, 5, `
+    <rect x="38" y="18" width="44" height="44" fill="#a85a3a"/>
+    <circle cx="40" cy="36" r="2" fill="#7a3a22"/>
+    <circle cx="50" cy="42" r="1.6" fill="#7a3a22"/>
+    <circle cx="44" cy="46" r="1.2" fill="#7a3a22"/>
+    
+    <rect x="82" y="18" width="44" height="44" fill="#1a2740"/>
+    
+    <rect x="126" y="18" width="44" height="44" fill="#a85a3a"/>
+    <circle cx="128" cy="36" r="2" fill="#7a3a22"/>
+    <circle cx="138" cy="42" r="1.6" fill="#7a3a22"/>
+    <circle cx="132" cy="46" r="1.2" fill="#7a3a22"/>
+    
+    <rect x="170" y="18" width="44" height="44" fill="#1a2740"/>
+  `, 88)}
+`),
 
   // #32 dwarfPlanet — corps + voisinage encombré, flotte (translation Y).
   dwarfPlanet: () => svg(120, 80, `
