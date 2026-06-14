@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#05060a" />
+  <title data-i18n="app.title">Solar System — Simulation 1:1</title>
+
+  <!-- LOT 14 — SPA fallback : GH Pages sert 404.html sur toute route inconnue.
+       Identique à index.html pour que le shell SPA prenne le relais. -->
+  <meta name="description" content="Simulateur 3D du système solaire à l'échelle 1:1 stricte." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <link rel="stylesheet" href="src/ui/styles/index.css" />
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <div class="app">
+    <a href="#hud-bottom" class="visually-hidden" data-i18n="app.skipToHud">Aller aux contrôles</a>
+    <canvas id="solarCanvas" aria-label="Scène 3D du système solaire" role="img"></canvas>
+    <header id="hud-top"    class="hud hud--top"    role="region" data-i18n-attr="aria-label:hud.topLabel"></header>
+    <aside  id="hud-left"   class="hud hud--left"   role="region" data-i18n-attr="aria-label:hud.leftLabel"></aside>
+    <aside  id="hud-right"  class="hud hud--right"  role="region" data-i18n-attr="aria-label:hud.rightLabel"></aside>
+    <footer id="hud-bottom" class="hud hud--bottom" role="region" data-i18n-attr="aria-label:hud.bottomLabel"></footer>
+  </div>
+</body>
+</html>
