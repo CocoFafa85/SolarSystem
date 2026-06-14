@@ -27,8 +27,9 @@ import { MINOR_BODY } from '../config/render.config.js';
 //   - 1 ou 2 `needsUpdate = true` par tick.
 
 const PARTICLES_PER_TRAIL = 128;
-const PARTICLE_SIZE_DUST  = MINOR_BODY.COMET_VISUAL_RADIUS_AU * 9;
-const PARTICLE_SIZE_ION   = MINOR_BODY.COMET_VISUAL_RADIUS_AU * 4;
+// LOT 16 #8 — réduction taille particules ×0.5 post-LOT 12 (échelle 1:1 grossissait visuellement la trail).
+const PARTICLE_SIZE_DUST  = MINOR_BODY.COMET_VISUAL_RADIUS_AU * 4.5;
+const PARTICLE_SIZE_ION   = MINOR_BODY.COMET_VISUAL_RADIUS_AU * 2;
 
 // Coefficient de pression radiative : drift par frame = K / r²
 // (en UA, K = 0.0008 ⇒ à r=1 UA drift = 0.0008 / frame ; après 128 frames,
