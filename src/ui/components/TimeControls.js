@@ -93,10 +93,10 @@ export function mountTimeControls(container) {
   sunFocus.innerHTML = '<span aria-hidden="true">✸</span>';
   sunFocus.addEventListener('click', (e) => {
     e.preventDefault();
-    // LOT 12 (révision) — preset fixe 'sun' (coords calibrées par l'utilisateur)
-    // au lieu de VIEW_FOCUS body-relatif. Évite la dépendance à visualRadius
-    // (qui à 1:1 produit une distance trop faible pour cadrer le Soleil).
+    // LOT 12 (révision) — preset fixe 'sun' (coords calibrées utilisateur).
     bus.emit(UI.VIEW_PRESET, { preset: 'sun' });
+    // LOT 16 patch #4 — ouvrir aussi la fiche body-card du Soleil.
+    bus.emit(UI.BODY_SELECT, { id: 'sun' });
   });
   root.appendChild(sunFocus);
 

@@ -193,7 +193,7 @@
 /* LOT 16 patch — panel largeur réduite + slots horizontaux. */
 .body-menu {
   min-width: 0;
-  max-width: 220px;
+  max-width: 110px;
   height: auto;
   padding: var(--space-1);
   display: flex;
@@ -916,21 +916,21 @@
 }
 
 /* ---- D2.1 Glass panels — LOT 16 patch refonte sobre -----------------------
-   Palette restreinte : #240985 (violet), #090b85 (bleu sombre), #092685 (bleu profond), #c8d4e4 (clair).
-   Retiré : conic gradient rotatif, noise overlay, glitch — au profit d'une lisibilité maximum. */
-.welcome .welcome__card,
-.compare-overlay__modal {
+   #1 patch : compare-overlay revient au style sombre original (comme glossary/event-stats/body-card).
+   Style holo bleu marine palette restreinte EXCLUSIF à welcome__card. */
+.welcome .welcome__card {
   position: relative;
   background: linear-gradient(135deg, #090b85 0%, #092685 55%, #240985 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(200, 212, 228, 0.20);
   border-radius: var(--radius-lg);
-  color: #c8d4e4;
+  color: #ffffff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 .event-stats--modal,
 .glossary-overlay__modal,
+.compare-overlay__modal,
 .body-card {
   position: relative;
   background: linear-gradient(135deg,
@@ -942,7 +942,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* LOT 16 patch — conic rotatif + noise SVG overlay supprimés sur welcome/compare. */
+/* LOT 16 patch — pseudo-elements neutralisés sur welcome ET compare. */
 .welcome .welcome__card::before,
 .welcome .welcome__card::after,
 .compare-overlay__modal::before,
@@ -1093,16 +1093,23 @@
   100% { transform: skew(0.3deg); }
 }
 
-/* LOT 16 patch — titre sobre, intégré au background, sans glitch. */
+/* LOT 16 patch — titre stylisé : gradient + glow soutenu, sans glitch. */
 .welcome .welcome__title {
   font-family: var(--font-orbitron);
-  font-size: 2.2rem;
-  color: #c8d4e4;
+  font-size: 2.6rem;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.10em;
-  text-shadow: 0 0 12px rgba(200, 212, 228, 0.35), 0 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.14em;
+  background: linear-gradient(135deg, #ffffff 0%, #c8d4e4 50%, #a8b8d8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 14px rgba(200, 212, 228, 0.45)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
   position: relative;
   animation: none;
+  text-align: center;
+  margin: 0 auto;
 }
 .welcome .welcome__title::before,
 .welcome .welcome__title::after { content: none !important; }
@@ -1152,17 +1159,15 @@
 /* LOT 16 patch — pas d'aura colorée au hover. */
 .compare-overlay__modal:hover { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
 
-/* LOT 16 patch — body + titre + textes secondaires en clair pour contraste. */
+/* LOT 16 patch — welcome textes en blanc pour contraste max sur fond marine. */
+.welcome .welcome__card,
 .welcome .welcome__body,
 .welcome .welcome__body p,
-.compare-overlay__modal,
-.compare-overlay__title,
-.compare-ratio,
-.compare-row__name,
-.compare-row__value,
-.compare-facts__item { color: #c8d4e4; }
-.welcome .welcome__body strong { color: #ffffff; }
-.compare-overlay__title { text-shadow: 0 0 10px rgba(200, 212, 228, 0.30); }
+.welcome .welcome__body li,
+.welcome .welcome__body small,
+.welcome .mail-reveal,
+.welcome .mail-reveal__display { color: #ffffff; }
+.welcome .welcome__body strong { color: #ffffff; font-weight: 700; }
 
 /* ════════════════════════════════════════════════════════════════════════════
    LOT 16 #2 — Uniformisation HUD : time-status hover doré + Astres/Glossaire
