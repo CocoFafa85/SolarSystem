@@ -14,7 +14,10 @@ import * as THREE from 'three';
 //   - `scene.background.dispose()` libère la cube map (6 faces),
 //   - texture equirect source disposée après conversion (refcount cache OK).
 
-const DEFAULT_PATH = 'textures/stars_milkyway.jpg';
+// LOT 16 patch — SVG cosmos vectoriel actif (cube map 2048 pour préserver netteté).
+const DEFAULT_PATH = 'textures/cosmos-skybox.svg';
+const FALLBACK_PATH = 'textures/stars_milkyway.jpg';
+const CUBE_MAP_SIZE = 2048; // ×2 vs LOT 7 (24→96 MB VRAM, OK desktops modernes)
 
 // Référence module-scope pour permettre le dispose ciblé au teardown.
 let _cubeRT = null;
@@ -30,14 +33,20 @@ export async function applyStarBackground(scene, textureCache, renderer, path = 
   if (!scene || !textureCache || !renderer) {
     throw new Error('applyStarBackground: scene + textureCache + renderer requis');
   }
+  let equirect;
   try {
-    const equirect = await textureCache.load(path);
+    equirect = await textureCache.load(path);
+  } catch (err) {
+    console.warn('[StarBackground] SVG load fail, fallback JPG:', err);
+    try { equirect = await textureCache.load(FALLBACK_PATH); }
+    catch (err2) { console.warn('[StarBackground] fallback JPG fail aussi:', err2); return null; }
+  }
+  try {
     equirect.mapping = THREE.EquirectangularReflectionMapping;
     equirect.colorSpace = THREE.SRGBColorSpace;
 
-    // Conversion runtime equirect → cube map.
-    // Résolution 1024 = bon compromis qualité/VRAM (24 MB pour 6 faces).
-    _cubeRT = new THREE.WebGLCubeRenderTarget(1024);
+    // Conversion runtime equirect → cube map (2048 pour préserver SVG vectoriel).
+    _cubeRT = new THREE.WebGLCubeRenderTarget(CUBE_MAP_SIZE);
     _cubeRT.fromEquirectangularTexture(renderer, equirect);
     _cubeRT.texture.colorSpace = THREE.SRGBColorSpace;
 

@@ -58,4 +58,6 @@ if (existsSync(ogSvg)) {
   console.warn('[copy-assets] skip og-image (public/og-image.svg introuvable)');
 }
 
+// LOT 16 patch — cosmos-skybox.svg : déjà copié via DIRS=['textures', ...].
+
 console.log('[copy-assets] terminé');
