@@ -1,5 +1,12 @@
 {
   "_comment": "Comparaisons humoristiques par métrique. Affichées sous le classement CompareOverlay. Aucune scène 3D : HTML/SVG/CSS uniquement.",
+  "distance": {
+    "facts": [
+      "On peut mettre 107 Soleils entre La Terre et le Soleil.",
+      "La distance Terre-Lune est ~10 fois la circonférence de la Terre.",
+      "Le rayon du système solaire est d'environ 130000 UA, soit 20 000 milliards de km ou encore 2 années-lumière"
+    ]
+  },
   "mass": {
     "facts": [
       "1 Jupiter ≈ 318 Terres empilées.",

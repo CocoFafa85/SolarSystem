@@ -171,6 +171,11 @@ export function formatOrbitalPeriod(hours) {
   return `${years.toFixed(2)} a`;
 }
 
+export function formatAu(au) {
+  if (!Number.isFinite(au)) return '—';
+  return `${au.toLocaleString('fr-FR', { maximumFractionDigits: 3 })} UA`;
+}
+
 export function formatKmS(v) {
   if (!Number.isFinite(v) || v === 0) return '—';
   return `${v.toFixed(2)} km/s`;
@@ -190,6 +195,7 @@ export function formatTempRange(minK, maxK) {
 
 export function sortByMetric(list, metric) {
   const getValue = {
+    distance:       (v) => v.orbital?.semiMajorAxisAu,
     mass:           (v) => v.physical.massKg,
     size:           (v) => v.physical.radiusKm,
     temp:           (v) => v.derived.tempMaxK,
@@ -202,6 +208,7 @@ export function sortByMetric(list, metric) {
 
 export function metricValue(vm, metric) {
   switch (metric) {
+    case 'distance':      return formatAu(vm.orbital?.semiMajorAxisAu);
     case 'mass':          return formatMass(vm.physical.massKg);
     case 'size':          return formatRadiusKm(vm.physical.radiusKm);
     case 'temp':          return formatTempRange(vm.derived.tempMinK, vm.derived.tempMaxK);

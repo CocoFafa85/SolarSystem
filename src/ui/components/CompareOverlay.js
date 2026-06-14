@@ -12,7 +12,8 @@ let _comparisons = null;
 async function loadComparisons() {
   if (_comparisons) return _comparisons;
   try {
-    const res = await fetch('data/comparisons.fr.json', { cache: 'force-cache' });
+    // LOT 13 — `no-cache` : voir i18n.js (mêmes symptômes "nouveaux faits absents").
+    const res = await fetch('data/comparisons.fr.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     _comparisons = await res.json();
   } catch (err) {
@@ -24,6 +25,7 @@ async function loadComparisons() {
 
 function metricNumber(vm, metric) {
   switch (metric) {
+    case 'distance':      return vm.orbital?.semiMajorAxisAu;
     case 'mass':          return vm.physical.massKg;
     case 'size':          return vm.physical.radiusKm;
     case 'temp':          return vm.derived.tempMaxK;

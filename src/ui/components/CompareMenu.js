@@ -8,6 +8,7 @@ import { UI } from '../core/channels.js';
 import { t } from '../core/i18n.js';
 
 const METRICS = [
+  { key: 'distance',      icon: '↔' }, // LOT 13 — 1ʳᵉ position
   { key: 'mass',          icon: '⚖' },
   { key: 'size',          icon: '◯' },
   { key: 'temp',          icon: '🌡' },
