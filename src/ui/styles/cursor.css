@@ -32,11 +32,11 @@
   will-change: transform;
 }
 
-/* Dot central — magenta néon (LOT 15 D phase 2). */
+/* Dot central — orangé Soleil (LOT 16 #3). */
 .cursor-custom__dot {
   width: 10px; height: 10px;
-  background: var(--color-neon-magenta);
-  box-shadow: 0 0 8px var(--color-neon-magenta);
+  background: #ff8a3d;
+  box-shadow: 0 0 10px #ff8a3d;
 }
 
 /* Ring orbital — cyan néon (LOT 15 D phase 2), ×3 (~48 px). */
@@ -113,7 +113,7 @@
 /* Pressing : ring rétrécit, dot s'agrandit légèrement (feedback de clic). */
 .cursor-custom.is-pressing .cursor-custom__ring {
   width: 36px; height: 36px;
-  border-color: var(--color-neon-magenta);
+  border-color: #ff8a3d;
   opacity: 1;
 }
 .cursor-custom.is-pressing .cursor-custom__dot {

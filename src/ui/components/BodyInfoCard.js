@@ -50,6 +50,11 @@ export function mountBodyInfoCard(container, bodiesById) {
     desc.textContent = vm.descKey ? t(vm.descKey) : '';
     desc.hidden = !desc.textContent || desc.textContent === vm.descKey;
 
+    // LOT 16 #9 — grid masquée pour les comètes (données physiques peu pertinentes).
+    const isComet = vm.type === 'comet' || vm.category === 'comet';
+    dl.hidden = isComet;
+    if (isComet) { dl.replaceChildren(); return; }
+
     dl.replaceChildren(
       ...row('bodyCard.type',          t(`bodyType.${vm.type}`)),
       ...row('bodyCard.mass',          formatMass(vm.physical.massKg)),
