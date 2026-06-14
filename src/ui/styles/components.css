@@ -189,50 +189,110 @@
 .events-button:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--color-border-strong); }
 .events-button[aria-pressed="true"] { border-color: var(--color-accent); color: var(--color-accent); }
 
-/* ============ BodyMenu (LOT 5B/C — sections row + delegation) ============ */
+/* ============ BodyMenu (LOT 16 #12 — 4 toggles + stack slots) ============ */
 .body-menu {
-  /* LOT 7B/C — sans scroll, compact, mais assez large pour accueillir la
-     Lune en état `.is-earth-active`/`.is-locked-earth` sans déborder. */
-  min-width: 320px;
+  min-width: 0;
   max-width: none;
   height: auto;
-  align-items: flex-start;
   padding: var(--space-1);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-3);
   font-size: 0.85rem;
 }
-/* LOT 7C — sur viewport large, on revient à la taille de police standard
-   (l'espace est suffisant, plus besoin de compacter). */
 @media (min-width: 1280px) {
-  .body-menu      { font-size: var(--font-size-sm); min-width: 400px; }
-  .body-menu__item, .body-menu__summary { min-height: var(--tap-target-min); }
+  .body-menu { font-size: var(--font-size-sm); }
+  .body-menu__item { min-height: var(--tap-target-min); }
 }
-/* L'attribut [hidden] natif doit l'emporter sur `display: flex`. */
 .body-menu[hidden] { display: none; }
 .body-menu .body-menu__item { padding: 4px var(--space-2); min-height: 32px; }
-.body-menu .body-menu__summary { min-height: 32px; padding: 2px var(--space-2); }
 .body-menu .body-menu__item--orbits-toggle { padding: 4px var(--space-2); }
 
-/* LOT 7 — Lune cachée par défaut, révélée quand Terre active (hover ou lock) */
-.body-menu__item--moon { display: none; }
-.body-menu.is-earth-active .body-menu__item--moon,
-.body-menu.is-locked-earth .body-menu__item--moon { display: flex; }
-@media (min-width: 768px) {
-  .body-menu { flex-direction: row; align-items: flex-start; gap: var(--space-4); }
+/* Mobile 375px : toggles au-dessus, slots empilés en dessous */
+@media (max-width: 767px) {
+  .body-menu { flex-direction: column; gap: var(--space-2); }
+  .body-menu__toggles { flex-direction: row; flex-wrap: wrap; }
 }
+
+/* --- Colonne de toggles --------------------------------------------------- */
+.body-menu__toggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+}
+.body-menu__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-1);
+  min-height: var(--tap-target-min);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(10, 25, 40, 0.45);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display, var(--font-family-base));
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--easing-standard),
+              border-color var(--motion-fast) var(--easing-standard),
+              color var(--motion-fast) var(--easing-standard),
+              box-shadow var(--motion-fast) var(--easing-standard);
+}
+.body-menu__toggle:hover {
+  border-color: rgba(212, 175, 55, 0.50);
+  color: var(--color-gold, #d4af37);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+.body-menu__toggle[aria-pressed="true"] {
+  border-color: rgba(212, 175, 55, 0.70);
+  color: var(--color-gold, #d4af37);
+  background: rgba(26, 58, 110, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+}
+
+/* --- Slots empilés -------------------------------------------------------- */
+.body-menu__slots {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+}
+.body-menu__slot {
+  min-height: 0;
+  transition: min-height 250ms var(--easing-standard);
+}
+.body-menu__slot:empty { display: none; }
 
 .body-menu__section {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  flex: 1 1 0;
   min-width: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 250ms var(--easing-standard),
+              transform 250ms var(--easing-standard);
+}
+.body-menu__section.is-entering {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Plus de section-head séparé — le summary est seul, le toggle vit dans la liste. */
+@media (prefers-reduced-motion: reduce) {
+  .body-menu__section,
+  .body-menu__section.is-entering,
+  .body-menu__slot { transition: none; }
+  .body-menu__section { opacity: 1; transform: none; }
+}
 
+/* Legacy summary conservé (unused désormais) — bloc supprimé. */
 .body-menu__summary {
   flex: 1 1 auto;
   display: flex;

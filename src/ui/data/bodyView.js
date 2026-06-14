@@ -79,7 +79,7 @@ export async function loadBodyViews() {
 
     const list = [];
     const byId = Object.create(null);
-    const groups = { planets: [], dwarfs: [], minor: [] };
+    const groups = { planets: [], dwarfs: [], satellites: [], minor: [] };
 
     const order = rawDisplay.order || Object.keys(rawDisplay.bodies || {});
     const extra = Object.keys(rawDisplay.bodies || {}).filter((k) => !order.includes(k));
@@ -121,8 +121,9 @@ export async function loadBodyViews() {
     }
 
     // Groupes d'affichage (utilisés par BodyMenu accordéons). LOT 6 : 3 sections.
-    (rawDisplay.groups?.planets || []).forEach((id) => byId[id] && groups.planets.push(byId[id]));
-    (rawDisplay.groups?.dwarfs  || []).forEach((id) => byId[id] && groups.dwarfs.push(byId[id]));
+    (rawDisplay.groups?.planets    || []).forEach((id) => byId[id] && groups.planets.push(byId[id]));
+    (rawDisplay.groups?.dwarfs     || []).forEach((id) => byId[id] && groups.dwarfs.push(byId[id]));
+    (rawDisplay.groups?.satellites || []).forEach((id) => byId[id] && groups.satellites.push(byId[id]));
 
     // Section "minor" : comètes du catalogue (ordre stable) + entrées display
     // explicites (Vesta/Pallas). Déduplication par id.

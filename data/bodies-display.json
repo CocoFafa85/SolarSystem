@@ -1,9 +1,10 @@
 {
   "_comment": "Enrichissements d'affichage UI uniquement. Vitesses converties, accents, températures, classification UI (planet/dwarfPlanet/satellite/star/comet/asteroid). La physique reste dans bodies.json.",
   "groups": {
-    "planets":  ["mercury", "venus", "earth", "moon", "mars", "jupiter", "saturn", "uranus", "neptune"],
-    "dwarfs":   ["ceres", "pluto", "haumea", "makemake", "eris"],
-    "minor":    ["halley", "encke", "neowise", "vesta", "pallas"]
+    "planets":   ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"],
+    "dwarfs":    ["ceres", "pluto", "haumea", "makemake", "eris"],
+    "satellites":["moon"],
+    "minor":     ["halley", "encke", "neowise", "vesta", "pallas"]
   },
   "order": ["sun", "mercury", "venus", "earth", "moon", "mars", "jupiter", "saturn", "uranus", "neptune", "ceres", "pluto", "haumea", "makemake", "eris"],
   "bodies": {

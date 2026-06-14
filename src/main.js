@@ -516,13 +516,11 @@ app.registerUpdater((_dt, elapsedSeconds) => {
 // ---------------------------------------------------------------------------
 const unsubTogP = bus.on(UI.ORBITS_TOGGLE_PLANETS, (p) => {
   const v = !!p?.visible;
-  // LOT 6 — un seul handler, plusieurs mutations (contrat "zéro nouveau listener").
-  // L'orbite Lune DOIT rester parentée à Earth pour suivre sa position,
-  // d'où la mutation explicite plutôt qu'un re-parentage.
   orbitGroup.visible = v;
-  if (moonOrbitLine) moonOrbitLine.visible = v;
-  // `seasonMarkers` est désormais dans `orbitGroup` → visibilité héritée
-  // automatiquement, pas de mutation supplémentaire.
+  // LOT 16 #12 — l'orbite Lune est passée sous le canal SATELLITES dédié.
+});
+const unsubTogS = bus.on(UI.ORBITS_TOGGLE_SATELLITES, (p) => {
+  if (moonOrbitLine) moonOrbitLine.visible = !!p?.visible;
 });
 const unsubTogM = bus.on(UI.ORBITS_TOGGLE_MINOR, (p) => {
   cometOrbitsGroup.visible = !!p?.visible;
@@ -556,6 +554,7 @@ const teardown = () => {
   disposeObject(reference);
   disposeObject(orbitGroup);
   unsubTogP();
+  unsubTogS();
   unsubTogM();
   unsubTogD();
   unsubReset();

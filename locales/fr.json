@@ -60,13 +60,19 @@
   "menu": {
     "planets": "Planètes",
     "dwarfPlanets": "Planètes naines",
+    "satellites": "Satellites",
     "minorBodies": "Comètes / Astéroïdes",
+    "sectionPlanets":    "🪐 Planètes",
+    "sectionDwarfs":     "⚪ Naines",
+    "sectionSatellites": "🌙 Satellites",
+    "sectionMinor":      "☄ Comètes & Astéroïdes",
     "orbitsShort": "Orbites",
     "openLabel": "Ouvrir le menu des astres",
     "openShort": "Astres",
-    "toggleOrbitsPlanets": "Orbites des planètes",
-    "toggleOrbitsDwarfs":  "Orbites des planètes naines",
-    "toggleOrbitsMinor":   "Orbites des comètes & astéroïdes"
+    "toggleOrbitsPlanets":    "Orbites des planètes",
+    "toggleOrbitsDwarfs":     "Orbites des planètes naines",
+    "toggleOrbitsSatellites": "Orbite de la Lune",
+    "toggleOrbitsMinor":      "Orbites des comètes & astéroïdes"
   },
   "pov": {
     "label": "Point de vue",

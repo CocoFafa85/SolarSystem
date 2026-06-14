@@ -19,6 +19,7 @@ export const UI = Object.freeze({
   ORBITS_TOGGLE:           'ui:orbits:toggle',         // legacy / global
   ORBITS_TOGGLE_PLANETS:   'ui:orbits:togglePlanets',  // LOT 5 — planètes + Lune + repères
   ORBITS_TOGGLE_DWARFS:    'ui:orbits:toggleDwarfs',   // LOT 6 — planètes naines
+  ORBITS_TOGGLE_SATELLITES:'ui:orbits:toggleSatellites', // LOT 16 — satellites (Lune)
   ORBITS_TOGGLE_MINOR:     'ui:orbits:toggleMinor',    // LOT 5 — comètes + astéroïdes
 
   // Survol d'un marqueur saisonnier (équinoxe/solstice). LOT 6.
