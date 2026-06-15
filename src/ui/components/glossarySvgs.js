@@ -389,7 +389,6 @@ tide: () => svg(120, 80, `
     ${_sun(20, 40, 8)}
       <circle cx="20" cy="40" r="10" fill="rgba(255,184,107,0.45)"/>
     ${_earth(100, 40, 5)}
-    <text x="60" y="60" font-size="7" fill="currentColor" text-anchor="middle">≈ 149,6 M km</text>
   `),
 
   // #26 lightYear — rayon lumineux qui traverse.
@@ -401,7 +400,6 @@ tide: () => svg(120, 80, `
       <line x1="0" y1="40" x2="16" y2="40" stroke="#fff8a8" stroke-width="2"/>
       <animateTransform attributeName="transform" type="translate" from="0 0" to="100 0" dur="2.4s" repeatCount="indefinite"/>
     </g>
-    <text x="60" y="62" font-size="7" fill="currentColor" text-anchor="middle">Une année-lumière</text>
   `),
 
   // #27 parsec — oscillation parallaxe.
@@ -412,7 +410,6 @@ tide: () => svg(120, 80, `
       <line x1="20" y1="40" x2="100" y2="40" stroke="#ffb86b" stroke-width="0.6" stroke-dasharray="2 2"/>
       <animateTransform attributeName="transform" type="rotate" values="-2 100 40; 2 100 40; -2 100 40" dur="3s" repeatCount="indefinite"/>
     </g>
-    <text x="60" y="60" font-size="7" fill="currentColor" text-anchor="middle">parallaxe</text>
   `),
 
   // #28 j2000 — LOT 10C.2 : cadran figé 12h00, AUCUNE animation.

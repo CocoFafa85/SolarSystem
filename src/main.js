@@ -81,6 +81,12 @@ const cometOrbitsGroup = new Group();
 cometOrbitsGroup.name = 'CometOrbits';
 app.scene.add(cometOrbitsGroup);
 
+// LOT 16 R5 — Group dédié aux orbites des astéroïdes focusables (Vesta, Pallas).
+// Toggle indépendant via UI.ORBITS_TOGGLE_ASTEROIDS.
+const asteroidOrbitsGroup = new Group();
+asteroidOrbitsGroup.name = 'AsteroidOrbits';
+app.scene.add(asteroidOrbitsGroup);
+
 // LOT 6B — Group dédié aux orbites des planètes naines (Pluton, Cérès,
 // Hauméa, Makémaké, Éris). Toggle via `UI.ORBITS_TOGGLE_DWARFS`,
 // indépendant des orbites planètes (Mercure→Neptune) et minor.
@@ -93,6 +99,7 @@ app.scene.add(dwarfOrbitsGroup);
 // ces visibilités (préférence utilisateur conservée à travers les resets).
 orbitGroup.visible = false;
 cometOrbitsGroup.visible = false;
+asteroidOrbitsGroup.visible = false;
 dwarfOrbitsGroup.visible = false;
 
 // Cache d'assets partagé — un seul GPU upload par texture, dispose centralisé.
@@ -181,7 +188,6 @@ try {
     host.add(line);
     // LOT 6 — capture la référence de l'orbite lunaire pour le toggle global.
     // LOT 7 — orbite Lune désactivée par défaut (cohérence avec la masquage
-    // contextuel "Lune" dans BodyMenu : visible uniquement sur survol Terre).
     if (body.id === 'moon') {
       moonOrbitLine = line;
       moonOrbitLine.visible = false;
@@ -235,9 +241,9 @@ try {
       focusableAstSystem = createCometSystem(focusableAst, { variant: 'asteroid' });
       focusableAstSystem.root.name = 'FocusableAsteroids';
       app.scene.add(focusableAstSystem.root);
-      // Leurs orbites suivent le toggle "minor" — même sémantique UI.
+      // LOT 16 R5 — orbites Vesta/Pallas routées vers leur Group dédié (toggle ASTEROIDS).
       for (const entry of focusableAstSystem.comets.values()) {
-        if (entry.orbit) cometOrbitsGroup.add(entry.orbit);
+        if (entry.orbit) asteroidOrbitsGroup.add(entry.orbit);
       }
     }
   } catch (err) {
@@ -272,7 +278,7 @@ try {
   // Construit l'index ICI parce que les orbites comètes viennent d'être
   // re-parentées vers `cometOrbitsGroup` à la ligne précédente.
   orbitHighlighter = createOrbitHighlighter({
-    bus, groups: [orbitGroup, dwarfOrbitsGroup, cometOrbitsGroup],
+    bus, groups: [orbitGroup, dwarfOrbitsGroup, cometOrbitsGroup, asteroidOrbitsGroup],
   });
 
   // Repères équinoxes/solstices (LOT 5) — consomme earthMarkers de Session B.
@@ -516,16 +522,23 @@ app.registerUpdater((_dt, elapsedSeconds) => {
 // ---------------------------------------------------------------------------
 const unsubTogP = bus.on(UI.ORBITS_TOGGLE_PLANETS, (p) => {
   const v = !!p?.visible;
-  // LOT 6 — un seul handler, plusieurs mutations (contrat "zéro nouveau listener").
-  // L'orbite Lune DOIT rester parentée à Earth pour suivre sa position,
-  // d'où la mutation explicite plutôt qu'un re-parentage.
   orbitGroup.visible = v;
-  if (moonOrbitLine) moonOrbitLine.visible = v;
-  // `seasonMarkers` est désormais dans `orbitGroup` → visibilité héritée
-  // automatiquement, pas de mutation supplémentaire.
+  // LOT 16 #12 — l'orbite Lune est passée sous le canal SATELLITES dédié.
 });
-const unsubTogM = bus.on(UI.ORBITS_TOGGLE_MINOR, (p) => {
+const unsubTogS = bus.on(UI.ORBITS_TOGGLE_SATELLITES, (p) => {
+  if (moonOrbitLine) moonOrbitLine.visible = !!p?.visible;
+});
+const unsubTogC = bus.on(UI.ORBITS_TOGGLE_COMETS, (p) => {
   cometOrbitsGroup.visible = !!p?.visible;
+});
+const unsubTogA = bus.on(UI.ORBITS_TOGGLE_ASTEROIDS, (p) => {
+  asteroidOrbitsGroup.visible = !!p?.visible;
+});
+// Alias legacy : MINOR togglait les 2 groupes — kept pour rétro-compat.
+const unsubTogM = bus.on(UI.ORBITS_TOGGLE_MINOR, (p) => {
+  const v = !!p?.visible;
+  cometOrbitsGroup.visible = v;
+  asteroidOrbitsGroup.visible = v;
 });
 const unsubTogD = bus.on(UI.ORBITS_TOGGLE_DWARFS, (p) => {
   dwarfOrbitsGroup.visible = !!p?.visible;
@@ -556,6 +569,9 @@ const teardown = () => {
   disposeObject(reference);
   disposeObject(orbitGroup);
   unsubTogP();
+  unsubTogS();
+  unsubTogC();
+  unsubTogA();
   unsubTogM();
   unsubTogD();
   unsubReset();
@@ -589,6 +605,7 @@ const teardown = () => {
   if (cometRoot) disposeCometSystem(cometRoot);
   if (focusableAstSystem?.root) disposeCometSystem(focusableAstSystem.root);
   disposeObject(cometOrbitsGroup);
+  disposeObject(asteroidOrbitsGroup);
   disposeObject(dwarfOrbitsGroup);
   textureCache.disposeAll();
   disposeProceduralTextures();

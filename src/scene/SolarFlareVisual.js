@@ -18,7 +18,7 @@ import { ENGINE } from '../ui/core/channels.js';
 
 const TEXTURE_SIZE = 128;
 const FADE_IN_SEC = 0.8;
-const FADE_OUT_SEC = 1.5;
+const FADE_OUT_SEC = 5.0;   // LOT 16 #7 — fade-out réel ×3.3 (plus de présence visuelle)
 const SCALE_FACTOR = 3;   // halo = visualSun × 3
 
 function buildFlareTexture() {

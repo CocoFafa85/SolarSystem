@@ -16,10 +16,10 @@ const TXT = {
   closeLabel: 'Fermer',
   // Markdown léger : **gras** / *italique* parsés ci-dessous.
   paragraph:
-    "Bienvenue dans une simulation réaliste du système solaire !\n" + 
-    "Oui vraiment **réaliste** : les échelles de distance et d'évolution du temps sont rigoureusement respectées, ce qui peut être un peu déroutant au début (le système est composé de 99,9999999999999 % de vide).\n" + 
-    "L'objectif est de représenter physiquement les ordres de grandeur de l'espace et illustrer quelques concepts-clés de l'astronomie sans trop de jargon.\n" + 
-    "Tu peux naviguer entre les astres, accélérer le temps (attention au tourni), comparer des données ou encore parcourir le glossaire.\n" + 
+    "\nBienvenue dans une simulation réaliste du système solaire !\n\n" + 
+    "Oui vraiment **réaliste** : les échelles de distance et d'évolution du temps sont rigoureusement respectées, ce qui peut être un peu déroutant au début (le système est composé à 99,9999999999999 % de vide).\n\n" + 
+    "L'objectif est de représenter physiquement les ordres de grandeur de l'espace et illustrer quelques concepts-clés de l'astronomie sans trop de jargon.\n\n" + 
+    "Tu peux naviguer entre les astres, accélérer le temps (attention au tourni), comparer des données ou encore parcourir le glossaire.\n\n" + 
     "Si quelque chose casse ou si tu as une idée intéressante contacte moi : ",
   cta: 'Bon voyage',
 };
@@ -61,12 +61,6 @@ export function mountWelcomeModal(container) {
   const card = document.createElement('div');
   card.className = 'welcome__card panel';
 
-  const closeBtn = document.createElement('button');
-  closeBtn.type = 'button';
-  closeBtn.className = 'welcome__close';
-  closeBtn.setAttribute('aria-label', TXT.closeLabel);
-  closeBtn.innerHTML = '<span aria-hidden="true">×</span>';
-
   const title = document.createElement('h2');
   title.id = 'welcome-title';
   title.className = 'welcome__title';
@@ -93,7 +87,26 @@ export function mountWelcomeModal(container) {
   cta.className = 'welcome__cta';
   cta.textContent = TXT.cta;
 
-  card.append(closeBtn, title, body, cta);
+  // LOT 16 R6 — filtre SVG "distorsion liquide" (proposition 2). feTurbulence +
+  // feDisplacementMap avec baseFrequency animée (SMIL) → ondulation fluide
+  // appliquée au survol du CTA via `filter: url(#cosmicLiquid)`.
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svgFx = document.createElementNS(svgNS, 'svg');
+  svgFx.setAttribute('width', '0');
+  svgFx.setAttribute('height', '0');
+  svgFx.setAttribute('aria-hidden', 'true');
+  svgFx.style.position = 'absolute';
+  svgFx.innerHTML = `
+    <defs>
+      <filter id="cosmicLiquid" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise">
+          <animate attributeName="baseFrequency" dur="9s" values="0.012 0.018;0.025 0.010;0.012 0.018" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>`;
+
+  card.append(title, body, cta, svgFx);
   root.append(backdrop, card);
   container.appendChild(root);
 
@@ -115,10 +128,9 @@ export function mountWelcomeModal(container) {
       e.preventDefault(); first.focus();
     }
   }
-  function onKey(e) {
-    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-    trap(e);
-  }
+  // LOT 16 R7 — Escape ne ferme plus la modale ; seul le clic sur "Bon voyage"
+  // permet de la quitter (le focus reste piégé via `trap`).
+  function onKey(e) { trap(e); }
 
   // D5 — ambient mouse-aware : met à jour --mouse-x/--mouse-y sur le backdrop.
   function onPointerMove(e) {
@@ -149,8 +161,7 @@ export function mountWelcomeModal(container) {
   }
 
   cta.addEventListener('click', close);
-  closeBtn.addEventListener('click', close);
-  backdrop.addEventListener('click', close);
+  // LOT 16 R7 — clic sur le backdrop ne ferme plus la modale.
 
   const unsubOpen  = bus.on(UI.WELCOME_OPEN,  open);
   const unsubClose = bus.on(UI.WELCOME_CLOSE, () => { /* émis par close() */ });
@@ -168,8 +179,6 @@ export function mountWelcomeModal(container) {
     el: root,
     destroy() {
       cta.removeEventListener('click', close);
-      closeBtn.removeEventListener('click', close);
-      backdrop.removeEventListener('click', close);
       document.removeEventListener('keydown', onKey);
       root.removeEventListener('pointermove', onPointerMove);
       unsubOpen(); unsubClose();

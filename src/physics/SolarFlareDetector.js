@@ -21,7 +21,7 @@ import * as bus from '../ui/core/eventBus.js';
 import { ENGINE } from '../ui/core/channels.js';
 import { evaluateSolarFlareInto } from './solarCycle.js';
 
-const DEFAULT_FLARE_DURATION_HOURS = 240; // 10 jours simulés — ordre de grandeur des CMEs majeures
+const DEFAULT_FLARE_DURATION_HOURS = 720; // LOT 16 #7 — 30 jours simulés (×3) pour glow + long
 
 /**
  * @param {{

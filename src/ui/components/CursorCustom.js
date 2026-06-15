@@ -5,7 +5,7 @@
 // - Skip total sur `pointer:coarse` (mobile) ou `prefers-reduced-motion` (ring
 //   colle au dot dans ce dernier cas).
 
-const LERP_FACTOR = 0.18;        // ~5 frames pour rattraper 95 % de l'écart à 60 fps
+const LERP_FACTOR = 0.55;        // LOT 16 patch — latence ring fortement réduite (rattrape en ~2 frames)
 const ROOT_CLASS  = 'has-custom-cursor';
 
 function isCoarsePointer() {

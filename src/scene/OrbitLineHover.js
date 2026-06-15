@@ -53,6 +53,11 @@ export function createOrbitLineHover({
   const unsubD = bus.on(UI.ORBITS_TOGGLE_DWARFS,  (p) => { dwarfsVisible  = !!p?.visible; });
   const unsubM = bus.on(UI.ORBITS_TOGGLE_MINOR,   (p) => { minorVisible   = !!p?.visible; });
 
+  // LOT 16 R5 D3 — survol équinoxes/solstices prioritaire : tant qu'un marker
+  // est actif, OrbitLineHover NE déclenche PAS de hit d'orbite.
+  let markerActive = false;
+  const unsubMarker = bus.on(UI.MARKER_HOVER, (p) => { markerActive = p?.id != null; });
+
   // LOT 8D bis — collecte DYNAMIQUE à chaque mousemove (throttle 80 ms).
   // Évite tout effet de snapshot dépassé si des orbites sont ajoutées après
   // l'init de ce module (top-3 astéroïdes via loadAsteroids async,
@@ -111,6 +116,9 @@ export function createOrbitLineHover({
     if (now - lastEvent < THROTTLE_MS) return;
     lastEvent = now;
 
+    // LOT 16 R5 D3 — priorité aux marqueurs équinoxes/solstices.
+    if (markerActive) { publish(null); return; }
+
     const rect = canvas.getBoundingClientRect();
     _ndc.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
     _ndc.y = -(((ev.clientY - rect.top) / rect.height) * 2 - 1);
@@ -158,7 +166,7 @@ export function createOrbitLineHover({
 
   function destroy() {
     canvas.removeEventListener('mousemove', onMouseMove);
-    unsubP(); unsubD(); unsubM();
+    unsubP(); unsubD(); unsubM(); unsubMarker();
     _intersects.length = 0;
     lastEmittedId = null;
   }

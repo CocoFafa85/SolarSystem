@@ -167,7 +167,8 @@
 .events-panel .events-button { position: static; left: auto; top: auto; }
 /* LOT 6B — léger décalage à gauche pour aligner le panneau sous le bouton,
    sans dépasser l'alignement à 15 % imposé par le wrapper. */
-.events-panel .event-stats--compact { position: static; width: auto; min-width: 260px; transform: translateX(-12px); }
+/* LOT 16 #5 — décalage à droite (au lieu du -12px de LOT 6B). */
+.events-panel .event-stats--compact { position: static; width: auto; min-width: 260px; transform: translateX(32px); }
 
 /* ============ EventsButton (LOT 5D) ============ */
 .events-button {
@@ -188,50 +189,114 @@
 .events-button:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--color-border-strong); }
 .events-button[aria-pressed="true"] { border-color: var(--color-accent); color: var(--color-accent); }
 
-/* ============ BodyMenu (LOT 5B/C — sections row + delegation) ============ */
+/* ============ BodyMenu (LOT 16 #12 — 4 toggles + stack slots) ============ */
+/* LOT 16 patch round 4 — largeur conditionnelle : compact fermé / large ouvert. */
 .body-menu {
-  /* LOT 7B/C — sans scroll, compact, mais assez large pour accueillir la
-     Lune en état `.is-earth-active`/`.is-locked-earth` sans déborder. */
-  min-width: 320px;
-  max-width: none;
+  min-width: 0;
+  max-width: 140px;
   height: auto;
-  align-items: flex-start;
   padding: var(--space-1);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-3);
   font-size: 0.85rem;
 }
-/* LOT 7C — sur viewport large, on revient à la taille de police standard
-   (l'espace est suffisant, plus besoin de compacter). */
 @media (min-width: 1280px) {
-  .body-menu      { font-size: var(--font-size-sm); min-width: 400px; }
-  .body-menu__item, .body-menu__summary { min-height: var(--tap-target-min); }
+  .body-menu { font-size: var(--font-size-sm); }
+  .body-menu__item { min-height: var(--tap-target-min); }
 }
-/* L'attribut [hidden] natif doit l'emporter sur `display: flex`. */
 .body-menu[hidden] { display: none; }
 .body-menu .body-menu__item { padding: 4px var(--space-2); min-height: 32px; }
-.body-menu .body-menu__summary { min-height: 32px; padding: 2px var(--space-2); }
 .body-menu .body-menu__item--orbits-toggle { padding: 4px var(--space-2); }
+/* LOT 16 round 4 — quand au moins 1 section est ouverte, on autorise jusqu'à 4 slots horizontaux. */
+.body-menu.body-menu--has-open-section { max-width: min(95vw, 720px); }
+/* Toggle "COMÈTES & ASTÉROÏDES" : autoriser le wrap pour rester dans 140px. */
+.body-menu__toggle { white-space: normal; line-height: 1.15; word-break: keep-all; }
 
-/* LOT 7 — Lune cachée par défaut, révélée quand Terre active (hover ou lock) */
-.body-menu__item--moon { display: none; }
-.body-menu.is-earth-active .body-menu__item--moon,
-.body-menu.is-locked-earth .body-menu__item--moon { display: flex; }
-@media (min-width: 768px) {
-  .body-menu { flex-direction: row; align-items: flex-start; gap: var(--space-4); }
+/* Mobile 375px : toggles au-dessus, slots empilés en dessous */
+@media (max-width: 767px) {
+  .body-menu { flex-direction: column; gap: var(--space-2); }
+  .body-menu__toggles { flex-direction: row; flex-wrap: wrap; }
 }
 
+/* --- Colonne de toggles --------------------------------------------------- */
+.body-menu__toggles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+}
+/* LOT 16 patch — toggles sans bordure. */
+.body-menu__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-1);
+  min-height: var(--tap-target-min);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display, var(--font-family-base));
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--easing-standard),
+              color var(--motion-fast) var(--easing-standard),
+              box-shadow var(--motion-fast) var(--easing-standard);
+}
+.body-menu__toggle:hover {
+  color: #c8d4e4;
+  background: rgba(38, 7, 124, 0.55);
+  box-shadow: 0 0 10px rgba(200, 212, 228, 0.15);
+}
+.body-menu__toggle[aria-pressed="true"] {
+  color: #c8d4e4;
+  background: rgba(15, 7, 126, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(200, 212, 228, 0.25);
+}
+
+/* LOT 16 patch — slots HORIZONTAUX (pas empilés vertical à droite). */
+.body-menu__slots {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-3);
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+}
+.body-menu__slot {
+  min-height: 0;
+  transition: min-height 250ms var(--easing-standard);
+}
+.body-menu__slot:empty { display: none; }
+
+/* LOT 16 patch — sections toujours visibles, transition légère sans masquer. */
 .body-menu__section {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  flex: 1 1 0;
   min-width: 0;
+  opacity: 1;
+  border: 1px solid rgba(200, 212, 228, 0.10);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1);
+}
+.body-menu__section.is-entering {
+  animation: bodyMenuFadeIn 220ms var(--easing-standard);
+}
+@keyframes bodyMenuFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .body-menu__section.is-entering { animation: none; }
 }
 
-/* Plus de section-head séparé — le summary est seul, le toggle vit dans la liste. */
-
+/* Legacy summary conservé (unused désormais) — bloc supprimé. */
 .body-menu__summary {
   flex: 1 1 auto;
   display: flex;
@@ -412,6 +477,7 @@
 .body-card__close:hover { background: rgba(255, 255, 255, 0.06); color: var(--color-text-primary); }
 /* LOT 6 — emphase sur la description (lisibilité du panneau d'info). */
 .body-card__desc { color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: var(--line-height-base); margin-bottom: var(--space-3); }
+.body-card__discovery { display: block; font-size: 0.85em; opacity: 0.75; font-style: italic; margin-top: -0.25rem; margin-bottom: var(--space-3); color: var(--color-text-muted); }
 .body-card__grid { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-3); row-gap: var(--space-2); margin: 0; }
 .body-card__grid dt { color: var(--color-text-dim); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: 0.06em; }
 .body-card__grid dd { margin: 0; font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
@@ -440,7 +506,9 @@
   white-space: nowrap;          /* boutons de tri restent en ligne */
 }
 .compare-menu[hidden] { display: none; }
-.cm__btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: var(--tap-target-min); min-height: var(--tap-target-min); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--color-border-subtle); background: transparent; color: var(--color-text-primary); }
+/* LOT 16 #4 — 6 boutons compare uniformisés rectangle 110×48 (90×44 mobile). */
+.cm__btn { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: var(--space-1); width: 110px; height: 48px; flex: 0 0 110px; padding: 0 var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--color-border-subtle); background: transparent; color: var(--color-text-primary); }
+@media (max-width: 480px) { .cm__btn { width: 90px; height: 44px; flex-basis: 90px; } }
 .cm__btn:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--color-border-strong); }
 .cm__icon  { font-size: var(--font-size-md); line-height: 1; }
 .cm__label { font-size: var(--font-size-2xs); color: var(--color-text-muted); }
@@ -849,12 +917,23 @@
   50%      { opacity: 0.3; }
 }
 
-/* ---- D2.1 Glass panels sur toutes les modales ----------------------------
-   Spécificité ≥ 2 classes pour battre welcome.css (importé après). */
-.welcome .welcome__card,
-.compare-overlay__modal,
+/* ---- D2.1 Glass panels — LOT 16 patch refonte sobre -----------------------
+   #1 patch : compare-overlay revient au style sombre original (comme glossary/event-stats/body-card).
+   Style holo bleu marine palette restreinte EXCLUSIF à welcome__card. */
+.welcome .welcome__card {
+  position: relative;
+  background: linear-gradient(135deg, #090b85 0%, #000820 55%, #240985 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 212, 228, 0.20);
+  border-radius: var(--radius-lg);
+  color: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: var(--space-8);
+}
 .event-stats--modal,
 .glossary-overlay__modal,
+.compare-overlay__modal,
 .body-card {
   position: relative;
   background: linear-gradient(135deg,
@@ -866,40 +945,11 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ---- D2.2 Conic gradient border rotatif — Welcome + Compare uniquement --- */
-.welcome .welcome__card,
-.compare-overlay__modal {
-  border-radius: var(--radius-lg);
-  overflow: visible;
-}
+/* LOT 16 patch — pseudo-elements neutralisés sur welcome ET compare. */
 .welcome .welcome__card::before,
-.compare-overlay__modal::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index: -1;
-  background: conic-gradient(from var(--border-angle),
-    var(--color-neon-cyan),
-    var(--color-neon-violet),
-    var(--color-neon-magenta),
-    var(--color-neon-cyan));
-  animation: rotateBorder 4s linear infinite;
-}
-
-/* ---- D2.3 Noise SVG overlay — Welcome + Compare uniquement -------------- */
 .welcome .welcome__card::after,
-.compare-overlay__modal::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
-  animation: noiseShift 0.5s steps(5) infinite;
-}
+.compare-overlay__modal::before,
+.compare-overlay__modal::after { content: none !important; }
 
 /* ════════════════════════════════════════════════════════════════════════════
    D3 — HUD : glass + glow + Orbitron labels + active state
@@ -940,7 +990,7 @@
   border-color: var(--color-neon-cyan);
   box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
   text-shadow: 0 0 5px var(--color-neon-cyan);
-}
+} 
 
 /* Labels tech Orbitron. */
 .tc__btn,
@@ -987,26 +1037,13 @@
 /* Status dot blink — préserve --accent par événement (LOT 5C). */
 .event-stats__dot { animation: statusBlink 2s ease-in-out infinite; }
 
-/* ---- ComparatorButton signature : conic border rotatif lent (6s) -------- */
+/* ---- ComparatorButton — LOT 16 #2 : conic rotatif retiré, glass + hover cyan conservés. */
 .comparator-btn { position: relative; background: var(--color-bg-secondary); overflow: visible; }
-.comparator-btn::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  z-index: -1;
-  background: conic-gradient(from var(--border-angle),
-    var(--color-neon-cyan),
-    var(--color-neon-violet),
-    var(--color-neon-cyan));
-  animation: rotateBorder 6s linear infinite;
-}
 
 /* ---- reduced-motion : palette conservée, animations off ----------------- */
 @media (prefers-reduced-motion: reduce) {
   .welcome .welcome__card::before,
-  .compare-overlay__modal::before,
-  .comparator-btn::before { animation: none; }
+  .compare-overlay__modal::before { animation: none; }
   .welcome .welcome__card::after,
   .compare-overlay__modal::after { animation: none; }
   .event-stats__dot { animation: none; }
@@ -1059,17 +1096,23 @@
   100% { transform: skew(0.3deg); }
 }
 
+/* LOT 16 round 4 — titre cyberpunk : gradient + glitch RGB cyclique restauré. */
 .welcome .welcome__title {
   font-family: var(--font-orbitron);
-  font-size: 2.5rem;
-  color: var(--color-neon-cyan);
+  font-size: 2.6rem;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-shadow:
-    0 0 10px rgba(0, 243, 255, 0.8),
-    2px 2px 0 rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.14em;
+  background: linear-gradient(135deg, #ffffff 0%, #c8d4e4 50%, #a8b8d8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 14px rgba(200, 212, 228, 0.55)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
   position: relative;
-  animation: glitchSkew 3s infinite linear alternate-reverse;
+  text-align: center;
+  margin: 0 auto;
+  animation: glitchSkew 5.2s steps(1, end) infinite;
 }
 .welcome .welcome__title::before,
 .welcome .welcome__title::after {
@@ -1078,45 +1121,50 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: var(--color-bg-primary);
-  overflow: hidden;
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: inherit;
+  text-align: center;
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
 .welcome .welcome__title::before {
-  left: 2px;
-  text-shadow: -1px 0 var(--color-neon-magenta);
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitchAnim 5s infinite linear alternate-reverse;
+  color: rgba(255, 60, 90, 0.85);
+  text-shadow: 2px 0 rgba(255, 60, 90, 0.85);
+  animation: glitchAnim 3.4s steps(1, end) infinite alternate-reverse;
 }
 .welcome .welcome__title::after {
-  left: -2px;
-  text-shadow: -1px 0 var(--color-neon-cyan);
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitchAnim2 5s infinite linear alternate-reverse;
+  color: rgba(0, 240, 255, 0.85);
+  text-shadow: -2px 0 rgba(0, 240, 255, 0.85);
+  animation: glitchAnim2 2.8s steps(1, end) infinite alternate-reverse;
 }
 
-/* Scanline overlay — WelcomeModal body + CompareOverlay list */
-.welcome .welcome__body,
-.compare-overlay__list { position: relative; }
+/* Scanline overlay retiré — modale sobre. */
 .welcome .welcome__body::before,
-.compare-overlay__list::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(transparent 50%, rgba(255, 0, 128, 0.06) 50%);
-  background-size: 100% 4px;
-  z-index: 1;
-}
+.compare-overlay__list::before { content: none !important; }
 
-/* Pulse text — CTAs primaires */
-@keyframes pulseText {
-  0%, 100% { opacity: 0.7; }
-  50%      { opacity: 1; }
-}
+/* CTAs primaires — sobre, clair sur fond marine profond. */
 .welcome .welcome__cta,
-.mail-reveal__copy {
-  animation: pulseText 2s ease-in-out infinite;
+.mail-reveal .mail-reveal__copy {
+  background: transparent;
+  color: #c8d4e4;
+  border: 1px solid rgba(200, 212, 228, 0.45);
+  text-shadow: none;
+  margin-top: var(--space-8);
+  animation: none;
+  transition:
+    background var(--motion-fast) var(--easing-standard),
+    color var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard);
+}
+.welcome .welcome__cta:hover,
+.mail-reveal .mail-reveal__copy:hover {
+  background: #c8d4e4;
+  color: #090b85;
+  border-color: #c8d4e4;
+  box-shadow: 0 0 12px rgba(200, 212, 228, 0.4);
+  text-shadow: none;
+  transform: none;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
@@ -1128,21 +1176,61 @@
   100% { opacity: 0.8; }
 }
 
+/* LOT 16 patch — backdrop sobre, sans pulseGlow ni radial mouse-aware. */
 .welcome .welcome__backdrop {
-  background: radial-gradient(
-    circle at
-      calc(50% + (var(--mouse-x, 0) * -50px))
-      calc(50% + (var(--mouse-y, 0) * -50px)),
-    rgba(188, 19, 254, 0.20) 0%,
-    var(--color-bg-deep) 60%);
-  animation: pulseGlow 8s ease-in-out infinite alternate;
+  background: rgba(9, 11, 30, 0.72);
+  animation: none;
 }
 
-.compare-overlay__modal:hover {
-  box-shadow:
-    0 0 30px rgba(0, 243, 255, 0.30),
-    0 0 60px rgba(0, 243, 255, 0.10),
-    0 0 120px rgba(188, 19, 254, 0.05);
+/* LOT 16 patch — pas d'aura colorée au hover. */
+.compare-overlay__modal:hover { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
+
+/* LOT 16 patch — welcome textes en blanc pour contraste max sur fond marine. */
+.welcome .welcome__card,
+.welcome .welcome__body,
+.welcome .welcome__body p,
+.welcome .welcome__body li,
+.welcome .welcome__body small,
+.welcome .mail-reveal,
+.welcome .mail-reveal__display { color: #ffffff; }
+.welcome .welcome__body strong { color: #ffffff; font-weight: 700; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LOT 16 #2 — Uniformisation HUD : time-status hover doré + Astres/Glossaire
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* (b) Hover doré sur le panneau time-status. */
+.time-status {
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition:
+    border-color 200ms var(--easing-standard),
+    box-shadow   200ms var(--easing-standard);
+}
+.time-status:hover {
+  border-color: rgba(212, 175, 55, 0.40);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.30);
+}
+
+/* (c) Uniformiser boutons « Astres » et « Glossaire » — look identique. */
+.body-menu-toggle__btn,
+.glossary-btn {
+  font-family: var(--font-orbitron);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 243, 255, 0.20);
+  background: rgba(18, 18, 26, 0.80);
+}
+.body-menu-toggle__btn:hover,
+.glossary-btn:hover {
+  border-color: rgba(212, 175, 55, 0.50);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+  text-shadow: 0 0 5px var(--color-gold-soft);
 }
 
 /* Mobile glitch — taille réduite mais effet conservé */
@@ -1162,9 +1250,255 @@
   .welcome .welcome__backdrop {
     background: radial-gradient(
       circle at 50% 50%,
-      rgba(188, 19, 254, 0.20) 0%,
-      var(--color-bg-deep) 60%);
+      rgba(74, 122, 184, 0.22) 0%,
+      var(--color-marine-deep) 60%);
     animation: none;
     opacity: 0.6;
   }
+  .welcome .welcome__cta { animation: none !important; border-radius: 8px !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LOT 16 ROUND 5 — refonte unifiée
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* --- A1 — Glitch reference fidèle (base BLANCHE, RGB-split magenta/cyan) --- */
+.welcome .welcome__title {
+  font-family: var(--font-orbitron);
+  font-size: 2.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  /* LOT 16 R7 — base CYAN néon, couches secondaires magenta/blanc. */
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: #00fff9;
+  color: #00fff9;
+  text-shadow: 0 0 10px rgba(0, 255, 249, 0.85), 2px 2px 0px rgba(0, 0, 0, 0.5);
+  filter: none;
+  position: relative;
+  width: fit-content;
+  display: table;
+  margin-inline: auto !important;
+  text-align: center;
+  animation: glitch-skew 3s infinite linear alternate-reverse;
+}
+.welcome .welcome__title::before,
+.welcome .welcome__title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* LOT 16 R6 — fond transparent : on voit le container parent derrière les
+     couches RGB-split, plus de rectangle sombre parasite. */
+  background: transparent;
+  -webkit-text-fill-color: initial;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  text-align: center;
+}
+/* R7 — couche ::before MAGENTA (couleur secondaire #1). */
+.welcome .welcome__title::before {
+  left: 2px;
+  color: #ff00c1;
+  text-shadow: -1px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+/* R7 — couche ::after BLANCHE (couleur secondaire #2). */
+.welcome .welcome__title::after {
+  left: -2px;
+  color: #ffffff;
+  text-shadow: -1px 0 #ffffff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+@keyframes glitch-skew {
+  0%   { transform: skew(0deg); }
+  10%  { transform: skew(0.3deg); }
+  20%  { transform: skew(-0.4deg); }
+  30%  { transform: skew(0.2deg); }
+  40%  { transform: skew(-0.3deg); }
+  50%  { transform: skew(0.5deg); }
+  60%  { transform: skew(-0.2deg); }
+  70%  { transform: skew(0.4deg); }
+  80%  { transform: skew(-0.5deg); }
+  90%  { transform: skew(0.3deg); }
+  100% { transform: skew(0deg); }
+}
+@keyframes glitch-anim {
+  0%   { clip: rect(14px, 9999px, 81px, 0); }
+  5%   { clip: rect(63px, 9999px, 86px, 0); }
+  10%  { clip: rect(7px,  9999px, 66px, 0); }
+  15%  { clip: rect(98px, 9999px, 5px,  0); }
+  20%  { clip: rect(18px, 9999px, 64px, 0); }
+  25%  { clip: rect(7px,  9999px, 75px, 0); }
+  30%  { clip: rect(54px, 9999px, 20px, 0); }
+  35%  { clip: rect(94px, 9999px, 83px, 0); }
+  40%  { clip: rect(38px, 9999px, 51px, 0); }
+  45%  { clip: rect(70px, 9999px, 24px, 0); }
+  50%  { clip: rect(11px, 9999px, 87px, 0); }
+  55%  { clip: rect(85px, 9999px, 42px, 0); }
+  60%  { clip: rect(33px, 9999px, 95px, 0); }
+  65%  { clip: rect(62px, 9999px, 17px, 0); }
+  70%  { clip: rect(8px,  9999px, 71px, 0); }
+  75%  { clip: rect(48px, 9999px, 30px, 0); }
+  80%  { clip: rect(91px, 9999px, 56px, 0); }
+  85%  { clip: rect(22px, 9999px, 78px, 0); }
+  90%  { clip: rect(67px, 9999px, 13px, 0); }
+  95%  { clip: rect(40px, 9999px, 88px, 0); }
+  100% { clip: rect(75px, 9999px, 35px, 0); }
+}
+@keyframes glitch-anim2 {
+  0%   { clip: rect(29px, 9999px, 86px, 0); }
+  10%  { clip: rect(50px, 9999px, 13px, 0); }
+  20%  { clip: rect(2px,  9999px, 67px, 0); }
+  30%  { clip: rect(82px, 9999px, 41px, 0); }
+  40%  { clip: rect(18px, 9999px, 95px, 0); }
+  50%  { clip: rect(60px, 9999px, 25px, 0); }
+  60%  { clip: rect(9px,  9999px, 74px, 0); }
+  70%  { clip: rect(45px, 9999px, 38px, 0); }
+  80%  { clip: rect(78px, 9999px, 7px,  0); }
+  90%  { clip: rect(33px, 9999px, 91px, 0); }
+  100% { clip: rect(15px, 9999px, 56px, 0); }
+}
+
+/* --- R8 — CTA état NORMAL : rectangle uniforme, zéro animation -------- */
+.welcome .welcome__cta {
+  border-radius: 8px;
+  filter: none;
+  animation: none;
+  box-shadow: none;
+  transform: none;
+  transition:
+    box-shadow   180ms ease,
+    background   180ms ease,
+    color        180ms ease,
+    border-color 180ms ease,
+    transform    180ms ease;
+}
+.welcome .welcome__cta:hover,
+.welcome .welcome__cta:focus-visible {
+  /* R7 — animation EXCLUSIVEMENT au survol. Sans hover, les filter/animation
+     reviennent à `none` (transition-rerun via le state du :hover). */
+  filter: url(#cosmicLiquid);
+  animation: cosmicGlowPulse 1.4s ease-in-out infinite;
+}
+/* R7 — glow magenta néon resserré (moins étendu que la version dorée). */
+@keyframes cosmicGlowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 6px  rgba(255, 0, 193, 0.55),
+      0 0 12px rgba(255, 0, 193, 0.30),
+      inset 0 0 6px rgba(255, 255, 255, 0.10);
+  }
+  50% {
+    box-shadow:
+      0 0 10px rgba(255, 0, 193, 0.80),
+      0 0 18px rgba(255, 0, 193, 0.45),
+      inset 0 0 10px rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* --- A3 — Montserrat Alternates sur welcome__p + glossary__text ---------- */
+.welcome__p,
+.welcome .welcome__body p,
+.glossary__text,
+.glossary__def,
+.glossary__term {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* --- B1+B2 — Unification taille + bordure cyan static + hover #240985 ---- */
+/* Même geometry pour comparator-btn et glossary-btn (et events-button + body-menu-toggle__btn). */
+.events-button,
+.body-menu-toggle__btn,
+.glossary-btn,
+.comparator-btn {
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+/* Bordure cyan en static + transition vers #240985 au survol — applique à
+   time-status, events-button, body-menu-toggle__btn, comparator-btn, glossary-btn. */
+.time-status,
+.events-button,
+.body-menu-toggle__btn,
+.comparator-btn,
+.glossary-btn {
+  border: 1px solid var(--color-neon-cyan, #00f3ff) !important;
+  box-shadow: 0 0 6px rgba(0, 243, 255, 0.18);
+  transition:
+    border-color 200ms ease,
+    box-shadow   200ms ease,
+    background   200ms ease;
+}
+.time-status:hover,
+.events-button:hover,
+.body-menu-toggle__btn:hover,
+.comparator-btn:hover,
+.glossary-btn:hover {
+  border-color: #240985 !important;
+  box-shadow: 0 0 14px rgba(36, 9, 133, 0.55), 0 0 4px rgba(36, 9, 133, 0.35) inset;
+}
+
+/* --- B3 — Retirer le bg hover sur body-menu-toggle__btn ------------------ */
+.body-menu-toggle__btn:hover { background: var(--color-bg-panel) !important; }
+
+/* --- D1 — Réduire légèrement la taille des body-menu__toggle ------------- */
+.body-menu__toggle {
+  min-height: 30px;
+  padding: 4px var(--space-2);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* --- R6 #4 — "Astres" : aucun changement de style à l'état activé --------- */
+.body-menu-toggle__btn[aria-expanded="true"] {
+  border-color: var(--color-neon-cyan, #00f3ff) !important;
+  color: var(--color-text-primary) !important;
+  background: var(--color-bg-panel) !important;
+  box-shadow: 0 0 6px rgba(0, 243, 255, 0.18) !important;
+  text-shadow: none !important;
+}
+
+/* --- R6 #6 — toggles TOUJOURS empilés verticalement (1 par ligne) -------- */
+.body-menu__toggles { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch; }
+.body-menu__toggle { white-space: nowrap; }
+
+/* --- R6 #7 — panneau "Sélection des corps" fixe et statique -------------- */
+/* La largeur du panel = colonne de toggles. Les slots s'ouvrent en overlay
+   absolu à droite, ne redimensionnent jamais la fenêtre. */
+.body-menu {
+  position: relative;
+  max-width: none;        /* la largeur intrinsèque suit les toggles */
+  width: max-content;
+}
+.body-menu.body-menu--has-open-section { max-width: none; }
+.body-menu__slots {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: var(--space-2);
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* --- R7 — "GLOSSAIRE" et "COMPARER" largeur identique en toutes circonstances - */
+.glossary-btn,
+.comparator-btn {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/* --- R7 — "réaliste" en gras = magenta néon ---------------------------- */
+.welcome__p strong { color: #ff00c1 !important; text-shadow: 0 0 6px rgba(255, 0, 193, 0.55); }
+
