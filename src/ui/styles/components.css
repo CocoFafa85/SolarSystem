@@ -1380,10 +1380,12 @@
     border-color 180ms ease,
     transform    180ms ease;
 }
-.welcome .welcome__cta:hover,
-.welcome .welcome__cta:focus-visible {
-  /* R7 — animation EXCLUSIVEMENT au survol. Sans hover, les filter/animation
-     reviennent à `none` (transition-rerun via le state du :hover). */
+/* R9 — animation au :hover UNIQUEMENT. `:focus-visible` retiré : à l'ouverture
+   modale, `cta.focus()` déclenchait focus-visible (clavier-source par défaut)
+   et l'animation tournait sans que la souris ne survole le bouton. Premier
+   clic remettait :focus-visible à false → comportement "soudainement correct"
+   décrit par l'utilisateur. */
+.welcome .welcome__cta:hover {
   filter: url(#cosmicLiquid);
   animation: cosmicGlowPulse 1.4s ease-in-out infinite;
 }

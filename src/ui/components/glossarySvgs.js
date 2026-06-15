@@ -578,10 +578,14 @@ day: () => svg(120, 80, `
     // La rotation d'ensemble fait orbiter chaque point sur son cercle propre.
     for (let i = 0; i < N; i++) {
       const a = rnd() * Math.PI * 2;
-      const R = 26 + rnd() * 22;            // 14..36 — sphère projetée
+      const R = 26 + rnd() * 22;            // R ∈ [26..48] — sphère projetée
       const x = (60 + Math.cos(a) * R).toFixed(1);
       const y = (40 + Math.sin(a) * R).toFixed(1);
-      const rRel = (R - 14) / 22;           // 0..1 — pour taille/opacity
+      // R8 fix : la normalisation précédente `(R - 14) / 22` partait d'un
+      // intervalle erroné (commentaire stale "14..36") → rRel pouvait monter à
+      // ~1.55 → `sz` négatif (-0.4) et `opacity` > 1 (1.23) → spam d'erreurs
+      // browser sur tous les frames d'animation du Nuage d'Oort. Clamp défensif.
+      const rRel = Math.max(0, Math.min(1, (R - 26) / 22));
       const sz = (0.5 + (1 - rRel) * 1.6).toFixed(1);
       const op = (0.3 + rRel * 0.6).toFixed(2);
       body += `<circle cx="${x}" cy="${y}" r="${sz}" fill="#cfd2d8" opacity="${op}"/>`;

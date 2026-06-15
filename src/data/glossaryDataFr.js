@@ -155,7 +155,7 @@ const terms = [
   { id: 'kuiperBelt',    term: 'Ceinture de Kuiper',    def: 'Disque de petits corps au-delà de Neptune où vit Pluton à une distance de 30 à 55 UA.',
     animation: { kind: 'overlay', svg: 'kuiperBelt' } },
     
-  { id: 'oortCloud',     term: "Nuage d'Oort",          def: 'Sphère hypothétique de comètes dormantes à une distance de 2000 à 150 000 UA (≈ 2 al), c\'est frontière du système solaire. ',
+  { id: 'oortCloud',     term: "Nuage d'Oort",          def: 'Sphère hypothétique de comètes dormantes à une distance de 2000 à 150 000 UA (≈ 2 al), c\'est la frontière du système solaire. ',
     animation: { kind: 'overlay', svg: 'oortCloud' } },
     
 ];
