@@ -19,7 +19,7 @@ import { t } from '../core/i18n.js';
 
 const HOVER_DEBOUNCE_MS = 80;
 const ORBITS_TOGGLE_ID = '__orbits-toggle__';
-const SLOT_COUNT = 4;
+const SLOT_COUNT = 5;
 
 function makeOrbitToggleItem(channel, labelKey) {
   const li = document.createElement('li');
@@ -202,7 +202,8 @@ export function mountBodyMenu(container, groups) {
     { id: 'planets',    titleKey: 'menu.sectionPlanets',    list: groups.planets    || [], chan: UI.ORBITS_TOGGLE_PLANETS,    labelKey: 'menu.toggleOrbitsPlanets' },
     { id: 'dwarfs',     titleKey: 'menu.sectionDwarfs',     list: groups.dwarfs     || [], chan: UI.ORBITS_TOGGLE_DWARFS,     labelKey: 'menu.toggleOrbitsDwarfs' },
     { id: 'satellites', titleKey: 'menu.sectionSatellites', list: groups.satellites || [], chan: UI.ORBITS_TOGGLE_SATELLITES, labelKey: 'menu.toggleOrbitsSatellites' },
-    { id: 'minor',      titleKey: 'menu.sectionMinor',      list: groups.minor      || [], chan: UI.ORBITS_TOGGLE_MINOR,      labelKey: 'menu.toggleOrbitsMinor' },
+    { id: 'comets',     titleKey: 'menu.sectionComets',     list: groups.comets     || [], chan: UI.ORBITS_TOGGLE_COMETS,     labelKey: 'menu.toggleOrbitsComets' },
+    { id: 'asteroids',  titleKey: 'menu.sectionAsteroids',  list: groups.asteroids  || [], chan: UI.ORBITS_TOGGLE_ASTEROIDS,  labelKey: 'menu.toggleOrbitsAsteroids' },
   ];
 
   const sectionsById = Object.create(null);
@@ -256,6 +257,8 @@ export function mountBodyMenu(container, groups) {
       const isOpen = openSections.includes(def.id);
       togglesById[def.id].setAttribute('aria-pressed', isOpen ? 'true' : 'false');
     });
+    // LOT 16 round 4 — largeur conditionnelle : compact si fermé, élargi si ≥1 section ouverte.
+    root.classList.toggle('body-menu--has-open-section', openSections.length > 0);
   }
 
   function openSection(sid) {

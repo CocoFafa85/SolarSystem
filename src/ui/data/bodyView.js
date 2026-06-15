@@ -17,7 +17,10 @@ let _cache = null;
 let _inflight = null;
 
 async function fetchJson(url) {
-  const res = await fetch(url, { cache: 'force-cache' });
+  // LOT 16 R6 — `no-cache` (revalidation) au lieu de `force-cache` : une édition
+  // de bodies-display.json (ex. split comets/asteroids) prend effet au reload
+  // sans servir une version périmée du groupe d'astres.
+  const res = await fetch(url, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`[bodyView] HTTP ${res.status} sur ${url}`);
   return res.json();
 }
@@ -79,7 +82,7 @@ export async function loadBodyViews() {
 
     const list = [];
     const byId = Object.create(null);
-    const groups = { planets: [], dwarfs: [], satellites: [], minor: [] };
+    const groups = { planets: [], dwarfs: [], satellites: [], comets: [], asteroids: [] };
 
     const order = rawDisplay.order || Object.keys(rawDisplay.bodies || {});
     const extra = Object.keys(rawDisplay.bodies || {}).filter((k) => !order.includes(k));
@@ -120,22 +123,29 @@ export async function loadBodyViews() {
       console.warn('[bodyView] échec chargement comètes', err);
     }
 
-    // Groupes d'affichage (utilisés par BodyMenu accordéons). LOT 6 : 3 sections.
-    (rawDisplay.groups?.planets    || []).forEach((id) => byId[id] && groups.planets.push(byId[id]));
+    // Groupes d'affichage (utilisés par BodyMenu). LOT 16 R5 : 5 sections.
+    // Filtrage défensif "moon" : exclu de planets quelle que soit la data
+    // (la Lune appartient à `satellites` uniquement).
+    (rawDisplay.groups?.planets    || [])
+      .filter((id) => id !== 'moon')
+      .forEach((id) => byId[id] && groups.planets.push(byId[id]));
     (rawDisplay.groups?.dwarfs     || []).forEach((id) => byId[id] && groups.dwarfs.push(byId[id]));
     (rawDisplay.groups?.satellites || []).forEach((id) => byId[id] && groups.satellites.push(byId[id]));
 
-    // Section "minor" : comètes du catalogue (ordre stable) + entrées display
-    // explicites (Vesta/Pallas). Déduplication par id.
-    const minorIds = new Set();
+    // Section "comets" : catalogue durci (ordre stable) + entrées display
+    // explicites (si jamais déclarées). Déduplication par id.
+    const cometIds = new Set();
     try {
       for (const c of getComets()) {
-        if (byId[c.id] && !minorIds.has(c.id)) { groups.minor.push(byId[c.id]); minorIds.add(c.id); }
+        if (byId[c.id] && !cometIds.has(c.id)) { groups.comets.push(byId[c.id]); cometIds.add(c.id); }
       }
     } catch { /* déjà loggé plus haut */ }
-    (rawDisplay.groups?.minor || []).forEach((id) => {
-      if (byId[id] && !minorIds.has(id)) { groups.minor.push(byId[id]); minorIds.add(id); }
+    (rawDisplay.groups?.comets || []).forEach((id) => {
+      if (byId[id] && !cometIds.has(id)) { groups.comets.push(byId[id]); cometIds.add(id); }
     });
+
+    // Section "asteroids" : Vesta/Pallas (declarés focusables) — pas le belt InstancedMesh.
+    (rawDisplay.groups?.asteroids || []).forEach((id) => byId[id] && groups.asteroids.push(byId[id]));
 
     _cache = { list, byId, groups };
     _inflight = null;

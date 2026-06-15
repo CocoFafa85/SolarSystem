@@ -20,7 +20,9 @@ export const UI = Object.freeze({
   ORBITS_TOGGLE_PLANETS:   'ui:orbits:togglePlanets',  // LOT 5 — planètes + Lune + repères
   ORBITS_TOGGLE_DWARFS:    'ui:orbits:toggleDwarfs',   // LOT 6 — planètes naines
   ORBITS_TOGGLE_SATELLITES:'ui:orbits:toggleSatellites', // LOT 16 — satellites (Lune)
-  ORBITS_TOGGLE_MINOR:     'ui:orbits:toggleMinor',    // LOT 5 — comètes + astéroïdes
+  ORBITS_TOGGLE_COMETS:    'ui:orbits:toggleComets',     // LOT 16 R5 — comètes uniquement
+  ORBITS_TOGGLE_ASTEROIDS: 'ui:orbits:toggleAsteroids',  // LOT 16 R5 — astéroïdes Vesta/Pallas
+  ORBITS_TOGGLE_MINOR:     'ui:orbits:toggleMinor',    // legacy — relayé vers COMETS+ASTEROIDS
 
   // Survol d'un marqueur saisonnier (équinoxe/solstice). LOT 6.
   MARKER_HOVER:            'ui:marker:hover',          // { id: 'vernalEquinox'|...|null }

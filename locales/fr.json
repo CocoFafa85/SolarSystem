@@ -65,6 +65,8 @@
     "sectionPlanets":    "🪐 Planètes",
     "sectionDwarfs":     "⚪ Naines",
     "sectionSatellites": "🌙 Satellites",
+    "sectionComets":     "☄ Comètes",
+    "sectionAsteroids":  "🪨 Astéroïdes",
     "sectionMinor":      "☄ Comètes & Astéroïdes",
     "orbitsShort": "Orbites",
     "openLabel": "Ouvrir le menu des astres",
@@ -72,6 +74,8 @@
     "toggleOrbitsPlanets":    "Orbites des planètes",
     "toggleOrbitsDwarfs":     "Orbites des planètes naines",
     "toggleOrbitsSatellites": "Orbite de la Lune",
+    "toggleOrbitsComets":     "Orbites des comètes",
+    "toggleOrbitsAsteroids":  "Orbites des astéroïdes",
     "toggleOrbitsMinor":      "Orbites des comètes & astéroïdes"
   },
   "pov": {
@@ -131,7 +135,6 @@
     "mercury": { "desc": "Plus petite planète, ni atmosphère, ni saisons. Écarts thermiques extrêmes." },
     "venus":   { "desc": "Atmosphère de CO₂ très dense, effet de serre extrême (runaway). Rotation rétrograde." },
     "earth":   { "desc": "Seule planète connue abritant la vie, telle que nous la connaissons." },
-    "moon":    { "desc": "Satellite naturel de la Terre, en rotation synchrone." },
     "mars":    { "desc": "Planète tellurique sèche, traces d'eau passée, calotte de CO₂/H₂O." },
     "jupiter": { "desc": "Géante gazeuse la plus massive reconnaissable à sa tâche rouge, 95 lunes connues." },
     "saturn":  { "desc": "Reconnaissable par ses anneaux brillants composés de glace et de poussière. Elle est moins dense que l'eau." },
@@ -141,6 +144,7 @@
     "haumea":  { "desc": "Ellipsoïdale et en rotation très rapide (~4 h), entourée d'un anneau." },
     "makemake":{ "desc": "Dans la ceinture de Kuiper, en résonance 2:3 avec Neptune." },
     "eris":    { "desc": "Planète naine la plus massive connue, périhélie ~38 UA, aphélie ~97 UA." },
+    "moon":    { "desc": "Satellite naturel de la Terre, en rotation synchrone." },
     "halley":  { "desc": "Retour tous les ~76 ans, prochaine apparition vers 2061." },
     "encke":   { "desc": "Très courte période (~3.3 ans), source de l'essaim météorique des Taurides." },
     "neowise": { "desc": "C/2020 F3 est non périodique, observé à l'œil nu en été 2020, elle a une double queue. Période ~6 800 ans" },
@@ -163,7 +167,7 @@
     "types": {
       "solarEclipse": "Éclipse solaire",
       "lunarEclipse": "Éclipse lunaire",
-      "superMoon":    "Super Lune",
+      "super":    "Super Lune",
       "solarFlare":   "Éruption solaire massive"
     },
     "tooltips": {
@@ -171,9 +175,6 @@
       "lunarEclipse": "La Terre projette son ombre sur la Lune.",
       "superMoon":    "Pleine Lune au périgée — diamètre apparent maximal.",
       "solarFlare":   "Éjection massive de plasma à la surface solaire (cycle de 11 ans)."
-    },
-    "flare": {
-      "alert": "Éruption solaire massive détectée"
     }
   }
 }

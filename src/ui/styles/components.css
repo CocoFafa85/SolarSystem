@@ -190,10 +190,10 @@
 .events-button[aria-pressed="true"] { border-color: var(--color-accent); color: var(--color-accent); }
 
 /* ============ BodyMenu (LOT 16 #12 — 4 toggles + stack slots) ============ */
-/* LOT 16 patch — panel largeur réduite + slots horizontaux. */
+/* LOT 16 patch round 4 — largeur conditionnelle : compact fermé / large ouvert. */
 .body-menu {
   min-width: 0;
-  max-width: 110px;
+  max-width: 140px;
   height: auto;
   padding: var(--space-1);
   display: flex;
@@ -209,6 +209,10 @@
 .body-menu[hidden] { display: none; }
 .body-menu .body-menu__item { padding: 4px var(--space-2); min-height: 32px; }
 .body-menu .body-menu__item--orbits-toggle { padding: 4px var(--space-2); }
+/* LOT 16 round 4 — quand au moins 1 section est ouverte, on autorise jusqu'à 4 slots horizontaux. */
+.body-menu.body-menu--has-open-section { max-width: min(95vw, 720px); }
+/* Toggle "COMÈTES & ASTÉROÏDES" : autoriser le wrap pour rester dans 140px. */
+.body-menu__toggle { white-space: normal; line-height: 1.15; word-break: keep-all; }
 
 /* Mobile 375px : toggles au-dessus, slots empilés en dessous */
 @media (max-width: 767px) {
@@ -233,7 +237,6 @@
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
   border: 0;
-  background: rgba(10, 25, 40, 0.45);
   color: var(--color-text-primary);
   font-family: var(--font-family-display, var(--font-family-base));
   font-size: var(--font-size-xs);
@@ -246,12 +249,12 @@
 }
 .body-menu__toggle:hover {
   color: #c8d4e4;
-  background: rgba(36, 9, 133, 0.55);
+  background: rgba(38, 7, 124, 0.55);
   box-shadow: 0 0 10px rgba(200, 212, 228, 0.15);
 }
 .body-menu__toggle[aria-pressed="true"] {
   color: #c8d4e4;
-  background: rgba(9, 38, 133, 0.85);
+  background: rgba(15, 7, 126, 0.85);
   box-shadow: inset 0 0 0 1px rgba(200, 212, 228, 0.25);
 }
 
@@ -278,7 +281,6 @@
   gap: var(--space-1);
   min-width: 0;
   opacity: 1;
-  background: rgba(10, 25, 40, 0.55);
   border: 1px solid rgba(200, 212, 228, 0.10);
   border-radius: var(--radius-sm);
   padding: var(--space-1);
@@ -920,13 +922,14 @@
    Style holo bleu marine palette restreinte EXCLUSIF à welcome__card. */
 .welcome .welcome__card {
   position: relative;
-  background: linear-gradient(135deg, #090b85 0%, #092685 55%, #240985 100%);
+  background: linear-gradient(135deg, #090b85 0%, #000820 55%, #240985 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(200, 212, 228, 0.20);
   border-radius: var(--radius-lg);
   color: #ffffff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: var(--space-8);
 }
 .event-stats--modal,
 .glossary-overlay__modal,
@@ -987,7 +990,7 @@
   border-color: var(--color-neon-cyan);
   box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
   text-shadow: 0 0 5px var(--color-neon-cyan);
-}
+} 
 
 /* Labels tech Orbitron. */
 .tc__btn,
@@ -1093,7 +1096,7 @@
   100% { transform: skew(0.3deg); }
 }
 
-/* LOT 16 patch — titre stylisé : gradient + glow soutenu, sans glitch. */
+/* LOT 16 round 4 — titre cyberpunk : gradient + glitch RGB cyclique restauré. */
 .welcome .welcome__title {
   font-family: var(--font-orbitron);
   font-size: 2.6rem;
@@ -1105,14 +1108,36 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 0 14px rgba(200, 212, 228, 0.45)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 0 14px rgba(200, 212, 228, 0.55)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
   position: relative;
-  animation: none;
   text-align: center;
   margin: 0 auto;
+  animation: glitchSkew 5.2s steps(1, end) infinite;
 }
 .welcome .welcome__title::before,
-.welcome .welcome__title::after { content: none !important; }
+.welcome .welcome__title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: inherit;
+  text-align: center;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.welcome .welcome__title::before {
+  color: rgba(255, 60, 90, 0.85);
+  text-shadow: 2px 0 rgba(255, 60, 90, 0.85);
+  animation: glitchAnim 3.4s steps(1, end) infinite alternate-reverse;
+}
+.welcome .welcome__title::after {
+  color: rgba(0, 240, 255, 0.85);
+  text-shadow: -2px 0 rgba(0, 240, 255, 0.85);
+  animation: glitchAnim2 2.8s steps(1, end) infinite alternate-reverse;
+}
 
 /* Scanline overlay retiré — modale sobre. */
 .welcome .welcome__body::before,
@@ -1125,6 +1150,7 @@
   color: #c8d4e4;
   border: 1px solid rgba(200, 212, 228, 0.45);
   text-shadow: none;
+  margin-top: var(--space-8);
   animation: none;
   transition:
     background var(--motion-fast) var(--easing-standard),
@@ -1229,4 +1255,250 @@
     animation: none;
     opacity: 0.6;
   }
+  .welcome .welcome__cta { animation: none !important; border-radius: 8px !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   LOT 16 ROUND 5 — refonte unifiée
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* --- A1 — Glitch reference fidèle (base BLANCHE, RGB-split magenta/cyan) --- */
+.welcome .welcome__title {
+  font-family: var(--font-orbitron);
+  font-size: 2.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  /* LOT 16 R7 — base CYAN néon, couches secondaires magenta/blanc. */
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: #00fff9;
+  color: #00fff9;
+  text-shadow: 0 0 10px rgba(0, 255, 249, 0.85), 2px 2px 0px rgba(0, 0, 0, 0.5);
+  filter: none;
+  position: relative;
+  width: fit-content;
+  display: table;
+  margin-inline: auto !important;
+  text-align: center;
+  animation: glitch-skew 3s infinite linear alternate-reverse;
+}
+.welcome .welcome__title::before,
+.welcome .welcome__title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* LOT 16 R6 — fond transparent : on voit le container parent derrière les
+     couches RGB-split, plus de rectangle sombre parasite. */
+  background: transparent;
+  -webkit-text-fill-color: initial;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  text-align: center;
+}
+/* R7 — couche ::before MAGENTA (couleur secondaire #1). */
+.welcome .welcome__title::before {
+  left: 2px;
+  color: #ff00c1;
+  text-shadow: -1px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+/* R7 — couche ::after BLANCHE (couleur secondaire #2). */
+.welcome .welcome__title::after {
+  left: -2px;
+  color: #ffffff;
+  text-shadow: -1px 0 #ffffff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+@keyframes glitch-skew {
+  0%   { transform: skew(0deg); }
+  10%  { transform: skew(0.3deg); }
+  20%  { transform: skew(-0.4deg); }
+  30%  { transform: skew(0.2deg); }
+  40%  { transform: skew(-0.3deg); }
+  50%  { transform: skew(0.5deg); }
+  60%  { transform: skew(-0.2deg); }
+  70%  { transform: skew(0.4deg); }
+  80%  { transform: skew(-0.5deg); }
+  90%  { transform: skew(0.3deg); }
+  100% { transform: skew(0deg); }
+}
+@keyframes glitch-anim {
+  0%   { clip: rect(14px, 9999px, 81px, 0); }
+  5%   { clip: rect(63px, 9999px, 86px, 0); }
+  10%  { clip: rect(7px,  9999px, 66px, 0); }
+  15%  { clip: rect(98px, 9999px, 5px,  0); }
+  20%  { clip: rect(18px, 9999px, 64px, 0); }
+  25%  { clip: rect(7px,  9999px, 75px, 0); }
+  30%  { clip: rect(54px, 9999px, 20px, 0); }
+  35%  { clip: rect(94px, 9999px, 83px, 0); }
+  40%  { clip: rect(38px, 9999px, 51px, 0); }
+  45%  { clip: rect(70px, 9999px, 24px, 0); }
+  50%  { clip: rect(11px, 9999px, 87px, 0); }
+  55%  { clip: rect(85px, 9999px, 42px, 0); }
+  60%  { clip: rect(33px, 9999px, 95px, 0); }
+  65%  { clip: rect(62px, 9999px, 17px, 0); }
+  70%  { clip: rect(8px,  9999px, 71px, 0); }
+  75%  { clip: rect(48px, 9999px, 30px, 0); }
+  80%  { clip: rect(91px, 9999px, 56px, 0); }
+  85%  { clip: rect(22px, 9999px, 78px, 0); }
+  90%  { clip: rect(67px, 9999px, 13px, 0); }
+  95%  { clip: rect(40px, 9999px, 88px, 0); }
+  100% { clip: rect(75px, 9999px, 35px, 0); }
+}
+@keyframes glitch-anim2 {
+  0%   { clip: rect(29px, 9999px, 86px, 0); }
+  10%  { clip: rect(50px, 9999px, 13px, 0); }
+  20%  { clip: rect(2px,  9999px, 67px, 0); }
+  30%  { clip: rect(82px, 9999px, 41px, 0); }
+  40%  { clip: rect(18px, 9999px, 95px, 0); }
+  50%  { clip: rect(60px, 9999px, 25px, 0); }
+  60%  { clip: rect(9px,  9999px, 74px, 0); }
+  70%  { clip: rect(45px, 9999px, 38px, 0); }
+  80%  { clip: rect(78px, 9999px, 7px,  0); }
+  90%  { clip: rect(33px, 9999px, 91px, 0); }
+  100% { clip: rect(15px, 9999px, 56px, 0); }
+}
+
+/* --- R8 — CTA état NORMAL : rectangle uniforme, zéro animation -------- */
+.welcome .welcome__cta {
+  border-radius: 8px;
+  filter: none;
+  animation: none;
+  box-shadow: none;
+  transform: none;
+  transition:
+    box-shadow   180ms ease,
+    background   180ms ease,
+    color        180ms ease,
+    border-color 180ms ease,
+    transform    180ms ease;
+}
+.welcome .welcome__cta:hover,
+.welcome .welcome__cta:focus-visible {
+  /* R7 — animation EXCLUSIVEMENT au survol. Sans hover, les filter/animation
+     reviennent à `none` (transition-rerun via le state du :hover). */
+  filter: url(#cosmicLiquid);
+  animation: cosmicGlowPulse 1.4s ease-in-out infinite;
+}
+/* R7 — glow magenta néon resserré (moins étendu que la version dorée). */
+@keyframes cosmicGlowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 6px  rgba(255, 0, 193, 0.55),
+      0 0 12px rgba(255, 0, 193, 0.30),
+      inset 0 0 6px rgba(255, 255, 255, 0.10);
+  }
+  50% {
+    box-shadow:
+      0 0 10px rgba(255, 0, 193, 0.80),
+      0 0 18px rgba(255, 0, 193, 0.45),
+      inset 0 0 10px rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* --- A3 — Montserrat Alternates sur welcome__p + glossary__text ---------- */
+.welcome__p,
+.welcome .welcome__body p,
+.glossary__text,
+.glossary__def,
+.glossary__term {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* --- B1+B2 — Unification taille + bordure cyan static + hover #240985 ---- */
+/* Même geometry pour comparator-btn et glossary-btn (et events-button + body-menu-toggle__btn). */
+.events-button,
+.body-menu-toggle__btn,
+.glossary-btn,
+.comparator-btn {
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+/* Bordure cyan en static + transition vers #240985 au survol — applique à
+   time-status, events-button, body-menu-toggle__btn, comparator-btn, glossary-btn. */
+.time-status,
+.events-button,
+.body-menu-toggle__btn,
+.comparator-btn,
+.glossary-btn {
+  border: 1px solid var(--color-neon-cyan, #00f3ff) !important;
+  box-shadow: 0 0 6px rgba(0, 243, 255, 0.18);
+  transition:
+    border-color 200ms ease,
+    box-shadow   200ms ease,
+    background   200ms ease;
+}
+.time-status:hover,
+.events-button:hover,
+.body-menu-toggle__btn:hover,
+.comparator-btn:hover,
+.glossary-btn:hover {
+  border-color: #240985 !important;
+  box-shadow: 0 0 14px rgba(36, 9, 133, 0.55), 0 0 4px rgba(36, 9, 133, 0.35) inset;
+}
+
+/* --- B3 — Retirer le bg hover sur body-menu-toggle__btn ------------------ */
+.body-menu-toggle__btn:hover { background: var(--color-bg-panel) !important; }
+
+/* --- D1 — Réduire légèrement la taille des body-menu__toggle ------------- */
+.body-menu__toggle {
+  min-height: 30px;
+  padding: 4px var(--space-2);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* --- R6 #4 — "Astres" : aucun changement de style à l'état activé --------- */
+.body-menu-toggle__btn[aria-expanded="true"] {
+  border-color: var(--color-neon-cyan, #00f3ff) !important;
+  color: var(--color-text-primary) !important;
+  background: var(--color-bg-panel) !important;
+  box-shadow: 0 0 6px rgba(0, 243, 255, 0.18) !important;
+  text-shadow: none !important;
+}
+
+/* --- R6 #6 — toggles TOUJOURS empilés verticalement (1 par ligne) -------- */
+.body-menu__toggles { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch; }
+.body-menu__toggle { white-space: nowrap; }
+
+/* --- R6 #7 — panneau "Sélection des corps" fixe et statique -------------- */
+/* La largeur du panel = colonne de toggles. Les slots s'ouvrent en overlay
+   absolu à droite, ne redimensionnent jamais la fenêtre. */
+.body-menu {
+  position: relative;
+  max-width: none;        /* la largeur intrinsèque suit les toggles */
+  width: max-content;
+}
+.body-menu.body-menu--has-open-section { max-width: none; }
+.body-menu__slots {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: var(--space-2);
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* --- R7 — "GLOSSAIRE" et "COMPARER" largeur identique en toutes circonstances - */
+.glossary-btn,
+.comparator-btn {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/* --- R7 — "réaliste" en gras = magenta néon ---------------------------- */
+.welcome__p strong { color: #ff00c1 !important; text-shadow: 0 0 6px rgba(255, 0, 193, 0.55); }
+

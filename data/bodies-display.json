@@ -4,7 +4,8 @@
     "planets":   ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"],
     "dwarfs":    ["ceres", "pluto", "haumea", "makemake", "eris"],
     "satellites":["moon"],
-    "minor":     ["halley", "encke", "neowise", "vesta", "pallas"]
+    "comets":    ["halley", "encke", "neowise"],
+    "asteroids": ["vesta", "pallas"]
   },
   "order": ["sun", "mercury", "venus", "earth", "moon", "mars", "jupiter", "saturn", "uranus", "neptune", "ceres", "pluto", "haumea", "makemake", "eris"],
   "bodies": {
@@ -12,7 +13,6 @@
     "mercury": { "accent": "#9a8b7a", "category": "planet",       "orbitalSpeedKmS": 47.36, "tempMinK": 100,   "tempMaxK": 700,      "descKey": "bodies.mercury.desc", "discoveredYear": "Antiquité" },
     "venus":   { "accent": "#e6c98a", "category": "planet",       "orbitalSpeedKmS": 35.02, "tempMinK": 737,   "tempMaxK": 737,      "descKey": "bodies.venus.desc",   "discoveredYear": "Antiquité" },
     "earth":   { "accent": "#6aa8ff", "category": "planet",       "orbitalSpeedKmS": 29.78, "tempMinK": 184,   "tempMaxK": 330,      "descKey": "bodies.earth.desc",   "discoveredYear": "Antiquité" },
-    "moon":    { "accent": "#cfd2d8", "category": "satellite",    "orbitalSpeedKmS": 1.022, "tempMinK": 100,   "tempMaxK": 390,      "descKey": "bodies.moon.desc",    "discoveredYear": "Antiquité" },
     "mars":    { "accent": "#d97f5b", "category": "planet",       "orbitalSpeedKmS": 24.07, "tempMinK": 130,   "tempMaxK": 308,      "descKey": "bodies.mars.desc",    "discoveredYear": "Antiquité" },
     "jupiter": { "accent": "#d6a36a", "category": "planet",       "orbitalSpeedKmS": 13.07, "tempMinK": 110,   "tempMaxK": 165,      "descKey": "bodies.jupiter.desc", "discoveredYear": "Antiquité" },
     "saturn":  { "accent": "#e8d39a", "category": "planet",       "orbitalSpeedKmS": 9.69,  "tempMinK": 84,    "tempMaxK": 134,      "descKey": "bodies.saturn.desc",  "discoveredYear": "Antiquité" },
@@ -24,6 +24,8 @@
     "haumea":  { "accent": "#c8c0b8", "category": "dwarfPlanet",  "orbitalSpeedKmS": 4.48,  "tempMinK": 32,    "tempMaxK": 50,       "descKey": "bodies.haumea.desc",   "discoveredYear": 2004, "dwarfClassifiedYear": 2008 },
     "makemake":{ "accent": "#c19b86", "category": "dwarfPlanet",  "orbitalSpeedKmS": 4.41,  "tempMinK": 30,    "tempMaxK": 40,       "descKey": "bodies.makemake.desc", "discoveredYear": 2005, "dwarfClassifiedYear": 2008 },
     "eris":    { "accent": "#d6d4cf", "category": "dwarfPlanet",  "orbitalSpeedKmS": 3.43,  "tempMinK": 30,    "tempMaxK": 56,       "descKey": "bodies.eris.desc",     "discoveredYear": 2005, "dwarfClassifiedYear": 2006 },
+
+    "moon":    { "accent": "#cfd2d8", "category": "satellite",    "orbitalSpeedKmS": 1.022, "tempMinK": 100,   "tempMaxK": 390,      "descKey": "bodies.moon.desc",    "discoveredYear": "Antiquité" },
 
     "halley":  { "accent": "#a3d6ff", "category": "comet",        "orbitalSpeedKmS": 0.91,  "tempMinK": 0,     "tempMaxK": 0,        "descKey": "bodies.halley.desc",  "discoveredYear": 1758 },
     "encke":   { "accent": "#9fc8e0", "category": "comet",        "orbitalSpeedKmS": 0,     "tempMinK": 0,     "tempMaxK": 0,        "descKey": "bodies.encke.desc",   "discoveredYear": 1786 },
