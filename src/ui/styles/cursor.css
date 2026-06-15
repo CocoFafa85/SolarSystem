@@ -35,15 +35,15 @@
 /* Dot central — orangé Soleil (LOT 16 #3). */
 .cursor-custom__dot {
   width: 10px; height: 10px;
-  background: #ff8a3d;
-  box-shadow: 0 0 10px #ff8a3d;
+  background: #ffbb3d;
+  box-shadow: 0 0 10px #ffbb3d;
 }
 
 /* Ring orbital — cyan néon (LOT 15 D phase 2), ×3 (~48 px). */
 .cursor-custom__ring {
   width: 48px; height: 48px;
   border: 1.5px solid var(--color-neon-cyan);
-  box-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+  box-shadow: 0 0 12px rgba(241, 254, 255, 0.5);
   opacity: 0.9;
   transition: width var(--motion-fast) var(--easing-standard),
               height var(--motion-fast) var(--easing-standard),
@@ -113,12 +113,10 @@
 /* Pressing : ring rétrécit, dot s'agrandit légèrement (feedback de clic). */
 .cursor-custom.is-pressing .cursor-custom__ring {
   width: 36px; height: 36px;
-  border-color: #ff8a3d;
+  border-color: #ffbb3d;
   opacity: 1;
 }
-.cursor-custom.is-pressing .cursor-custom__dot {
-  background: #ffffff;
-}
+
 
 /* reduced-motion : pas de pulse halo (LOT 11 préservé : ring colle déjà au dot). */
 @media (prefers-reduced-motion: reduce) {
